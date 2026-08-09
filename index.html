@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
+  <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Wurks Auto Sales home">
+      <div class="brand-mark">W</div>
+      <div><strong>Wurks Auto Sales</strong><span>Northern Nevada</span></div>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav">
+      <a href="#inventory">Inventory</a>
+      <a href="#why-wurks">Why Wurks</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Used cars without the runaround</p>
+        <h1>Good cars. Clear pricing. No hidden dealer fees.</h1>
+        <p class="hero-text">Wurks Auto Sales serves Northern Nevada with carefully selected used vehicles, straightforward descriptions, and easy-to-understand out-the-door pricing.</p>
+        <div class="actions">
+          <a class="button primary" href="#inventory">View Inventory</a>
+          <a class="button secondary" href="#contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span class="hero-card-label">Built for real buyers</span>
+        <strong>Transparent OTD pricing</strong>
+        <p>See the number that matters before you make the trip.</p>
+        <div class="mini-grid">
+          <span><b>Clean</b> listings</span>
+          <span><b>Simple</b> process</span>
+          <span><b>Local</b> dealer</span>
+          <span><b>Direct</b> contact</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="inventory" class="section">
+      <div class="section-heading">
+        <div><p class="eyebrow">Available vehicles</p><h2>Current Inventory</h2></div>
+        <p>Inventory changes often. Contact us to confirm availability, mileage, and current pricing.</p>
+      </div>
+      <div id="inventory-grid" class="inventory-grid"></div>
+    </section>
+
+    <section id="why-wurks" class="section muted">
+      <div class="section-heading"><div><p class="eyebrow">A simpler way to buy</p><h2>Why Wurks Auto Sales</h2></div></div>
+      <div class="feature-grid">
+        <article><span>01</span><h3>Straightforward pricing</h3><p>We focus on clear numbers and transparent out-the-door pricing rather than surprise add-ons.</p></article>
+        <article><span>02</span><h3>Mechanical knowledge</h3><p>Our automotive background helps us evaluate vehicles with a practical, hands-on eye.</p></article>
+        <article><span>03</span><h3>Accurate descriptions</h3><p>We describe the good and the not-so-good so buyers can make an informed decision.</p></article>
+      </div>
+    </section>
+
+    <section id="about" class="section about-grid">
+      <div>
+        <p class="eyebrow">About Wurks</p>
+        <h2>Small dealership. Automotive-first approach.</h2>
+      </div>
+      <div class="about-copy">
+        <p>Wurks Auto Sales is a Northern Nevada used-car dealership focused on offering interesting, practical vehicles with a straightforward buying experience.</p>
+        <p>We bring hands-on automotive experience to the process and believe buyers deserve clear vehicle information, transparent pricing, and direct communication.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <div>
+        <p class="eyebrow">Questions about a vehicle?</p>
+        <h2>Get in touch</h2>
+        <p>Replace the placeholders below with your business phone, email, location, and Facebook Marketplace link before publishing.</p>
+      </div>
+      <div class="contact-card">
+        <a href="tel:+10000000000"><span>Phone / Text</span><strong>(000) 000-0000</strong></a>
+        <a href="mailto:sales@example.com"><span>Email</span><strong>sales@example.com</strong></a>
+        <div><span>Location</span><strong>Reno / Sparks, Nevada</strong></div>
+        <a href="#"><span>Marketplace</span><strong>View our listings</strong></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Wurks Auto Sales</strong><span> Northern Nevada</span></div>
+    <p>Vehicle availability, mileage, and pricing subject to change. Vehicles sold as-is unless otherwise stated.</p>
+    <p>&copy; <span id="year"></span> Wurks Auto Sales.</p>
+  </footer>
+
+  <template id="vehicle-template">
+    <article class="vehicle-card">
+      <div class="vehicle-photo"><span class="status"></span><div class="photo-placeholder">Add Vehicle Photo</div></div>
+      <div class="vehicle-body">
+        <div class="vehicle-top"><div><p class="vehicle-kicker"></p><h3 class="vehicle-name"></h3></div><strong class="vehicle-price"></strong></div>
+        <div class="specs"></div>
+        <p class="vehicle-desc"></p>
+        <button class="button secondary details-button">View Details</button>
+      </div>
+    </article>
+  </template>
+
+  <dialog id="vehicle-dialog">
+    <button class="dialog-close" aria-label="Close">×</button>
+    <p class="eyebrow dialog-kicker"></p>
+    <h2 class="dialog-name"></h2>
+    <div class="dialog-specs specs"></div>
+    <p class="dialog-desc"></p>
+    <p class="dialog-note"></p>
+    <a class="button primary" href="#contact" id="dialog-contact">Ask About This Vehicle</a>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
