@@ -82,6 +82,7 @@ function buildVehicleCard(vehicle, isFeatured = false) {
   const article = card.querySelector('.vehicle-card');
   const photo = card.querySelector('.vehicle-photo');
   const status = card.querySelector('.status');
+  const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
 
   status.textContent = vehicle.status;
   status.classList.toggle('example-status', vehicle.status.toLowerCase().includes('example'));
@@ -97,10 +98,49 @@ function buildVehicleCard(vehicle, isFeatured = false) {
     photo.appendChild(badge);
   }
 
-  if (vehicle.image) {
+  if (images.length) {
     photo.classList.add('has-image');
-    photo.style.backgroundImage = `url("${vehicle.image}")`;
+    photo.style.backgroundImage = `url("${images[0]}")`;
     photo.querySelector('.photo-placeholder')?.remove();
+
+    // Keep featured/homepage cards intentionally simple. Inventory cards get browsing controls.
+    if (!isFeatured) {
+      const count = document.createElement('span');
+      count.className = 'photo-count';
+      count.innerHTML = `<span aria-hidden="true">▣</span> ${images.length}`;
+      count.setAttribute('aria-label', `${images.length} photos`);
+      photo.appendChild(count);
+
+      if (images.length > 1) {
+        let currentImage = 0;
+        const previous = document.createElement('button');
+        const next = document.createElement('button');
+        previous.type = 'button';
+        next.type = 'button';
+        previous.className = 'card-photo-arrow card-photo-prev';
+        next.className = 'card-photo-arrow card-photo-next';
+        previous.setAttribute('aria-label', `Previous photo of ${vehicleName(vehicle)}`);
+        next.setAttribute('aria-label', `Next photo of ${vehicleName(vehicle)}`);
+        previous.textContent = '‹';
+        next.textContent = '›';
+
+        const showImage = index => {
+          currentImage = (index + images.length) % images.length;
+          photo.style.backgroundImage = `url("${images[currentImage]}")`;
+        };
+        previous.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          showImage(currentImage - 1);
+        });
+        next.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          showImage(currentImage + 1);
+        });
+        photo.append(previous, next);
+      }
+    }
   } else {
     photo.querySelector('.photo-placeholder').innerHTML = `<span>${vehicle.year}</span><strong>${vehicle.make}</strong><small>Photo coming soon</small>`;
   }
@@ -194,21 +234,48 @@ if (detailRoot) {
     const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
 
     if (images.length) {
+      let currentImage = 0;
       mainPhoto.classList.add('has-image');
-      mainPhoto.style.backgroundImage = `url("${images[0]}")`;
       mainPhoto.innerHTML = '';
+
+      const counter = document.createElement('span');
+      counter.className = 'detail-photo-count';
+      const previous = document.createElement('button');
+      const next = document.createElement('button');
+      previous.type = 'button';
+      next.type = 'button';
+      previous.className = 'detail-photo-arrow detail-photo-prev';
+      next.className = 'detail-photo-arrow detail-photo-next';
+      previous.setAttribute('aria-label', 'Previous vehicle photo');
+      next.setAttribute('aria-label', 'Next vehicle photo');
+      previous.textContent = '‹';
+      next.textContent = '›';
+      mainPhoto.append(previous, next, counter);
+
+      const thumbButtons = [];
+      const showDetailImage = index => {
+        currentImage = (index + images.length) % images.length;
+        mainPhoto.style.backgroundImage = `url("${images[currentImage]}")`;
+        counter.textContent = `${currentImage + 1} / ${images.length}`;
+        thumbButtons.forEach((button, i) => button.classList.toggle('active', i === currentImage));
+      };
+
       images.forEach((src, i) => {
         const button = document.createElement('button');
+        button.type = 'button';
         button.className = `thumb${i === 0 ? ' active' : ''}`;
         button.style.backgroundImage = `url("${src}")`;
-        button.setAttribute('aria-label', `View photo ${i + 1}`);
-        button.addEventListener('click', () => {
-          mainPhoto.style.backgroundImage = `url("${src}")`;
-          thumbnails.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-          button.classList.add('active');
-        });
+        button.setAttribute('aria-label', `View photo ${i + 1} of ${images.length}`);
+        button.addEventListener('click', () => showDetailImage(i));
         thumbnails.appendChild(button);
+        thumbButtons.push(button);
       });
+
+      previous.hidden = images.length < 2;
+      next.hidden = images.length < 2;
+      previous.addEventListener('click', () => showDetailImage(currentImage - 1));
+      next.addEventListener('click', () => showDetailImage(currentImage + 1));
+      showDetailImage(0);
     } else {
       mainPhoto.innerHTML = `<div class="detail-placeholder"><span>${vehicle.year}</span><strong>${vehicle.make}</strong><small>Vehicle photos can be added here</small></div>`;
       thumbnails.hidden = true;

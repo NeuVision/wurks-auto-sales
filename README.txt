@@ -35,3 +35,9 @@ Replace the placeholder phone number and email in index.html with your actual bu
 
 
 Version 3.1: Added cache-busting query strings to CSS/JS so GitHub Pages updates load reliably without stale scripts.
+
+
+V4 PHOTO DEMO
+- Homepage featured cards intentionally show only the main photo.
+- Inventory cards show a photo count and left/right arrows when multiple photos exist.
+- Vehicle detail page uses a large main image with thumbnail strip, arrows, and image counter.
