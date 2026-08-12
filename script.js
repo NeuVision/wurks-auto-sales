@@ -2,72 +2,78 @@
 // Add images by placing files in an "images" folder and setting image / gallery paths below.
 const vehicles = [
   {
-    id: '2020-subaru-forester-base',
-    year: 2020,
-    make: 'Subaru',
-    model: 'Forester',
-    trim: 'Base',
-    miles: 118600,
-    title: 'Clean title',
-    drivetrain: 'AWD',
-    price: '$14,995 OTD',
-    status: 'Available',
-    featured: true,
-    image: '',
-    gallery: [],
-    description: 'Practical, comfortable, and built for Northern Nevada weather. Subaru symmetrical AWD, roomy interior, and excellent everyday usability.',
-    note: 'Overall in great condition. Center armrest shows wear. Mileage may change from normal driving.'
+    "id": "2020-subaru-forester-base",
+    "year": 2020,
+    "make": "Subaru",
+    "model": "Forester",
+    "trim": "Base",
+    "miles": 118600,
+    "title": "Clean title",
+    "drivetrain": "AWD",
+    "price": "$14,995 OTD",
+    "status": "Available",
+    "featured": true,
+    "image": "",
+    "gallery": [],
+    "description": "Practical, comfortable, and built for Northern Nevada weather. Subaru symmetrical AWD, roomy interior, and excellent everyday usability.",
+    "note": "Overall in great condition. Center armrest shows wear. Mileage may change from normal driving."
   },
   {
-    id: '2019-subaru-forester-sport',
-    year: 2019,
-    make: 'Subaru',
-    model: 'Forester',
-    trim: 'Sport',
-    miles: 90000,
-    title: 'Clean title',
-    drivetrain: 'AWD',
-    price: 'Contact for price',
-    status: 'Available',
-    featured: true,
-    image: '',
-    gallery: [],
-    description: 'Forester Sport styling with Subaru AWD, useful cargo space, and the confidence that makes these vehicles popular in Northern Nevada.',
-    note: 'Clean title and no reported accidents based on current dealership information.'
+    "id": "2019-subaru-forester-sport",
+    "year": 2019,
+    "make": "Subaru",
+    "model": "Forester",
+    "trim": "Sport",
+    "miles": 90000,
+    "title": "Clean title",
+    "drivetrain": "AWD",
+    "price": "Contact for price",
+    "status": "Available",
+    "featured": true,
+    "image": "",
+    "gallery": [],
+    "description": "Forester Sport styling with Subaru AWD, useful cargo space, and the confidence that makes these vehicles popular in Northern Nevada.",
+    "note": "Clean title and no reported accidents based on current dealership information."
   },
   {
-    id: '2010-volkswagen-cc-vr6',
-    year: 2010,
-    make: 'Volkswagen',
-    model: 'CC',
-    trim: '3.6 VR6 4Motion',
-    miles: 96400,
-    title: 'Clean title',
-    drivetrain: 'AWD',
-    price: 'Contact for price',
-    status: 'Example listing',
-    featured: true,
-    image: '',
-    gallery: [],
-    description: 'A rare enthusiast-oriented CC with the 3.6-liter VR6 and 4Motion all-wheel drive. Comfortable, distinctive, and more interesting than the average sedan.',
-    note: 'Previously described as having no mechanical issues and only minimal cosmetic imperfections. Confirm current availability before publishing.'
+    "id": "2010-volkswagen-cc-vr6",
+    "year": 2010,
+    "make": "Volkswagen",
+    "model": "CC",
+    "trim": "3.6 VR6 4Motion",
+    "miles": 96400,
+    "title": "Clean title",
+    "drivetrain": "AWD",
+    "price": "Contact for price",
+    "status": "Sold",
+    "featured": true,
+    "image": "images/2010-volkswagen-cc-vr6-01.jpg",
+    "gallery": [
+      "images/2010-volkswagen-cc-vr6-02.jpg",
+      "images/2010-volkswagen-cc-vr6-03.jpg"
+    ],
+    "description": "A rare enthusiast-oriented CC with the 3.6-liter VR6 and 4Motion all-wheel drive. Comfortable, distinctive, and more interesting than the average sedan.",
+    "note": "Previously described as having no mechanical issues and only minimal cosmetic imperfections. Confirm current availability before publishing."
   },
   {
-    id: '2013-bmw-x5-xdrive50i',
-    year: 2013,
-    make: 'BMW',
-    model: 'X5',
-    trim: 'xDrive50i',
-    miles: 140014,
-    title: 'Clean title',
-    drivetrain: 'AWD',
-    price: 'Contact for price',
-    status: 'Example listing',
-    featured: true,
-    image: 'images/bmw-x5-1.jpg',
-    gallery: ['images/bmw-x5-2.jpg', 'images/bmw-x5-3.jpg'],
-    description: 'Twin-turbo V8 power, a comfortable ride, and classic BMW SUV driving feel. Strong performance with a well-kept interior.',
-    note: 'Known smoke-at-idle condition previously disclosed; it goes away during normal driving and the vehicle was reported to pass smog. Sold as-is. Confirm current availability before publishing.'
+    "id": "2013-bmw-x5-xdrive50i",
+    "year": 2013,
+    "make": "BMW",
+    "model": "X5",
+    "trim": "xDrive50i",
+    "miles": 140014,
+    "title": "Clean title",
+    "drivetrain": "AWD",
+    "price": "Contact for price",
+    "status": "Example listing",
+    "featured": true,
+    "image": "images/bmw-x5-1.jpg",
+    "gallery": [
+      "images/bmw-x5-2.jpg",
+      "images/bmw-x5-3.jpg"
+    ],
+    "description": "Twin-turbo V8 power, a comfortable ride, and classic BMW SUV driving feel. Strong performance with a well-kept interior.",
+    "note": "Known smoke-at-idle condition previously disclosed; it goes away during normal driving and the vehicle was reported to pass smog. Sold as-is. Confirm current availability before publishing."
   }
 ];
 
@@ -86,7 +92,6 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
 
   status.textContent = vehicle.status;
   status.classList.toggle('example-status', vehicle.status.toLowerCase().includes('example'));
-  status.classList.toggle('sold-status', vehicle.status.toLowerCase() === 'sold');
   card.querySelector('.vehicle-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
   card.querySelector('.vehicle-name').textContent = `${vehicle.model} ${vehicle.trim}`;
   card.querySelector('.vehicle-price').textContent = vehicle.price;
@@ -220,12 +225,7 @@ if (detailRoot) {
     detailRoot.innerHTML = `<div class="detail-not-found"><p class="eyebrow">Vehicle not found</p><h1>This listing is no longer available.</h1><a class="button primary" href="inventory.html">Back to Inventory</a></div>`;
   } else {
     document.title = `${vehicleName(vehicle)} | Wurks Auto Sales`;
-    document.querySelector('#detail-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
-    const detailStatusBanner = document.querySelector('#detail-status-banner');
-    if (detailStatusBanner && vehicle.status.toLowerCase() === 'sold') {
-      detailStatusBanner.textContent = 'SOLD';
-      detailStatusBanner.hidden = false;
-    }
+    document.querySelector('#detail-kicker').textContent = `${vehicle.status} · ${vehicle.year} ${vehicle.make}`;
     document.querySelector('#detail-name').textContent = `${vehicle.model} ${vehicle.trim}`;
     document.querySelector('#detail-price').textContent = vehicle.price;
     document.querySelector('#detail-description').textContent = vehicle.description;
