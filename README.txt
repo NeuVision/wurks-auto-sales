@@ -32,3 +32,6 @@ Set featured: true to show the vehicle on the homepage. The homepage displays up
 
 IMPORTANT
 Replace the placeholder phone number and email in index.html with your actual business contact information before publicizing the site.
+
+
+Version 3.1: Added cache-busting query strings to CSS/JS so GitHub Pages updates load reliably without stale scripts.
