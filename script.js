@@ -234,48 +234,21 @@ if (detailRoot) {
     const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
 
     if (images.length) {
-      let currentImage = 0;
       mainPhoto.classList.add('has-image');
+      mainPhoto.style.backgroundImage = `url("${images[0]}")`;
       mainPhoto.innerHTML = '';
-
-      const counter = document.createElement('span');
-      counter.className = 'detail-photo-count';
-      const previous = document.createElement('button');
-      const next = document.createElement('button');
-      previous.type = 'button';
-      next.type = 'button';
-      previous.className = 'detail-photo-arrow detail-photo-prev';
-      next.className = 'detail-photo-arrow detail-photo-next';
-      previous.setAttribute('aria-label', 'Previous vehicle photo');
-      next.setAttribute('aria-label', 'Next vehicle photo');
-      previous.textContent = '‹';
-      next.textContent = '›';
-      mainPhoto.append(previous, next, counter);
-
-      const thumbButtons = [];
-      const showDetailImage = index => {
-        currentImage = (index + images.length) % images.length;
-        mainPhoto.style.backgroundImage = `url("${images[currentImage]}")`;
-        counter.textContent = `${currentImage + 1} / ${images.length}`;
-        thumbButtons.forEach((button, i) => button.classList.toggle('active', i === currentImage));
-      };
-
       images.forEach((src, i) => {
         const button = document.createElement('button');
-        button.type = 'button';
         button.className = `thumb${i === 0 ? ' active' : ''}`;
         button.style.backgroundImage = `url("${src}")`;
-        button.setAttribute('aria-label', `View photo ${i + 1} of ${images.length}`);
-        button.addEventListener('click', () => showDetailImage(i));
+        button.setAttribute('aria-label', `View photo ${i + 1}`);
+        button.addEventListener('click', () => {
+          mainPhoto.style.backgroundImage = `url("${src}")`;
+          thumbnails.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+          button.classList.add('active');
+        });
         thumbnails.appendChild(button);
-        thumbButtons.push(button);
       });
-
-      previous.hidden = images.length < 2;
-      next.hidden = images.length < 2;
-      previous.addEventListener('click', () => showDetailImage(currentImage - 1));
-      next.addEventListener('click', () => showDetailImage(currentImage + 1));
-      showDetailImage(0);
     } else {
       mainPhoto.innerHTML = `<div class="detail-placeholder"><span>${vehicle.year}</span><strong>${vehicle.make}</strong><small>Vehicle photos can be added here</small></div>`;
       thumbnails.hidden = true;
