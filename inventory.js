@@ -48,9 +48,9 @@ window.WURKS_INVENTORY = [
     "drivetrain": "AWD",
     "featured": true,
     "images": [
-      "images/images/2010-volkswagen-cc-vr6-01.jpg",
-      "images/images/2010-volkswagen-cc-vr6-02.jpg",
-      "images/images/2010-volkswagen-cc-vr6-03.jpg"
+      "images/2010-volkswagen-cc-vr6-01.jpg",
+      "images/2010-volkswagen-cc-vr6-02.jpg",
+      "images/2010-volkswagen-cc-vr6-03.jpg"
     ],
     "description": "A rare enthusiast-oriented CC with the 3.6-liter VR6 and 4Motion all-wheel drive. Comfortable, distinctive, and more interesting than the average sedan.",
     "note": "Previously described as having no mechanical issues and only minimal cosmetic imperfections. Confirm current availability before publishing."
