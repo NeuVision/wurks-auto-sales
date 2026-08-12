@@ -64,8 +64,8 @@ const vehicles = [
     price: 'Contact for price',
     status: 'Example listing',
     featured: true,
-    image: '',
-    gallery: [],
+    image: 'images/bmw-x5-1.jpg',
+    gallery: ['images/bmw-x5-2.jpg', 'images/bmw-x5-3.jpg'],
     description: 'Twin-turbo V8 power, a comfortable ride, and classic BMW SUV driving feel. Strong performance with a well-kept interior.',
     note: 'Known smoke-at-idle condition previously disclosed; it goes away during normal driving and the vehicle was reported to pass smog. Sold as-is. Confirm current availability before publishing.'
   }
