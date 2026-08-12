@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Vehicle details from Wurks Auto Sales in Northern Nevada." />
   <title>Vehicle | Wurks Auto Sales</title>
-  <link rel="stylesheet" href="styles.css?v=5.1" />
+  <link rel="stylesheet" href="styles.css?v=5.2" />
 </head>
 <body>
   <header class="site-header">
@@ -62,7 +62,10 @@
     <p>Vehicle availability, mileage, and pricing subject to change. Vehicles sold as-is unless otherwise stated.</p>
     <p>&copy; <span id="year"></span> Wurks Auto Sales.</p>
   </footer>
-  <script src="inventory.js?v=5.1"></script>
-  <script src="script.js?v=5.1"></script>
+  <script>
+    document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
+  </script>
+
+<script src="script.js?v=5.2"></script>
 </body>
 </html>
