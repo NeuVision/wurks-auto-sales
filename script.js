@@ -77,7 +77,7 @@ function vehicleName(v) { return `${v.year} ${v.make} ${v.model}`; }
 
 const template = document.querySelector('#vehicle-template');
 
-function buildVehicleCard(vehicle, isFeatured = false) {
+function buildVehicleCard(vehicle, cardContext = 'inventory') {
   const card = template.content.cloneNode(true);
   const article = card.querySelector('.vehicle-card');
   const photo = card.querySelector('.vehicle-photo');
@@ -91,7 +91,7 @@ function buildVehicleCard(vehicle, isFeatured = false) {
   card.querySelector('.vehicle-price').textContent = vehicle.price;
   card.querySelector('.vehicle-desc').textContent = vehicle.description;
 
-  if (isFeatured) {
+  if (cardContext === 'featured') {
     const badge = document.createElement('span');
     badge.className = 'featured-badge';
     badge.textContent = 'Wurks Highlight';
@@ -104,7 +104,7 @@ function buildVehicleCard(vehicle, isFeatured = false) {
     photo.querySelector('.photo-placeholder')?.remove();
 
     // Keep featured/homepage cards intentionally simple. Inventory cards get browsing controls.
-    if (!isFeatured) {
+    if (cardContext === 'inventory') {
       const count = document.createElement('span');
       count.className = 'photo-count';
       count.innerHTML = `<span aria-hidden="true">▣</span> ${images.length}`;
@@ -158,14 +158,14 @@ function buildVehicleCard(vehicle, isFeatured = false) {
   return card;
 }
 
-function renderVehicles(target, vehicleList, featured = false) {
+function renderVehicles(target, vehicleList, cardContext = 'inventory') {
   target.innerHTML = '';
-  vehicleList.forEach(vehicle => target.appendChild(buildVehicleCard(vehicle, featured)));
+  vehicleList.forEach(vehicle => target.appendChild(buildVehicleCard(vehicle, cardContext)));
 }
 
 const featuredGrid = document.querySelector('#featured-grid');
 if (featuredGrid) {
-  renderVehicles(featuredGrid, vehicles.filter(v => v.featured).slice(0, 4), true);
+  renderVehicles(featuredGrid, vehicles.filter(v => v.featured).slice(0, 4), 'featured');
 }
 
 const inventoryGrid = document.querySelector('#inventory-grid');
