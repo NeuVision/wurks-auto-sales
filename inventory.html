@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse current used vehicle inventory from Wurks Auto Sales in Northern Nevada." />
+  <title>Inventory | Wurks Auto Sales</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Wurks Auto Sales home">
+      <div class="brand-mark">W</div>
+      <div><strong>Wurks Auto Sales</strong><span>Northern Nevada</span></div>
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav">
+      <a class="active" href="inventory.html">Inventory</a>
+      <a href="index.html#why-wurks">Why Wurks</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="inventory-hero">
+      <p class="eyebrow">Current vehicles</p>
+      <h1>Inventory</h1>
+      <p>Browse our current selection and filter by manufacturer. Inventory changes often, so contact us to confirm availability, mileage, and pricing.</p>
+    </section>
+
+    <section class="section inventory-page-section">
+      <div class="inventory-toolbar">
+        <div class="filter-group">
+          <label for="make-filter">Manufacturer</label>
+          <select id="make-filter">
+            <option value="all">All manufacturers</option>
+          </select>
+        </div>
+        <div class="filter-group search-group">
+          <label for="inventory-search">Search inventory</label>
+          <input id="inventory-search" type="search" placeholder="Year, model, trim..." autocomplete="off" />
+        </div>
+        <div class="inventory-count" aria-live="polite"><strong id="inventory-count">0</strong><span>vehicles shown</span></div>
+      </div>
+
+      <div id="inventory-grid" class="inventory-grid inventory-grid-three"></div>
+      <div id="no-results" class="no-results" hidden>
+        <h2>No matching vehicles</h2>
+        <p>Try another manufacturer or clear your search.</p>
+        <button id="clear-filters" class="button secondary">Clear Filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Wurks Auto Sales</strong><span> Northern Nevada</span></div>
+    <p>Vehicle availability, mileage, and pricing subject to change. Vehicles sold as-is unless otherwise stated.</p>
+    <p>&copy; <span id="year"></span> Wurks Auto Sales.</p>
+  </footer>
+
+  <template id="vehicle-template">
+    <article class="vehicle-card">
+      <div class="vehicle-photo"><span class="status"></span><div class="photo-placeholder">Add Vehicle Photo</div></div>
+      <div class="vehicle-body">
+        <div class="vehicle-top"><div><p class="vehicle-kicker"></p><h3 class="vehicle-name"></h3></div><strong class="vehicle-price"></strong></div>
+        <div class="specs"></div>
+        <p class="vehicle-desc"></p>
+        <button class="button secondary details-button">View Details</button>
+      </div>
+    </article>
+  </template>
+
+  <dialog id="vehicle-dialog">
+    <button class="dialog-close" aria-label="Close">×</button>
+    <p class="eyebrow dialog-kicker"></p>
+    <h2 class="dialog-name"></h2>
+    <div class="dialog-specs specs"></div>
+    <p class="dialog-desc"></p>
+    <p class="dialog-note"></p>
+    <a class="button primary" href="index.html#contact" id="dialog-contact">Ask About This Vehicle</a>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
