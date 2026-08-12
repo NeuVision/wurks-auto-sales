@@ -235,21 +235,36 @@ if (detailRoot) {
 
     if (images.length) {
       mainPhoto.classList.add('has-image');
-      mainPhoto.style.backgroundImage = `url("${images[0]}")`;
-      mainPhoto.innerHTML = '';
+      let currentDetailImage = 0;
+      const prevDetail = document.querySelector('#detail-photo-prev');
+      const nextDetail = document.querySelector('#detail-photo-next');
+
+      const showDetailImage = index => {
+        currentDetailImage = (index + images.length) % images.length;
+        mainPhoto.style.backgroundImage = `url("${images[currentDetailImage]}")`;
+        thumbnails.querySelectorAll('.thumb').forEach((thumb, i) => thumb.classList.toggle('active', i === currentDetailImage));
+      };
+
       images.forEach((src, i) => {
         const button = document.createElement('button');
         button.className = `thumb${i === 0 ? ' active' : ''}`;
         button.style.backgroundImage = `url("${src}")`;
         button.setAttribute('aria-label', `View photo ${i + 1}`);
-        button.addEventListener('click', () => {
-          mainPhoto.style.backgroundImage = `url("${src}")`;
-          thumbnails.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-          button.classList.add('active');
-        });
+        button.addEventListener('click', () => showDetailImage(i));
         thumbnails.appendChild(button);
       });
+
+      showDetailImage(0);
+      if (images.length > 1) {
+        prevDetail?.addEventListener('click', () => showDetailImage(currentDetailImage - 1));
+        nextDetail?.addEventListener('click', () => showDetailImage(currentDetailImage + 1));
+      } else {
+        prevDetail?.remove();
+        nextDetail?.remove();
+      }
     } else {
+      document.querySelector('#detail-photo-prev')?.remove();
+      document.querySelector('#detail-photo-next')?.remove();
       mainPhoto.innerHTML = `<div class="detail-placeholder"><span>${vehicle.year}</span><strong>${vehicle.make}</strong><small>Vehicle photos can be added here</small></div>`;
       thumbnails.hidden = true;
     }

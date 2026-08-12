@@ -47,3 +47,6 @@ v4.1 HYBRID DEMO
 - Homepage: main photo only; no arrows or photo count.
 - Inventory: left/right arrows and photo count.
 - Vehicle detail: reverted to the earlier gallery sizing/layout.
+
+
+v4.3: Added previous/next arrows to the vehicle detail main photo while preserving the restored smaller gallery and thumbnail layout.
