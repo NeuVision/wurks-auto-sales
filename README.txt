@@ -1,26 +1,34 @@
-WURKS AUTO SALES WEBSITE
+WURKS AUTO SALES WEBSITE — VERSION 3
 
-FILES
-- index.html = homepage with 3–4 featured vehicles
-- inventory.html = full inventory page with manufacturer filter and search
-- styles.css = site design
-- script.js = one shared vehicle inventory list for both pages
+FILES TO UPLOAD TO THE ROOT OF YOUR GITHUB REPOSITORY:
+- index.html
+- inventory.html
+- vehicle.html   (NEW)
+- styles.css
+- script.js
 
-HOW INVENTORY WORKS
-1. Add/edit vehicles only in script.js inside the "vehicles" list.
-2. Set featured: true for any vehicle you want on the homepage.
-3. The homepage shows up to 4 featured vehicles.
-4. inventory.html automatically shows every vehicle in the list.
-5. The Manufacturer filter builds itself automatically from the makes in your inventory.
-6. Customers can also search by year, make, model, trim, drivetrain, or mileage.
+WHAT'S NEW
+- Dedicated vehicle detail page instead of a popup.
+- Better inventory card styling and featured-vehicle badges.
+- Photo-ready cards and a multi-photo gallery on detail pages.
+- Manufacturer filtering and text search remain automatic.
+- Improved mobile layout and clearer vehicle disclosures.
 
-BEFORE PUBLISHING
-1. In index.html, replace (000) 000-0000 with your business phone number.
-2. Replace sales@example.com with your email.
-3. Replace the Marketplace # link with your Facebook Marketplace/dealer page link.
-4. Confirm the Reno / Sparks location wording.
-5. Update vehicles, prices, mileage, and availability in script.js.
-6. Add real vehicle photos. The current version still uses placeholders so no incorrect stock photos appear.
+ADDING VEHICLE PHOTOS
+1. In your GitHub repository, create or upload an "images" folder.
+2. Put your vehicle images in that folder, for example:
+   images/2020-forester-1.jpg
+   images/2020-forester-2.jpg
+3. Open script.js and find that vehicle.
+4. Set:
+   image: 'images/2020-forester-1.jpg',
+   gallery: ['images/2020-forester-2.jpg', 'images/2020-forester-3.jpg'],
 
-HOW TO UPDATE YOUR LIVE GITHUB PAGES SITE
-Upload/replace index.html, inventory.html, styles.css, and script.js in the same GitHub repository. GitHub Pages will republish the changes automatically.
+The first image appears on the inventory card and as the main detail photo.
+Gallery images appear as clickable thumbnails on the vehicle page.
+
+FEATURED VEHICLES
+Set featured: true to show the vehicle on the homepage. The homepage displays up to four.
+
+IMPORTANT
+Replace the placeholder phone number and email in index.html with your actual business contact information before publicizing the site.
