@@ -6,6 +6,13 @@ const moneyFormatter = new Intl.NumberFormat('en-US');
 function formatMiles(miles) { return `${moneyFormatter.format(miles)} miles`; }
 function vehicleName(v) { return `${v.year} ${v.make} ${v.model}`; }
 
+function vehicleImages(vehicle) {
+  if (Array.isArray(vehicle.images) && vehicle.images.length) {
+    return vehicle.images.filter(Boolean);
+  }
+  return [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
+}
+
 const template = document.querySelector('#vehicle-template');
 
 function buildVehicleCard(vehicle, cardContext = 'inventory') {
@@ -13,7 +20,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   const article = card.querySelector('.vehicle-card');
   const photo = card.querySelector('.vehicle-photo');
   const status = card.querySelector('.status');
-  const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
+  const images = vehicleImages(vehicle);
 
   status.textContent = vehicle.status;
   status.classList.toggle('example-status', vehicle.status.toLowerCase().includes('example'));
@@ -171,7 +178,7 @@ if (detailRoot) {
 
     const mainPhoto = document.querySelector('#detail-main-photo');
     const thumbnails = document.querySelector('#detail-thumbnails');
-    const images = [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
+    const images = vehicleImages(vehicle);
 
     if (images.length) {
       mainPhoto.classList.add('has-image');
