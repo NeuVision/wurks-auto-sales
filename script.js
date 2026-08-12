@@ -17,7 +17,9 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
 
   status.textContent = vehicle.status;
   status.classList.toggle('example-status', vehicle.status.toLowerCase().includes('example'));
-  status.classList.toggle('sold-status', vehicle.status.toLowerCase() === 'sold');
+  const normalizedStatus = String(vehicle.status || '').trim().toLowerCase();
+  status.classList.toggle('sold-status', normalizedStatus === 'sold');
+  status.setAttribute('data-status', normalizedStatus);
   card.querySelector('.vehicle-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
   card.querySelector('.vehicle-name').textContent = `${vehicle.model} ${vehicle.trim}`;
   card.querySelector('.vehicle-price').textContent = vehicle.price;
@@ -153,9 +155,10 @@ if (detailRoot) {
     document.title = `${vehicleName(vehicle)} | Wurks Auto Sales`;
     document.querySelector('#detail-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
     const detailStatusBanner = document.querySelector('#detail-status-banner');
-    if (detailStatusBanner && vehicle.status.toLowerCase() === 'sold') {
-      detailStatusBanner.textContent = 'SOLD';
-      detailStatusBanner.hidden = false;
+    if (detailStatusBanner) {
+      const isSold = String(vehicle.status || '').trim().toLowerCase() === 'sold';
+      detailStatusBanner.textContent = isSold ? 'SOLD' : '';
+      detailStatusBanner.hidden = !isSold;
     }
     document.querySelector('#detail-name').textContent = `${vehicle.model} ${vehicle.trim}`;
     document.querySelector('#detail-price').textContent = vehicle.price;

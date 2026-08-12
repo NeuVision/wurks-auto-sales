@@ -75,3 +75,34 @@
   line-height: 1;
 }
 .detail-status-banner[hidden] { display: none; }
+
+
+/* v5.1 SOLD visibility patch */
+.status.sold-status,
+.status[data-status="sold"] {
+  background: #c62828 !important;
+  border-color: #c62828 !important;
+  color: #ffffff !important;
+}
+
+.detail-status-banner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 0 .8rem;
+  padding: .55rem 1.25rem;
+  border-radius: 999px;
+  background: #c62828 !important;
+  border: 1px solid #a91f1f;
+  color: #ffffff !important;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.detail-status-banner[hidden] {
+  display: none !important;
+}
