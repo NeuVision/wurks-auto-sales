@@ -229,3 +229,13 @@ if (menuToggle) {
 document.querySelectorAll('.nav a').forEach(link => link.addEventListener('click', () => document.querySelector('#nav')?.classList.remove('open')));
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
+
+
+// Contact form comment counter.
+const contactComments = document.querySelector('#contact-comments');
+const commentCount = document.querySelector('#comment-count');
+if (contactComments && commentCount) {
+  const updateCommentCount = () => { commentCount.textContent = String(contactComments.value.length); };
+  contactComments.addEventListener('input', updateCommentCount);
+  updateCommentCount();
+}

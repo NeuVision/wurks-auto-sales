@@ -106,3 +106,50 @@
 .detail-status-banner[hidden] {
   display: none !important;
 }
+
+
+/* v5.4 — Wurks logo + contact submission form */
+.brand-logo-link{display:flex;align-items:center;padding:0}
+.site-logo{display:block;width:190px;max-width:42vw;height:auto;object-fit:contain}
+.contact-form-section{display:block}
+.contact-form-intro{max-width:760px;margin-bottom:1.35rem}
+.contact-form-intro h2{margin-bottom:.55rem}
+.contact-submission-form{
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:14px;
+  padding:clamp(1.2rem,3vw,2rem);
+  background:rgba(255,255,255,.025)
+}
+.contact-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem 1.35rem}
+.form-field{min-width:0}.form-field-full{grid-column:1/-1}
+.form-field label{display:block;margin-bottom:.5rem;font-weight:700;color:#fff}
+.required-mark{color:#e14a45}
+.optional-label{margin-left:.35rem;color:rgba(255,255,255,.54);font-size:.78rem;font-weight:500}
+.contact-submission-form input,.contact-submission-form textarea{
+  width:100%;border:1px solid rgba(255,255,255,.22);border-radius:7px;
+  background:rgba(255,255,255,.055);color:#fff;padding:.95rem 1rem;font:inherit;outline:none;
+  transition:border-color .16s ease,background .16s ease
+}
+.contact-submission-form input::placeholder,.contact-submission-form textarea::placeholder{color:rgba(255,255,255,.55)}
+.contact-submission-form input:focus,.contact-submission-form textarea:focus{border-color:#d7b45d;background:rgba(255,255,255,.075)}
+.contact-submission-form textarea{min-height:175px;resize:vertical}
+.comment-count{margin-top:.35rem;text-align:right;color:rgba(255,255,255,.66);font-size:.88rem}
+.contact-submit-button{
+  width:100%;margin-top:1.25rem;border:1px solid #b99543;border-radius:7px;
+  background:linear-gradient(180deg,#efd064 0%,#d5ad45 100%);color:#111;
+  padding:.92rem 1rem;font:inherit;font-weight:800;letter-spacing:.18em;text-transform:uppercase;cursor:pointer
+}
+.contact-submit-button:hover{filter:brightness(1.05)}
+.contact-privacy-note{display:flex;align-items:flex-start;gap:.9rem;margin-top:1.35rem;color:rgba(255,255,255,.78)}
+.contact-privacy-note strong{color:#fff}
+.contact-privacy-note p{margin:.25rem 0 0;line-height:1.55}
+.privacy-shield{
+  flex:0 0 auto;display:grid;place-items:center;width:32px;height:38px;border:2px solid #d7b45d;
+  color:#d7b45d;border-radius:9px 9px 13px 13px;font-weight:900
+}
+.form-honeypot{position:absolute!important;left:-9999px!important;opacity:0!important;pointer-events:none!important}
+@media(max-width:720px){
+  .contact-form-grid{grid-template-columns:1fr}
+  .form-field-full{grid-column:auto}
+  .site-logo{width:160px;max-width:58vw}
+}

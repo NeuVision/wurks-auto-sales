@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
   <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
-  <link rel="stylesheet" href="styles.css?v=5.3" />
+  <link rel="stylesheet" href="styles.css?v=5.4" />
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Wurks Auto Sales home">
-      <div class="brand-mark">W</div>
-      <div><strong>Wurks Auto Sales</strong><span>Northern Nevada</span></div>
+    <a class="brand brand-logo-link" href="index.html" aria-label="Wurks Auto Sales home">
+      <img class="site-logo" src="images/wurks-auto-sales-logo.png" alt="Wurks Auto Sales">
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav" class="nav">
@@ -77,18 +76,58 @@
       </div>
     </section>
 
-    <section id="contact" class="section contact-section">
-      <div>
+    <section id="contact" class="section contact-section contact-form-section">
+      <div class="contact-form-intro">
         <p class="eyebrow">Questions about a vehicle?</p>
-        <h2>Get in touch</h2>
-        <p>Replace the placeholders below with your business phone, email, location, and Facebook Marketplace link before publishing.</p>
+        <h2>Contact Us</h2>
+        <p>Have a question about a vehicle or want to schedule a time to see one? Send us your information and we’ll get back to you as soon as possible.</p>
       </div>
-      <div class="contact-card">
-        <a href="tel:+10000000000"><span>Phone / Text</span><strong>(000) 000-0000</strong></a>
-        <a href="mailto:sales@example.com"><span>Email</span><strong>sales@example.com</strong></a>
-        <div><span>Location</span><strong>Reno / Sparks, Nevada</strong></div>
-        <a href="#"><span>Marketplace</span><strong>View our listings</strong></a>
-      </div>
+
+      <form id="contact-form" class="contact-submission-form"
+            action="https://formsubmit.co/adolfowurksauto@outlook.com"
+            method="POST">
+        <input type="hidden" name="_subject" value="New Wurks Auto Sales Website Inquiry">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
+
+        <div class="contact-form-grid">
+          <div class="form-field">
+            <label for="contact-first-name">First Name <span class="required-mark">*</span></label>
+            <input id="contact-first-name" name="First Name" type="text" placeholder="First Name" autocomplete="given-name" required>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-last-name">Last Name <span class="optional-label">Optional</span></label>
+            <input id="contact-last-name" name="Last Name" type="text" placeholder="Last Name" autocomplete="family-name">
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Email <span class="required-mark">*</span></label>
+            <input id="contact-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-phone">Phone # <span class="optional-label">Optional</span></label>
+            <input id="contact-phone" name="Phone" type="tel" placeholder="Phone #" autocomplete="tel">
+          </div>
+
+          <div class="form-field form-field-full">
+            <label for="contact-comments">Comments <span class="required-mark">*</span></label>
+            <textarea id="contact-comments" name="Comments" placeholder="Comments" maxlength="1000" required></textarea>
+            <div class="comment-count"><span id="comment-count">0</span>/1000</div>
+          </div>
+        </div>
+
+        <button class="contact-submit-button" type="submit">Send</button>
+
+        <div class="contact-privacy-note">
+          <div class="privacy-shield" aria-hidden="true">✓</div>
+          <div>
+            <strong>Your information will never be sold.</strong>
+            <p>Your phone number and email address will only be used by Wurks Auto Sales to contact you regarding your inquiry.</p>
+          </div>
+        </div>
+      </form>
     </section>
   </main>
 
@@ -113,6 +152,6 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=5.3"></script>
+<script src="script.js?v=5.4"></script>
 </body>
 </html>
