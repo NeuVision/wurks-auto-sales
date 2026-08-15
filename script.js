@@ -240,36 +240,8 @@ if (contactComments && commentCount) {
   updateCommentCount();
 }
 
-
-// v5.5 Contact form AJAX submission and success confirmation.
+// v5.6 Contact form AJAX submission with button confirmation.
 const wurksContactForm = document.querySelector('#contact-form');
-const contactSuccessModal = document.querySelector('#contact-success-modal');
-const contactSuccessClose = document.querySelector('#contact-success-close');
-
-function openContactSuccessModal() {
-  if (!contactSuccessModal) return;
-  contactSuccessModal.hidden = false;
-  document.body.classList.add('modal-open');
-  contactSuccessClose?.focus();
-}
-
-function closeContactSuccessModal() {
-  if (!contactSuccessModal) return;
-  contactSuccessModal.hidden = true;
-  document.body.classList.remove('modal-open');
-}
-
-contactSuccessClose?.addEventListener('click', closeContactSuccessModal);
-contactSuccessModal?.addEventListener('click', event => {
-  if (event.target === contactSuccessModal || event.target.classList.contains('contact-modal-backdrop')) {
-    closeContactSuccessModal();
-  }
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && contactSuccessModal && !contactSuccessModal.hidden) {
-    closeContactSuccessModal();
-  }
-});
 
 if (wurksContactForm) {
   wurksContactForm.addEventListener('submit', async event => {
@@ -278,10 +250,11 @@ if (wurksContactForm) {
     if (!wurksContactForm.reportValidity()) return;
 
     const submitButton = wurksContactForm.querySelector('button[type="submit"]');
-    const originalLabel = submitButton?.textContent || 'Send';
+    const defaultLabel = 'Send';
 
     if (submitButton) {
       submitButton.disabled = true;
+      submitButton.classList.remove('sent-success', 'send-error');
       submitButton.textContent = 'Sending...';
     }
 
@@ -310,13 +283,27 @@ if (wurksContactForm) {
       wurksContactForm.reset();
       const count = document.querySelector('#comment-count');
       if (count) count.textContent = '0';
-      openContactSuccessModal();
-    } catch (error) {
-      alert('We could not send your message right now. Please try again in a moment.');
-    } finally {
+
       if (submitButton) {
+        submitButton.textContent = "Message Sent — We'll Reach Out Soon";
+        submitButton.classList.add('sent-success');
+
+        setTimeout(() => {
+          submitButton.textContent = defaultLabel;
+          submitButton.classList.remove('sent-success');
+          submitButton.disabled = false;
+        }, 7000);
+      }
+    } catch (error) {
+      if (submitButton) {
+        submitButton.textContent = 'Message Not Sent — Try Again';
+        submitButton.classList.add('send-error');
         submitButton.disabled = false;
-        submitButton.textContent = originalLabel;
+
+        setTimeout(() => {
+          submitButton.textContent = defaultLabel;
+          submitButton.classList.remove('send-error');
+        }, 5000);
       }
     }
   });
