@@ -239,3 +239,85 @@ if (contactComments && commentCount) {
   contactComments.addEventListener('input', updateCommentCount);
   updateCommentCount();
 }
+
+
+// v5.5 Contact form AJAX submission and success confirmation.
+const wurksContactForm = document.querySelector('#contact-form');
+const contactSuccessModal = document.querySelector('#contact-success-modal');
+const contactSuccessClose = document.querySelector('#contact-success-close');
+
+function openContactSuccessModal() {
+  if (!contactSuccessModal) return;
+  contactSuccessModal.hidden = false;
+  document.body.classList.add('modal-open');
+  contactSuccessClose?.focus();
+}
+
+function closeContactSuccessModal() {
+  if (!contactSuccessModal) return;
+  contactSuccessModal.hidden = true;
+  document.body.classList.remove('modal-open');
+}
+
+contactSuccessClose?.addEventListener('click', closeContactSuccessModal);
+contactSuccessModal?.addEventListener('click', event => {
+  if (event.target === contactSuccessModal || event.target.classList.contains('contact-modal-backdrop')) {
+    closeContactSuccessModal();
+  }
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && contactSuccessModal && !contactSuccessModal.hidden) {
+    closeContactSuccessModal();
+  }
+});
+
+if (wurksContactForm) {
+  wurksContactForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (!wurksContactForm.reportValidity()) return;
+
+    const submitButton = wurksContactForm.querySelector('button[type="submit"]');
+    const originalLabel = submitButton?.textContent || 'Send';
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending...';
+    }
+
+    const formData = new FormData(wurksContactForm);
+    const payload = {};
+    formData.forEach((value, key) => {
+      if (key !== '_honey') payload[key] = value;
+    });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/adolfowurksauto@outlook.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || 'Submission failed');
+      }
+
+      wurksContactForm.reset();
+      const count = document.querySelector('#comment-count');
+      if (count) count.textContent = '0';
+      openContactSuccessModal();
+    } catch (error) {
+      alert('We could not send your message right now. Please try again in a moment.');
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
+  });
+}

@@ -153,3 +153,66 @@
   .form-field-full{grid-column:auto}
   .site-logo{width:160px;max-width:58vw}
 }
+
+
+/* v5.5 contact confirmation popup */
+body.modal-open { overflow: hidden; }
+
+.contact-modal[hidden] { display: none !important; }
+
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.contact-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(3px);
+}
+
+.contact-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(520px, 100%);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 16px;
+  background: #111418;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45);
+}
+
+.contact-modal-dialog h2 {
+  margin: .65rem 0 .55rem;
+}
+
+.contact-modal-dialog p {
+  margin: 0 0 1.35rem;
+  color: rgba(255,255,255,.76);
+  line-height: 1.6;
+}
+
+.contact-modal-check {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #d7b45d;
+  color: #111;
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.contact-submit-button:disabled {
+  opacity: .7;
+  cursor: wait;
+}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
   <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
-  <link rel="stylesheet" href="styles.css?v=5.4" />
+  <link rel="stylesheet" href="styles.css?v=5.5" />
 </head>
 <body>
   <header class="site-header">
@@ -152,6 +152,17 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=5.4"></script>
+<script src="script.js?v=5.5"></script>
+
+  <div id="contact-success-modal" class="contact-modal" hidden>
+    <div class="contact-modal-backdrop"></div>
+    <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-success-title">
+      <div class="contact-modal-check" aria-hidden="true">✓</div>
+      <h2 id="contact-success-title">Message Sent</h2>
+      <p>Thank you for contacting Wurks Auto Sales. Your message was sent successfully and we’ll reach out to you about your inquiry as soon as possible.</p>
+      <button id="contact-success-close" class="button primary" type="button">Close</button>
+    </div>
+  </div>
+
 </body>
 </html>
