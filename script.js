@@ -193,8 +193,8 @@ if (detailRoot) {
       }
     }
 
-    if (detailKeepShopping) {
-      detailKeepShopping.hidden = detailIsSold;
+    if (detailKeepShopping && detailIsSold) {
+      detailKeepShopping.remove();
     }
 
     const inquiryVehicleLabel = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
