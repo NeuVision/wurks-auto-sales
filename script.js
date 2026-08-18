@@ -339,15 +339,17 @@ const vehicleInquiryComments = document.querySelector('#vehicle-inquiry-comments
 const vehicleInquiryCount = document.querySelector('#vehicle-inquiry-count');
 
 function openVehicleInquiryModal() {
-  if (!vehicleInquiryModal) return;
-  vehicleInquiryModal.hidden = false;
+  const modal = document.querySelector('#vehicle-inquiry-modal');
+  if (!modal) return;
+  modal.hidden = false;
   document.body.classList.add('modal-open');
   document.querySelector('#vehicle-inquiry-first')?.focus();
 }
 
 function closeVehicleInquiryModal() {
-  if (!vehicleInquiryModal) return;
-  vehicleInquiryModal.hidden = true;
+  const modal = document.querySelector('#vehicle-inquiry-modal');
+  if (!modal) return;
+  modal.hidden = true;
   document.body.classList.remove('modal-open');
 }
 
