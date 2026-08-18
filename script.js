@@ -87,9 +87,24 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   }
 
   const specs = card.querySelector('.specs');
-  [formatMiles(vehicle.miles), vehicle.title, vehicle.drivetrain].forEach(text => {
+  const cardSpecs = [
+    formatMiles(vehicle.miles),
+    vehicle.title,
+    vehicle.drivetrain
+  ];
+
+  if (cardContext === 'inventory') {
+    cardSpecs.push(
+      vehicle.engine ? `Engine: ${vehicle.engine}` : 'Engine: —',
+      vehicle.transmission ? `Transmission: ${vehicle.transmission}` : 'Transmission: —',
+      vehicle.fuelEconomy ? `Fuel Economy: ${vehicle.fuelEconomy}` : 'Fuel Economy: —'
+    );
+    specs.classList.add('inventory-specs');
+  }
+
+  cardSpecs.forEach(text => {
     const span = document.createElement('span');
-    span.textContent = text;
+    span.textContent = text || '—';
     specs.appendChild(span);
   });
 
@@ -130,7 +145,7 @@ if (inventoryGrid && makeFilter) {
     const query = inventorySearch.value.trim().toLowerCase();
     const filtered = vehicles.filter(v => {
       const makeMatches = selectedMake === 'all' || v.make === selectedMake;
-      const searchable = `${v.year} ${v.make} ${v.model} ${v.trim} ${v.drivetrain} ${formatMiles(v.miles)} ${v.title}`.toLowerCase();
+      const searchable = `${v.year} ${v.make} ${v.model} ${v.trim} ${v.drivetrain} ${v.engine || ''} ${v.transmission || ''} ${v.fuelEconomy || ''} ${formatMiles(v.miles)} ${v.title}`.toLowerCase();
       return makeMatches && (!query || searchable.includes(query));
     });
 

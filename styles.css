@@ -289,3 +289,22 @@ body.modal-open { overflow: hidden; }
     grid-column: auto;
   }
 }
+
+
+/* v5.13 — additional specs on Inventory cards only */
+.inventory-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.inventory-specs span {
+  min-width: 0;
+  line-height: 1.35;
+}
+
+@media (max-width: 520px) {
+  .inventory-specs {
+    grid-template-columns: 1fr;
+  }
+}
