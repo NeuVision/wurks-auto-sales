@@ -178,7 +178,9 @@ if (detailRoot) {
     document.querySelector('#detail-transmission').textContent = vehicle.transmission || '—';
     document.querySelector('#detail-fuel-economy').textContent = vehicle.fuelEconomy || '—';
     const detailContact = document.querySelector('#detail-contact');
+    const detailKeepShopping = document.querySelector('#detail-keep-shopping');
     const detailIsSold = String(vehicle.status || '').trim().toLowerCase() === 'sold';
+
     if (detailContact) {
       if (detailIsSold) {
         detailContact.textContent = 'View Available Inventory';
@@ -189,6 +191,10 @@ if (detailRoot) {
         detailContact.href = '#vehicle-inquiry';
         detailContact.setAttribute('data-open-inquiry', 'true');
       }
+    }
+
+    if (detailKeepShopping) {
+      detailKeepShopping.hidden = detailIsSold;
     }
 
     const inquiryVehicleLabel = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
