@@ -173,7 +173,10 @@ if (detailRoot) {
     document.querySelector('#detail-note').textContent = vehicle.note;
     document.querySelector('#detail-miles').textContent = formatMiles(vehicle.miles);
     document.querySelector('#detail-title').textContent = vehicle.title;
-    document.querySelector('#detail-drive').textContent = vehicle.drivetrain;
+    document.querySelector('#detail-drive').textContent = vehicle.drivetrain || '—';
+    document.querySelector('#detail-engine').textContent = vehicle.engine || '—';
+    document.querySelector('#detail-transmission').textContent = vehicle.transmission || '—';
+    document.querySelector('#detail-fuel-economy').textContent = vehicle.fuelEconomy || '—';
     document.querySelector('#detail-contact').href = `index.html#contact`;
 
     const mainPhoto = document.querySelector('#detail-main-photo');
