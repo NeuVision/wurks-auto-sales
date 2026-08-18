@@ -177,7 +177,25 @@ if (detailRoot) {
     document.querySelector('#detail-engine').textContent = vehicle.engine || '—';
     document.querySelector('#detail-transmission').textContent = vehicle.transmission || '—';
     document.querySelector('#detail-fuel-economy').textContent = vehicle.fuelEconomy || '—';
-    document.querySelector('#detail-contact').href = `index.html#contact`;
+    const detailContact = document.querySelector('#detail-contact');
+    const detailIsSold = String(vehicle.status || '').trim().toLowerCase() === 'sold';
+    if (detailContact) {
+      if (detailIsSold) {
+        detailContact.textContent = 'View Available Inventory';
+        detailContact.href = 'inventory.html';
+        detailContact.removeAttribute('data-open-inquiry');
+      } else {
+        detailContact.textContent = 'Ask About This Vehicle';
+        detailContact.href = '#vehicle-inquiry';
+        detailContact.setAttribute('data-open-inquiry', 'true');
+      }
+    }
+
+    const inquiryVehicleLabel = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
+    const inquiryVehicleText = document.querySelector('#vehicle-inquiry-vehicle');
+    const inquiryVehicleInput = document.querySelector('#vehicle-inquiry-listing');
+    if (inquiryVehicleText) inquiryVehicleText.textContent = inquiryVehicleLabel;
+    if (inquiryVehicleInput) inquiryVehicleInput.value = inquiryVehicleLabel;
 
     const mainPhoto = document.querySelector('#detail-main-photo');
     const thumbnails = document.querySelector('#detail-thumbnails');
@@ -297,6 +315,134 @@ if (wurksContactForm) {
           submitButton.disabled = false;
         }, 7000);
       }
+    } catch (error) {
+      if (submitButton) {
+        submitButton.textContent = 'Message Not Sent — Try Again';
+        submitButton.classList.add('send-error');
+        submitButton.disabled = false;
+
+        setTimeout(() => {
+          submitButton.textContent = defaultLabel;
+          submitButton.classList.remove('send-error');
+        }, 5000);
+      }
+    }
+  });
+}
+
+
+// v5.9 vehicle-detail inquiry modal.
+const vehicleInquiryModal = document.querySelector('#vehicle-inquiry-modal');
+const vehicleInquiryClose = document.querySelector('#vehicle-inquiry-close');
+const vehicleInquiryForm = document.querySelector('#vehicle-inquiry-form');
+const vehicleInquiryComments = document.querySelector('#vehicle-inquiry-comments');
+const vehicleInquiryCount = document.querySelector('#vehicle-inquiry-count');
+
+function openVehicleInquiryModal() {
+  if (!vehicleInquiryModal) return;
+  vehicleInquiryModal.hidden = false;
+  document.body.classList.add('modal-open');
+  document.querySelector('#vehicle-inquiry-first')?.focus();
+}
+
+function closeVehicleInquiryModal() {
+  if (!vehicleInquiryModal) return;
+  vehicleInquiryModal.hidden = true;
+  document.body.classList.remove('modal-open');
+}
+
+document.addEventListener('click', event => {
+  const trigger = event.target.closest('[data-open-inquiry="true"]');
+  if (trigger) {
+    event.preventDefault();
+    openVehicleInquiryModal();
+  }
+});
+
+vehicleInquiryClose?.addEventListener('click', closeVehicleInquiryModal);
+
+vehicleInquiryModal?.addEventListener('click', event => {
+  if (event.target === vehicleInquiryModal || event.target.classList.contains('vehicle-inquiry-backdrop')) {
+    closeVehicleInquiryModal();
+  }
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && vehicleInquiryModal && !vehicleInquiryModal.hidden) {
+    closeVehicleInquiryModal();
+  }
+});
+
+if (vehicleInquiryComments && vehicleInquiryCount) {
+  const updateVehicleInquiryCount = () => {
+    vehicleInquiryCount.textContent = String(vehicleInquiryComments.value.length);
+  };
+  vehicleInquiryComments.addEventListener('input', updateVehicleInquiryCount);
+  updateVehicleInquiryCount();
+}
+
+if (vehicleInquiryForm) {
+  vehicleInquiryForm.addEventListener('submit', async event => {
+    event.preventDefault();
+
+    if (!vehicleInquiryForm.reportValidity()) return;
+
+    const submitButton = document.querySelector('#vehicle-inquiry-submit');
+    const defaultLabel = 'Send Inquiry';
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.classList.remove('sent-success', 'send-error');
+      submitButton.textContent = 'Sending...';
+    }
+
+    const formData = new FormData(vehicleInquiryForm);
+    const payload = {
+      _subject: `Vehicle Inquiry — ${formData.get('Vehicle') || 'Wurks Auto Sales'}`,
+      _template: 'table'
+    };
+
+    formData.forEach((value, key) => {
+      if (key !== '_honey') payload[key] = value;
+    });
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/adolfowurksauto@outlook.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || 'Submission failed');
+      }
+
+      if (submitButton) {
+        submitButton.textContent = "Message Sent — We'll Reach Out Soon";
+        submitButton.classList.add('sent-success');
+      }
+
+      setTimeout(() => {
+        closeVehicleInquiryModal();
+        const vehicleValue = document.querySelector('#vehicle-inquiry-listing')?.value || '';
+        vehicleInquiryForm.reset();
+        const vehicleInput = document.querySelector('#vehicle-inquiry-listing');
+        if (vehicleInput) vehicleInput.value = vehicleValue;
+        if (vehicleInquiryComments) {
+          vehicleInquiryComments.value = "I'm interested in this vehicle. Please contact me with more information.";
+          vehicleInquiryComments.dispatchEvent(new Event('input'));
+        }
+        if (submitButton) {
+          submitButton.textContent = defaultLabel;
+          submitButton.classList.remove('sent-success');
+          submitButton.disabled = false;
+        }
+      }, 3500);
     } catch (error) {
       if (submitButton) {
         submitButton.textContent = 'Message Not Sent — Try Again';

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Vehicle details from Wurks Auto Sales in Northern Nevada." />
   <title>Vehicle | Wurks Auto Sales</title>
-  <link rel="stylesheet" href="styles.css?v=5.7" />
+  <link rel="stylesheet" href="styles.css?v=5.9" />
 </head>
 <body>
   <header class="site-header">
@@ -68,6 +68,61 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=5.7"></script>
+<script src="script.js?v=5.9"></script>
+
+  <div id="vehicle-inquiry-modal" class="vehicle-inquiry-modal" hidden>
+    <div class="vehicle-inquiry-backdrop"></div>
+    <div class="vehicle-inquiry-dialog" role="dialog" aria-modal="true" aria-labelledby="vehicle-inquiry-title">
+      <button id="vehicle-inquiry-close" class="vehicle-inquiry-close" type="button" aria-label="Close inquiry form">×</button>
+
+      <p class="eyebrow">Vehicle inquiry</p>
+      <h2 id="vehicle-inquiry-title">Ask About This Vehicle</h2>
+      <p id="vehicle-inquiry-vehicle" class="vehicle-inquiry-vehicle"></p>
+
+      <form id="vehicle-inquiry-form" class="vehicle-inquiry-form">
+        <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
+        <input type="hidden" id="vehicle-inquiry-listing" name="Vehicle">
+
+        <div class="vehicle-inquiry-grid">
+          <div class="form-field">
+            <label for="vehicle-inquiry-first">First Name <span class="required-mark">*</span></label>
+            <input id="vehicle-inquiry-first" name="First Name" type="text" placeholder="First Name" autocomplete="given-name" required>
+          </div>
+
+          <div class="form-field">
+            <label for="vehicle-inquiry-last">Last Name <span class="optional-label">Optional</span></label>
+            <input id="vehicle-inquiry-last" name="Last Name" type="text" placeholder="Last Name" autocomplete="family-name">
+          </div>
+
+          <div class="form-field">
+            <label for="vehicle-inquiry-email">Email <span class="required-mark">*</span></label>
+            <input id="vehicle-inquiry-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          </div>
+
+          <div class="form-field">
+            <label for="vehicle-inquiry-phone">Phone # <span class="optional-label">Optional</span></label>
+            <input id="vehicle-inquiry-phone" name="Phone" type="tel" placeholder="Phone #" autocomplete="tel">
+          </div>
+
+          <div class="form-field form-field-full">
+            <label for="vehicle-inquiry-comments">Comments <span class="required-mark">*</span></label>
+            <textarea id="vehicle-inquiry-comments" name="Comments" maxlength="1000" required>I'm interested in this vehicle. Please contact me with more information.</textarea>
+            <div class="comment-count"><span id="vehicle-inquiry-count">66</span>/1000</div>
+          </div>
+        </div>
+
+        <button id="vehicle-inquiry-submit" class="contact-submit-button" type="submit">Send Inquiry</button>
+
+        <div class="contact-privacy-note compact-privacy-note">
+          <div class="privacy-shield" aria-hidden="true">✓</div>
+          <div>
+            <strong>Your information will never be sold.</strong>
+            <p>Your phone number and email address will only be used by Wurks Auto Sales to contact you regarding this inquiry.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

@@ -177,3 +177,115 @@
 /* v5.7 expanded vehicle specs */
 .detail-spec-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media(max-width:720px){.detail-spec-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* v5.9 vehicle-detail inquiry modal */
+body.modal-open { overflow: hidden; }
+
+.vehicle-inquiry-modal[hidden] { display: none !important; }
+
+.vehicle-inquiry-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.vehicle-inquiry-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.74);
+  backdrop-filter: blur(3px);
+}
+
+.vehicle-inquiry-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 100%);
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 16px;
+  background: #111418;
+  color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45);
+}
+
+.vehicle-inquiry-dialog h2 {
+  margin: .2rem 0 .25rem;
+}
+
+.vehicle-inquiry-vehicle {
+  margin: 0 0 1.15rem;
+  color: #d7b45d;
+  font-weight: 700;
+}
+
+.vehicle-inquiry-close {
+  position: absolute;
+  top: .7rem;
+  right: .8rem;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.vehicle-inquiry-grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 1rem;
+}
+
+.vehicle-inquiry-form input,
+.vehicle-inquiry-form textarea {
+  width: 100%;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 7px;
+  background: rgba(255,255,255,.055);
+  color: #fff;
+  padding: .85rem .95rem;
+  font: inherit;
+}
+
+.vehicle-inquiry-form textarea {
+  min-height: 125px;
+  resize: vertical;
+}
+
+.vehicle-inquiry-form input:focus,
+.vehicle-inquiry-form textarea:focus {
+  outline: 2px solid rgba(215,180,93,.35);
+  border-color: #d7b45d;
+}
+
+.vehicle-inquiry-form .form-field-full {
+  grid-column: 1 / -1;
+}
+
+.compact-privacy-note {
+  margin-top: 1rem;
+  font-size: .9rem;
+}
+
+@media (max-width: 650px) {
+  .vehicle-inquiry-dialog {
+    padding: 1.15rem;
+  }
+
+  .vehicle-inquiry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-inquiry-form .form-field-full {
+    grid-column: auto;
+  }
+}
