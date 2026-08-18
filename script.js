@@ -22,9 +22,11 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   const status = card.querySelector('.status');
   const images = vehicleImages(vehicle);
 
-  status.textContent = vehicle.status;
-  status.classList.toggle('example-status', vehicle.status.toLowerCase().includes('example'));
-  const normalizedStatus = String(vehicle.status || '').trim().toLowerCase();
+  const rawStatus = String(vehicle.status || '').trim();
+  const normalizedDisplayStatus = rawStatus.toLowerCase().includes('example') ? 'Coming Soon' : rawStatus;
+  status.textContent = normalizedDisplayStatus;
+  status.classList.toggle('coming-soon-status', String(vehicle.status || '').trim().toLowerCase() === 'coming soon');
+  const normalizedStatus = normalizedDisplayStatus.trim().toLowerCase();
   status.classList.toggle('sold-status', normalizedStatus === 'sold');
   status.setAttribute('data-status', normalizedStatus);
   card.querySelector('.vehicle-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
