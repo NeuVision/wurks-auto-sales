@@ -2061,3 +2061,331 @@ body{
 #inventory-grid .vehicle-photo {
   aspect-ratio: 5 / 3 !important;
 }
+
+
+/* ==================================================================
+   v6.11 — EXACT REFERENCE LISTING CARDS
+   Scope intentionally limited to #featured-grid and #inventory-grid.
+   ================================================================== */
+
+/* Four equal-width cards across at desktop width, matching reference. */
+@media (min-width: 1180px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+}
+
+/* Two columns on medium screens, one on phones. */
+@media (min-width: 720px) and (max-width: 1179px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+}
+@media (max-width: 719px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+/* Overall card shell */
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  border: 1px solid #3b424a !important;
+  border-radius: 7px !important;
+  background: linear-gradient(180deg, #1a1e23 0%, #14181c 100%) !important;
+  box-shadow: 0 5px 16px rgba(0,0,0,.22) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+#featured-grid .vehicle-card:hover,
+#inventory-grid .vehicle-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: #515a64 !important;
+  box-shadow: 0 12px 28px rgba(0,0,0,.28) !important;
+}
+
+/* Photo proportions from the reference: wide landscape, ~16:9. */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #31373e !important;
+  border-radius: 0 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+/* Status banner: compact black rounded rectangle, gold Available text. */
+#featured-grid .status,
+#inventory-grid .status {
+  position: absolute !important;
+  top: 9px !important;
+  right: 9px !important;
+  z-index: 5 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  border: 1px solid #2e343a !important;
+  border-radius: 6px !important;
+  background: rgba(4,6,8,.96) !important;
+  color: #e3b63f !important;
+  box-shadow: 0 3px 8px rgba(0,0,0,.42) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .01em !important;
+  text-transform: uppercase !important;
+}
+
+/* State-specific banners */
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status,
+#featured-grid .status[data-status="sold"],
+#inventory-grid .status[data-status="sold"] {
+  background: #a92823 !important;
+  border-color: #d4534c !important;
+  color: #fff !important;
+}
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status,
+#featured-grid .status[data-status="coming soon"],
+#inventory-grid .status[data-status="coming soon"] {
+  background: #70571b !important;
+  border-color: #d7b45d !important;
+  color: #fff0b2 !important;
+}
+
+/* Hide visual extras that are not present in the reference image. */
+#featured-grid .featured-badge,
+#inventory-grid .featured-badge,
+#featured-grid .photo-count,
+#inventory-grid .photo-count {
+  display: none !important;
+}
+
+/* Keep inventory photo navigation functional but invisible until hover/focus. */
+#inventory-grid .card-photo-arrow {
+  opacity: 0 !important;
+  transition: opacity .14s ease !important;
+}
+#inventory-grid .vehicle-photo:hover .card-photo-arrow,
+#inventory-grid .card-photo-arrow:focus-visible {
+  opacity: 1 !important;
+}
+
+/* Card content */
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-body {
+  display: flex !important;
+  flex: 1 !important;
+  flex-direction: column !important;
+  padding: 15px 15px 14px !important;
+}
+
+/* Year / Make / Model / Trim on left, price at far right */
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+  margin: 0 0 7px !important;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: #f4f4f4 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  margin: 0 !important;
+  color: #e3b63f !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+}
+
+/* Mileage line and divider */
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 0 13px !important;
+  border-bottom: 1px solid #353b42 !important;
+  color: #b5bbc2 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+}
+
+/* Descriptions stay on detail page only. */
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
+
+/* Five specification rows exactly like the reference. */
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 13px 0 15px !important;
+  padding: 0 !important;
+}
+
+/* Suppress the duplicate mileage spec because mileage is above the divider. */
+#featured-grid .inventory-spec-item:first-child,
+#inventory-grid .inventory-spec-item:first-child {
+  display: none !important;
+}
+
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 27px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Icons: same white/gold visual hierarchy as reference */
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  min-width: 24px !important;
+  height: 24px !important;
+  color: #f2f2f2 !important;
+}
+
+#featured-grid .inventory-spec-item .spec-icon > svg,
+#inventory-grid .inventory-spec-item .spec-icon > svg {
+  width: 20px !important;
+  height: 20px !important;
+  color: #f2f2f2 !important;
+  overflow: visible !important;
+}
+
+#featured-grid .spec-engine .spec-icon > svg,
+#inventory-grid .spec-engine .spec-icon > svg {
+  width: 23px !important;
+}
+
+/* Drivetrain icon: gold like the supplied reference. */
+#featured-grid .drivetrain-pictogram,
+#inventory-grid .drivetrain-pictogram {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: #e3b63f !important;
+}
+#featured-grid .drivetrain-pictogram svg,
+#inventory-grid .drivetrain-pictogram svg {
+  width: 23px !important;
+  height: 22px !important;
+  overflow: visible !important;
+}
+#featured-grid .drivetrain-pictogram b,
+#inventory-grid .drivetrain-pictogram b {
+  display: none !important;
+}
+#featured-grid .drivetrain-pictogram .wheel-driven,
+#inventory-grid .drivetrain-pictogram .wheel-driven {
+  fill: #e3b63f !important;
+  stroke: #e3b63f !important;
+}
+#featured-grid .drivetrain-pictogram .wheel-idle,
+#inventory-grid .drivetrain-pictogram .wheel-idle {
+  fill: #e3b63f !important;
+  stroke: #e3b63f !important;
+  opacity: 1 !important;
+}
+#featured-grid .drivetrain-pictogram .drive-line,
+#inventory-grid .drivetrain-pictogram .drive-line {
+  stroke: #e3b63f !important;
+  stroke-width: 2 !important;
+}
+#featured-grid .drivetrain-pictogram .drive-node,
+#inventory-grid .drivetrain-pictogram .drive-node {
+  fill: #e3b63f !important;
+}
+
+/* Spec text */
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  min-width: 0 !important;
+  color: #d5d9dd !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+}
+
+/* Solid gold button from the reference */
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 42px !important;
+  margin-top: auto !important;
+  padding: 0 12px !important;
+  border: 1px solid #e0b23b !important;
+  border-radius: 5px !important;
+  background: linear-gradient(180deg, #e5b941 0%, #d3a52f 100%) !important;
+  color: #111 !important;
+  box-shadow: none !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: linear-gradient(180deg, #efc654 0%, #ddb23b 100%) !important;
+  color: #111 !important;
+}

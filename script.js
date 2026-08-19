@@ -38,13 +38,6 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
 
     card.querySelector('.vehicle-desc').textContent = vehicle.description;
 
-  if (cardContext === 'featured') {
-    const badge = document.createElement('span');
-    badge.className = 'featured-badge';
-    badge.textContent = 'Wurks Highlight';
-    photo.appendChild(badge);
-  }
-
   if (images.length) {
     photo.classList.add('has-image');
     photo.style.backgroundImage = `url("${images[0]}")`;
