@@ -837,3 +837,9 @@ body{
   .dealer-featured-grid,.dealer-inventory-grid{grid-template-columns:1fr}
   .section-heading-row{align-items:flex-start;flex-direction:column}
 }
+
+/* v6.1 — descriptions belong on View Details only */
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
