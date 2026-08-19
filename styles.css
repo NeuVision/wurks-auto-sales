@@ -374,3 +374,71 @@ body.modal-open { overflow: hidden; }
 .drivetrain-pictogram .drive-center{
   fill:#fff;
 }
+
+
+/* v5.19 — mockup-style automotive inventory icons, current layout preserved */
+.inventory-spec-item .spec-icon{
+  width:34px;
+  min-width:34px;
+  height:30px;
+  color:#fff;
+}
+
+.inventory-spec-item .spec-icon > svg{
+  width:24px;
+  height:24px;
+  color:#fff;
+  overflow:visible;
+}
+
+.spec-engine .spec-icon > svg{
+  width:28px;
+}
+
+.drivetrain-pictogram{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  color:#fff;
+}
+
+.drivetrain-pictogram svg{
+  width:32px;
+  height:28px;
+  overflow:visible;
+}
+
+.drivetrain-pictogram b{
+  font-size:9px;
+  line-height:1;
+  letter-spacing:.05em;
+  color:#fff;
+}
+
+.drivetrain-pictogram .wheel-idle{
+  fill:#fff;
+  stroke:#fff;
+  stroke-width:.8;
+  opacity:.92;
+}
+
+.drivetrain-pictogram .wheel-driven{
+  fill:#d7b45d;
+  stroke:#f2cf70;
+  stroke-width:1;
+}
+
+.drivetrain-pictogram .drive-line{
+  fill:none;
+  stroke:#fff;
+  stroke-width:2;
+  stroke-linecap:round;
+}
+
+.drivetrain-pictogram .drive-node{
+  fill:#fff;
+}
+
+.inventory-spec-item{
+  min-height:38px;
+}

@@ -125,22 +125,24 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
         const frontDriven = drive === 'FWD' || drive === 'AWD';
         const rearDriven = drive === 'RWD' || drive === 'AWD';
         icon.innerHTML = `<span class="drivetrain-pictogram">
-          <svg viewBox="0 0 42 24" aria-hidden="true">
-            <rect x="3" y="2" width="8" height="5" rx="1.4" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
-            <rect x="31" y="2" width="8" height="5" rx="1.4" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
-            <rect x="3" y="17" width="8" height="5" rx="1.4" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
-            <rect x="31" y="17" width="8" height="5" rx="1.4" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
-            <path d="M11 4.5h20M11 19.5h20M21 4.5v15" class="drive-line"></path>
-            <circle cx="21" cy="12" r="3" class="drive-center"></circle>
+          <svg viewBox="0 0 44 36" aria-hidden="true">
+            <rect x="2" y="2" width="9" height="12" rx="3" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
+            <rect x="33" y="2" width="9" height="12" rx="3" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
+            <rect x="2" y="22" width="9" height="12" rx="3" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
+            <rect x="33" y="22" width="9" height="12" rx="3" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"></rect>
+            <path d="M11 8h22M11 28h22M22 8v20" class="drive-line"></path>
+            <circle cx="22" cy="8" r="3.3" class="drive-node"></circle>
+            <circle cx="22" cy="18" r="2.6" class="drive-node"></circle>
+            <circle cx="22" cy="28" r="3.3" class="drive-node"></circle>
           </svg>
           <b>${drive || '—'}</b>
         </span>`;
       } else {
         const icons = {
-          title: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" fill="currentColor"></path><path d="M15 3v4h4" fill="none" stroke="#14171b" stroke-width="1.5"></path><path d="M9 12h6M9 15h6M9 18h4" fill="none" stroke="#14171b" stroke-width="1.3" stroke-linecap="round"></path></svg>',
-          engine: '<svg viewBox="0 0 28 24" aria-hidden="true"><path d="M6 7h12l2 2h3v7h-3l-2 2H7l-2-2H2V9h3z" fill="currentColor"></path><rect x="8" y="4" width="3" height="3" rx=".5" fill="currentColor"></rect><rect x="14" y="4" width="3" height="3" rx=".5" fill="currentColor"></rect></svg>',
-          transmission: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2h4l.7 2.2c.5.2 1 .4 1.5.7l2.1-1 2.8 2.8-1 2.1c.3.5.5 1 .7 1.5L23 11v4l-2.2.7c-.2.5-.4 1-.7 1.5l1 2.1-2.8 2.8-2.1-1c-.5.3-1 .5-1.5.7L14 24h-4l-.7-2.2c-.5-.2-1-.4-1.5-.7l-2.1 1-2.8-2.8 1-2.1c-.3-.5-.5-1-.7-1.5L1 15v-4l2.2-.7c.2-.5.4-1 .7-1.5l-1-2.1 2.8-2.8 2.1 1c.5-.3 1-.5 1.5-.7L10 2z" fill="currentColor"></path><circle cx="12" cy="13" r="3.2" fill="#14171b"></circle></svg>',
-          fuel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h10v18H5z" fill="currentColor"></path><rect x="7.2" y="5.3" width="5.6" height="4.7" rx=".5" fill="#14171b"></rect><path d="M15 7.5h2l2 2v7c0 1 .5 1.6 1.3 1.6s1.2-.6 1.2-1.6v-5.2l-1.8-1.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg>'
+          title: '<svg class="inventory-icon document-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 2.5h9l4 4v15H5.5z" fill="currentColor"></path><path d="M14.5 2.5v4.5H19" fill="none" stroke="#15181d" stroke-width="1.5" stroke-linejoin="round"></path><path d="M8.5 11h7M8.5 14h7M8.5 17h5" fill="none" stroke="#15181d" stroke-width="1.4" stroke-linecap="round"></path></svg>',
+          engine: '<svg class="inventory-icon engine-icon" viewBox="0 0 28 24" aria-hidden="true"><path d="M6.2 7.2h11.5l2.2 2.1h3.2v7.3H20l-2.2 2.2H7.1l-2.2-2.2H1.8V9.3h3.1z" fill="currentColor"></path><rect x="8.1" y="4" width="3.2" height="3.5" rx=".55" fill="currentColor"></rect><rect x="13.6" y="4" width="3.2" height="3.5" rx=".55" fill="currentColor"></rect><path d="M23 10.4h3v5.1h-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>',
+          transmission: '<svg class="inventory-icon gear-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 1.8h3.6l.7 2.2c.6.2 1.1.4 1.6.7l2.1-1 2.6 2.6-1 2.1c.3.5.5 1 .7 1.6l2.2.7v3.6l-2.2.7c-.2.6-.4 1.1-.7 1.6l1 2.1-2.6 2.6-2.1-1c-.5.3-1 .5-1.6.7l-.7 2.2h-3.6l-.7-2.2c-.6-.2-1.1-.4-1.6-.7l-2.1 1-2.6-2.6 1-2.1c-.3-.5-.5-1-.7-1.6L1.3 14.3v-3.6l2.2-.7c.2-.6.4-1.1.7-1.6l-1-2.1 2.6-2.6 2.1 1c.5-.3 1-.5 1.6-.7z" fill="currentColor"></path><circle cx="12" cy="12.5" r="3.25" fill="#15181d"></circle></svg>',
+          fuel: '<svg class="inventory-icon fuel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.8 2.5h10.5v19H4.8z" fill="currentColor"></path><rect x="7.1" y="5.1" width="5.8" height="5" rx=".55" fill="#15181d"></rect><path d="M15.3 7.4h2.1l2.2 2.2v7.2c0 1 .5 1.6 1.3 1.6.8 0 1.3-.6 1.3-1.6v-5.4l-1.9-1.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path><rect x="4" y="21" width="12" height="1.4" rx=".7" fill="currentColor"></rect></svg>'
         };
         icon.innerHTML = icons[type] || '';
       }
