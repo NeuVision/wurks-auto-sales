@@ -1,3 +1,50 @@
+    const iconMarkup = {
+      title: '<svg class="icon-document" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2.75h8.3L19 7.45V21.25H6V2.75Z" fill="currentColor"/><path d="M14 2.75v5h5" fill="none" stroke="#111418" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12h7M9 15h7M9 18h5" fill="none" stroke="#111418" stroke-width="1.35" stroke-linecap="round"/></svg>',
+      engine: '<svg class="icon-engine" viewBox="0 0 28 24" aria-hidden="true"><path d="M6.2 7.2h11.4l2.4 2.2h3.1v7.2h-3.2l-2.1 2.3H7.1l-2.2-2.3H1.8V9.4h3l1.4-2.2Z" fill="currentColor"/><rect x="8.2" y="4" width="3" height="3.5" rx=".6" fill="currentColor"/><rect x="13.5" y="4" width="3" height="3.5" rx=".6" fill="currentColor"/><path d="M23.1 10.5h2.8v4.8h-2.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+      transmission: '<svg class="icon-gear" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 2h3.6l.7 2.2c.5.2 1 .4 1.5.7l2.1-1 2.5 2.5-1 2.1c.3.5.5 1 .7 1.5l2.2.7v3.6l-2.2.7c-.2.5-.4 1-.7 1.5l1 2.1-2.5 2.5-2.1-1c-.5.3-1 .5-1.5.7l-.7 2.2h-3.6l-.7-2.2c-.5-.2-1-.4-1.5-.7l-2.1 1-2.5-2.5 1-2.1c-.3-.5-.5-1-.7-1.5L1.5 14v-3.6l2.2-.7c.2-.5.4-1 .7-1.5l-1-2.1 2.5-2.5 2.1 1c.5-.3 1-.5 1.5-.7L10.2 2Z" fill="currentColor"/><circle cx="12" cy="12" r="3.2" fill="#111418"/></svg>',
+      fuel: '<svg class="icon-fuel" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5h10v19H5v-19Z" fill="currentColor"/><rect x="7.2" y="5" width="5.6" height="5" rx=".5" fill="#111418"/><path d="M15 7.5h2.2l2.3 2.3v7.1c0 .9.5 1.5 1.2 1.5s1.3-.6 1.3-1.5v-5.2l-1.9-1.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="21" width="12" height="1.5" rx=".75" fill="currentColor"/></svg>'
+    };
+
+    function drivetrainIcon(type) {
+      const drive = String(type || '').toUpperCase();
+      const frontDriven = drive === 'FWD' || drive === 'AWD';
+      const rearDriven = drive === 'RWD' || drive === 'AWD';
+      return `<span class="drivetrain-pictogram ${drive.toLowerCase()}">
+        <svg viewBox="0 0 40 24" aria-hidden="true">
+          <rect x="4" y="2" width="7" height="5" rx="1.5" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"/>
+          <rect x="29" y="2" width="7" height="5" rx="1.5" class="${frontDriven ? 'wheel-driven' : 'wheel-idle'}"/>
+          <rect x="4" y="17" width="7" height="5" rx="1.5" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"/>
+          <rect x="29" y="17" width="7" height="5" rx="1.5" class="${rearDriven ? 'wheel-driven' : 'wheel-idle'}"/>
+          <path d="M11 4.5h18M11 19.5h18M20 4.5v15" class="drive-line"/>
+          <circle cx="20" cy="12" r="3.2" class="drive-center"/>
+        </svg>
+        <b>${drive || '—'}</b>
+      </span>`;
+    }
+
+    const items = [
+      ['title', vehicle.title || '—'],
+      ['drive', drivetrainLabel],
+      ['engine', vehicle.engine || '—'],
+      ['transmission', vehicle.transmission || '—'],
+      ['fuel', vehicle.fuelEconomy || '—']
+    ];
+
+    items.forEach(([type, text]) => {
+      const span = document.createElement('span');
+      span.className = `inventory-spec-item spec-${type}`;
+
+      const icon = document.createElement('span');
+      icon.className = 'spec-icon';
+      icon.innerHTML = type === 'drive' ? drivetrainIcon(text) : (iconMarkup[type] || '');
+
+      const txt = document.createElement('span');
+      txt.className = 'spec-text';
+      txt.textContent = text;
+
+      span.append(icon, txt);
+      specs.appendChild(span);
+    });
 // Wurks Auto Sales inventory data.
 // Add images by placing files in an "images" folder and setting image / gallery paths below.
 const vehicles = window.WURKS_INVENTORY || [];
