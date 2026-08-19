@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Vehicle details from Wurks Auto Sales in Northern Nevada." />
   <title>Vehicle | Wurks Auto Sales</title>
-  <link rel="stylesheet" href="styles.css?v=5.19" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
 </head>
 <body>
   <header class="site-header">
@@ -22,16 +22,16 @@
   </header>
 
   <main id="vehicle-detail" class="vehicle-detail-page">
-    <a class="back-link" href="inventory.html">← Back to Inventory</a>
-    <section class="detail-layout">
-      <div class="detail-gallery">
+    <div class="detail-breadcrumb"><a href="index.html">Home</a><span>›</span><a href="inventory.html">Inventory</a><span>›</span><span id="detail-breadcrumb-name">Vehicle</span></div>
+    <section class="detail-layout dealer-detail-layout">
+      <div class="detail-gallery dealer-detail-gallery">
         <div id="detail-main-photo" class="detail-main-photo">
           <button id="detail-photo-prev" class="detail-photo-arrow detail-photo-prev" type="button" aria-label="Previous vehicle photo">‹</button>
           <button id="detail-photo-next" class="detail-photo-arrow detail-photo-next" type="button" aria-label="Next vehicle photo">›</button>
         </div>
         <div id="detail-thumbnails" class="detail-thumbnails"></div>
       </div>
-      <div class="detail-summary">
+      <div class="detail-summary dealer-detail-summary">
         <p id="detail-kicker" class="eyebrow"></p>
         <div id="detail-status-banner" class="detail-status-banner" hidden></div>
         <h1 id="detail-name"></h1>
@@ -122,5 +122,5 @@
   </div>
 
 
-<script src="script.js?v=5.19"></script></body>
+<script src="script.js?v=6.0"></script></body>
 </html>

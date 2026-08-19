@@ -95,7 +95,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
     vehicle.drivetrain
   ];
 
-  if (cardContext === 'inventory') {
+  if (cardContext === 'inventory' || cardContext === 'featured') {
     specs.classList.add('inventory-specs');
 
     const drivetrainValue = String(vehicle.drivetrain || '').trim().toUpperCase();
@@ -236,6 +236,8 @@ if (detailRoot) {
       detailStatusBanner.hidden = !isSold;
     }
     document.querySelector('#detail-name').textContent = `${vehicle.model} ${vehicle.trim}`;
+    const breadcrumbName = document.querySelector('#detail-breadcrumb-name');
+    if (breadcrumbName) breadcrumbName.textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
     document.querySelector('#detail-price').textContent = vehicle.price;
     document.querySelector('#detail-description').textContent = vehicle.description;
     document.querySelector('#detail-note').textContent = vehicle.note;

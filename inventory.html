@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Browse current used vehicle inventory from Wurks Auto Sales in Northern Nevada." />
   <title>Inventory | Wurks Auto Sales</title>
-  <link rel="stylesheet" href="styles.css?v=5.19" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
 </head>
 <body>
   <header class="site-header">
@@ -21,33 +21,36 @@
     </nav>
   </header>
 
-  <main>
-    <section class="inventory-hero">
-      <p class="eyebrow">Current vehicles</p>
+  <main class="inventory-page dealer-inventory-page">
+    <section class="inventory-hero compact">
+      <p class="eyebrow">Current inventory</p>
       <h1>Inventory</h1>
-      <p>Browse our current selection and filter by manufacturer. Inventory changes often, so contact us to confirm availability, mileage, and pricing.</p>
+      <p>Quality vehicles. Honest prices.</p>
     </section>
 
-    <section class="section inventory-page-section">
-      <div class="inventory-toolbar">
-        <div class="filter-group">
-          <label for="make-filter">Manufacturer</label>
-          <select id="make-filter">
-            <option value="all">All manufacturers</option>
-          </select>
-        </div>
-        <div class="filter-group search-group">
-          <label for="inventory-search">Search inventory</label>
-          <input id="inventory-search" type="search" placeholder="Year, model, trim..." autocomplete="off" />
-        </div>
-        <div class="inventory-count" aria-live="polite"><strong id="inventory-count">0</strong><span>vehicles shown</span></div>
+    <section class="inventory-controls dealer-controls">
+      <div class="search-wrap">
+        <label for="inventory-search">Search</label>
+        <input id="inventory-search" type="search" placeholder="Search make, model, engine, keyword...">
       </div>
+      <div>
+        <label for="make-filter">Manufacturer</label>
+        <select id="make-filter">
+          <option value="all">All Makes</option>
+        </select>
+      </div>
+      <button id="clear-filters" class="button secondary clear-filter-button" type="button">Clear Filters</button>
+    </section>
 
-      <div id="inventory-grid" class="inventory-grid inventory-grid-three"></div>
+    <section class="inventory-results-head">
+      <p><strong id="inventory-count">0</strong> vehicles found</p>
+    </section>
+
+    <section class="section inventory-list-section">
+      <div id="inventory-grid" class="inventory-grid dealer-inventory-grid"></div>
       <div id="no-results" class="no-results" hidden>
-        <h2>No matching vehicles</h2>
-        <p>Try another manufacturer or clear your search.</p>
-        <button id="clear-filters" class="button secondary">Clear Filters</button>
+        <h2>No vehicles match those filters.</h2>
+        <p>Try another manufacturer or search term.</p>
       </div>
     </section>
   </main>
@@ -73,6 +76,6 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=5.19"></script>
+<script src="script.js?v=6.0"></script>
 </body>
 </html>

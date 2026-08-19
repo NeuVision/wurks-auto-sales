@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
   <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
-  <link rel="stylesheet" href="styles.css?v=5.19" />
+  <link rel="stylesheet" href="styles.css?v=6.0" />
 </head>
 <body>
   <header class="site-header">
@@ -21,59 +21,67 @@
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Used cars without the runaround</p>
-        <h1>Good cars. Clear pricing. No hidden dealer fees.</h1>
-        <p class="hero-text">Wurks Auto Sales serves Northern Nevada with carefully selected used vehicles, straightforward descriptions, and easy-to-understand out-the-door pricing.</p>
-        <div class="actions">
-          <a class="button primary" href="inventory.html">View All Inventory</a>
-          <a class="button secondary" href="#contact">Contact Us</a>
-        </div>
+  <main>
+    <section class="dealer-hero">
+      <div class="dealer-hero-copy">
+        <p class="eyebrow">Wurks Auto Sales</p>
+        <h1>Quality vehicles.<br><span>Honest prices.</span></h1>
+        <p>Clean-title vehicles, straightforward information, and a buying experience built around real people.</p>
+        <a class="button primary hero-cta" href="inventory.html">Browse Inventory</a>
       </div>
-      <div class="hero-card">
-        <span class="hero-card-label">Built for real buyers</span>
-        <strong>Transparent OTD pricing</strong>
-        <p>See the number that matters before you make the trip.</p>
-        <div class="mini-grid">
-          <span><b>Clean</b> listings</span>
-          <span><b>Simple</b> process</span>
-          <span><b>Local</b> dealer</span>
-          <span><b>Direct</b> contact</span>
+      <div class="dealer-hero-visual">
+        <div class="hero-car-silhouette">
+          <span>WURKS</span>
+          <small>Current inventory</small>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-heading">
-        <div><p class="eyebrow">Featured vehicles</p><h2>Wurks Highlights</h2></div>
-        <div class="heading-actions">
-          <p>A few vehicles we’re currently highlighting. See the Inventory page for everything available.</p>
-          <a class="text-link" href="inventory.html">View all inventory →</a>
+    <section class="trust-strip">
+      <div class="trust-item">
+        <div class="trust-icon">✓</div>
+        <div><strong>Clean title vehicles</strong><span>Clear title information on every listing.</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">◎</div>
+        <div><strong>Quality you can trust</strong><span>Vehicle details before you make the trip.</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">◉</div>
+        <div><strong>Transparent pricing</strong><span>See the number that matters up front.</span></div>
+      </div>
+    </section>
+
+    <section class="section featured-section">
+      <div class="section-heading-row">
+        <div>
+          <p class="eyebrow">Featured inventory</p>
+          <h2>Wurks Highlights</h2>
+        </div>
+        <a href="inventory.html" class="text-link">View all inventory →</a>
+      </div>
+      <div id="featured-grid" class="featured-grid dealer-featured-grid"></div>
+    </section>
+
+    <section id="why-wurks" class="section why-section">
+      <div class="why-panel">
+        <div>
+          <p class="eyebrow">Why Wurks</p>
+          <h2>Simple, local, direct.</h2>
+        </div>
+        <div class="why-grid">
+          <div><strong>Clean listings</strong><span>Clear vehicle information.</span></div>
+          <div><strong>Simple process</strong><span>No unnecessary runaround.</span></div>
+          <div><strong>Local dealer</strong><span>Northern Nevada focused.</span></div>
+          <div><strong>Direct contact</strong><span>Reach the dealer directly.</span></div>
         </div>
       </div>
-      <div id="featured-grid" class="inventory-grid featured-grid"></div>
     </section>
 
-    <section id="why-wurks" class="section muted">
-      <div class="section-heading"><div><p class="eyebrow">A simpler way to buy</p><h2>Why Wurks Auto Sales</h2></div></div>
-      <div class="feature-grid">
-        <article><span>01</span><h3>Straightforward pricing</h3><p>We focus on clear numbers and transparent out-the-door pricing rather than surprise add-ons.</p></article>
-        <article><span>02</span><h3>Mechanical knowledge</h3><p>Our automotive background helps us evaluate vehicles with a practical, hands-on eye.</p></article>
-        <article><span>03</span><h3>Accurate descriptions</h3><p>We describe the good and the not-so-good so buyers can make an informed decision.</p></article>
-      </div>
-    </section>
-
-    <section id="about" class="section about-grid">
-      <div>
-        <p class="eyebrow">About Wurks</p>
-        <h2>Small dealership. Automotive-first approach.</h2>
-      </div>
-      <div class="about-copy">
-        <p>Wurks Auto Sales is a Northern Nevada used-car dealership focused on offering interesting, practical vehicles with a straightforward buying experience.</p>
-        <p>We bring hands-on automotive experience to the process and believe buyers deserve clear vehicle information, transparent pricing, and direct communication.</p>
-      </div>
+    <section id="about" class="section about-section">
+      <p class="eyebrow">About Wurks</p>
+      <h2>Enthusiast knowledge, straightforward sales.</h2>
+      <p>We focus on presenting vehicles honestly, with useful details, clear photos, and direct communication.</p>
     </section>
 
     <section id="contact" class="section contact-section contact-form-section">
@@ -83,9 +91,7 @@
         <p>Have a question about a vehicle or want to schedule a time to see one? Send us your information and we’ll get back to you as soon as possible.</p>
       </div>
 
-      <form id="contact-form" class="contact-submission-form"
-            action="https://formsubmit.co/adolfowurksauto@outlook.com"
-            method="POST">
+      <form id="contact-form" class="contact-submission-form" action="https://formsubmit.co/adolfowurksauto@outlook.com" method="POST">
         <input type="hidden" name="_subject" value="New Wurks Auto Sales Website Inquiry">
         <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
@@ -95,31 +101,25 @@
             <label for="contact-first-name">First Name <span class="required-mark">*</span></label>
             <input id="contact-first-name" name="First Name" type="text" placeholder="First Name" autocomplete="given-name" required>
           </div>
-
           <div class="form-field">
             <label for="contact-last-name">Last Name <span class="optional-label">Optional</span></label>
             <input id="contact-last-name" name="Last Name" type="text" placeholder="Last Name" autocomplete="family-name">
           </div>
-
           <div class="form-field">
             <label for="contact-email">Email <span class="required-mark">*</span></label>
             <input id="contact-email" name="email" type="email" placeholder="Email" autocomplete="email" required>
           </div>
-
           <div class="form-field">
             <label for="contact-phone">Phone # <span class="optional-label">Optional</span></label>
             <input id="contact-phone" name="Phone" type="tel" placeholder="Phone #" autocomplete="tel">
           </div>
-
           <div class="form-field form-field-full">
             <label for="contact-comments">Comments <span class="required-mark">*</span></label>
             <textarea id="contact-comments" name="Comments" placeholder="Comments" maxlength="1000" required></textarea>
             <div class="comment-count"><span id="comment-count">0</span>/1000</div>
           </div>
         </div>
-
         <button class="contact-submit-button" type="submit">Send</button>
-
         <div class="contact-privacy-note">
           <div class="privacy-shield" aria-hidden="true">✓</div>
           <div>
@@ -152,6 +152,6 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=5.19"></script>
+<script src="script.js?v=6.0"></script>
 </body>
 </html>
