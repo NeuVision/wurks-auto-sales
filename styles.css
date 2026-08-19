@@ -2389,3 +2389,330 @@ body{
   background: linear-gradient(180deg, #efc654 0%, #ddb23b 100%) !important;
   color: #111 !important;
 }
+
+
+/* =====================================================================
+   v6.12 — literal reference-card match
+   ONLY affects listing cards in #featured-grid and #inventory-grid.
+   ===================================================================== */
+
+@media (min-width: 1180px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+}
+
+/* Card shell: flatter, thinner border, smaller radius. */
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  background: #171b1f !important;
+  border: 1px solid #3a4047 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,.20) !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+}
+
+/* Reference photo is ~351x194 = 1.81:1, not a square-ish crop. */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 1.81 / 1 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #30363d !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+/* Small black status rectangle from reference. */
+#featured-grid .status,
+#inventory-grid .status {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  z-index: 5 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 25px !important;
+  padding: 0 9px !important;
+  border-radius: 5px !important;
+  background: #07090b !important;
+  border: 1px solid #2a3036 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,.45) !important;
+  color: #f3f4f5 !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .02em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status,
+#featured-grid .status[data-status="sold"],
+#inventory-grid .status[data-status="sold"] {
+  background: #a82c26 !important;
+  border-color: #ce554e !important;
+  color: #fff !important;
+}
+
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status,
+#featured-grid .status[data-status="coming soon"],
+#inventory-grid .status[data-status="coming soon"] {
+  background: #5f4b17 !important;
+  border-color: #b8922b !important;
+  color: #f5d779 !important;
+}
+
+/* No highlight/photo-count extras in reference cards. */
+#featured-grid .featured-badge,
+#inventory-grid .featured-badge,
+#featured-grid .photo-count,
+#inventory-grid .photo-count {
+  display: none !important;
+}
+
+/* Preserve inventory arrows, but only reveal on hover/focus. */
+#inventory-grid .card-photo-arrow {
+  opacity: 0 !important;
+  transition: opacity .12s ease !important;
+}
+#inventory-grid .vehicle-photo:hover .card-photo-arrow,
+#inventory-grid .card-photo-arrow:focus-visible {
+  opacity: 1 !important;
+}
+
+/* Body proportions from reference. */
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-body {
+  display: flex !important;
+  flex: 1 !important;
+  flex-direction: column !important;
+  padding: 12px 13px 13px !important;
+}
+
+/* Name / price row */
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+  margin: 0 0 5px !important;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: #f2f2f2 !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  margin: 0 !important;
+  color: #e0ae2d !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.12 !important;
+  white-space: nowrap !important;
+}
+
+/* Mileage line then thin divider. */
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 0 11px !important;
+  border-bottom: 1px solid #30363d !important;
+  color: #aeb4ba !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+}
+
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
+
+/* Spec rows */
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin: 10px 0 12px !important;
+  padding: 0 !important;
+}
+
+/* No duplicate mileage row. */
+#featured-grid .inventory-spec-item:first-child,
+#inventory-grid .inventory-spec-item:first-child {
+  display: none !important;
+}
+
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 25px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Exact thin-outline icon treatment. */
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 23px !important;
+  min-width: 23px !important;
+  height: 23px !important;
+  color: #f1f2f3 !important;
+}
+
+#featured-grid .ref-icon,
+#inventory-grid .ref-icon {
+  width: 20px !important;
+  height: 20px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.6 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  overflow: visible !important;
+}
+
+#featured-grid .ref-engine,
+#inventory-grid .ref-engine {
+  width: 23px !important;
+}
+
+/* Drivetrain matches the simple gold schematic in the reference. */
+#featured-grid .ref-drivetrain,
+#inventory-grid .ref-drivetrain {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 23px !important;
+  height: 23px !important;
+  color: #e0ae2d !important;
+}
+
+#featured-grid .ref-drivetrain svg,
+#inventory-grid .ref-drivetrain svg {
+  width: 22px !important;
+  height: 22px !important;
+  overflow: visible !important;
+}
+
+#featured-grid .ref-drivetrain svg path,
+#inventory-grid .ref-drivetrain svg path {
+  fill: none !important;
+  stroke: #e0ae2d !important;
+  stroke-width: 1.7 !important;
+  stroke-linecap: round !important;
+}
+
+#featured-grid .ref-drivetrain svg circle,
+#inventory-grid .ref-drivetrain svg circle {
+  fill: #e0ae2d !important;
+  stroke: #e0ae2d !important;
+}
+
+#featured-grid .ref-wheel,
+#inventory-grid .ref-wheel,
+#featured-grid .ref-wheel-driven,
+#inventory-grid .ref-wheel-driven {
+  fill: #e0ae2d !important;
+  stroke: #e0ae2d !important;
+  stroke-width: .7 !important;
+}
+
+/* Text beside icons */
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  min-width: 0 !important;
+  color: #d0d4d8 !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.12 !important;
+}
+
+/* Reference uses a solid gold button. */
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 40px !important;
+  margin-top: auto !important;
+  padding: 0 10px !important;
+  border: 1px solid #e2b33b !important;
+  border-radius: 4px !important;
+  background: #dfaF31 !important;
+  color: #111 !important;
+  box-shadow: none !important;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: #e9bd49 !important;
+  color: #111 !important;
+}
+
+/* Medium/mobile cards keep same visual language. */
+@media (min-width: 720px) and (max-width: 1179px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr)) !important;
+    gap: 16px !important;
+  }
+}
+@media (max-width: 719px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
