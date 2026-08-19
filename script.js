@@ -30,7 +30,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   status.classList.toggle('sold-status', normalizedStatus === 'sold');
   status.setAttribute('data-status', normalizedStatus);
   card.querySelector('.vehicle-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
-  card.querySelector('.vehicle-name').textContent = `${vehicle.model} ${vehicle.trim}`;
+  card.querySelector('.vehicle-name').textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
   card.querySelector('.vehicle-price').textContent = vehicle.price;
 
   const cardContent = card.querySelector('.vehicle-card-content') || card.querySelector('.vehicle-card-body') || article;
@@ -49,14 +49,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
     const mileageMeta = document.createElement('span');
     mileageMeta.textContent = formatMiles(vehicle.miles).replace(' miles', ' mi');
 
-    const dot = document.createElement('span');
-    dot.className = 'meta-dot';
-    dot.textContent = '•';
-
-    const titleMeta = document.createElement('span');
-    titleMeta.textContent = vehicle.title || '—';
-
-    metaRow.append(mileageMeta, dot, titleMeta);
+    metaRow.append(mileageMeta);
     titleRow.insertAdjacentElement('afterend', metaRow);
   }
   card.querySelector('.vehicle-desc').textContent = vehicle.description;

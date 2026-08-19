@@ -1111,3 +1111,119 @@ body{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+
+/* v6.4 — refined listing hierarchy */
+#featured-grid .status,
+#inventory-grid .status {
+  top: .55rem;
+  right: .55rem;
+  padding: .38rem .72rem;
+  border-radius: 999px;
+  font-size: .67rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  background: rgba(10,12,15,.92);
+  color: var(--gold-2);
+  border: 1px solid rgba(215,180,93,.65);
+  box-shadow: 0 4px 12px rgba(0,0,0,.28);
+}
+
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status {
+  background: #b3261e;
+  color: #fff;
+  border-color: #dd5a52;
+}
+
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status {
+  background: #6f581f;
+  color: #fff0b3;
+  border-color: var(--gold);
+}
+
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: .8rem;
+  margin-bottom: .28rem;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.28;
+  color: #f5f6f7;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  color: var(--gold);
+  font-size: 1.02rem;
+  font-weight: 900;
+  line-height: 1.28;
+  white-space: nowrap;
+}
+
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  margin: 0 0 .82rem;
+  padding-bottom: .78rem;
+  border-bottom: 1px solid #333a43;
+  color: #aeb5bf;
+  font-size: .86rem;
+}
+
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  margin-top: 0;
+  margin-bottom: .95rem;
+}
+
+#featured-grid .inventory-spec-item.spec-title,
+#inventory-grid .inventory-spec-item.spec-title {
+  order: 1;
+}
+
+#featured-grid .inventory-spec-item.spec-drive,
+#inventory-grid .inventory-spec-item.spec-drive {
+  order: 2;
+}
+
+#featured-grid .inventory-spec-item.spec-engine,
+#inventory-grid .inventory-spec-item.spec-engine {
+  order: 3;
+}
+
+#featured-grid .inventory-spec-item.spec-transmission,
+#inventory-grid .inventory-spec-item.spec-transmission {
+  order: 4;
+}
+
+#featured-grid .inventory-spec-item.spec-fuel,
+#inventory-grid .inventory-spec-item.spec-fuel {
+  order: 5;
+}
+
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  min-height: 44px;
+  background: linear-gradient(180deg, #e6bd4f 0%, #c99d31 100%) !important;
+  color: #111 !important;
+  border: 1px solid #e6bd4f !important;
+  border-radius: 6px !important;
+  font-size: .87rem;
+  font-weight: 900;
+  letter-spacing: .045em;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: linear-gradient(180deg, #f0cd69 0%, #d9ad3e 100%) !important;
+  color: #111 !important;
+}
