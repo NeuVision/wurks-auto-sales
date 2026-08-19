@@ -1724,3 +1724,313 @@ body{
 #inventory-grid .vehicle-meta-row {
   display: block;
 }
+
+
+/* =========================================================
+   v6.8 — Listing cards only
+   Closely matched to supplied reference while retaining
+   Wurks gold accents and mileage-only summary.
+   ========================================================= */
+
+/* Desktop card grid: four across like the reference image. */
+@media (min-width: 1180px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .8rem;
+  }
+}
+
+/* Card shell */
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #1b1f24 0%, #15191e 100%);
+  border: 1px solid #343b43;
+  border-radius: 7px;
+  box-shadow: 0 5px 16px rgba(0,0,0,.22);
+}
+
+#featured-grid .vehicle-card:hover,
+#inventory-grid .vehicle-card:hover {
+  transform: translateY(-2px);
+  border-color: #49525c;
+  box-shadow: 0 11px 26px rgba(0,0,0,.26);
+}
+
+/* Photo area */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  width: 100%;
+  aspect-ratio: 1.78 / 1;
+  min-height: 0;
+  border: 0;
+  border-bottom: 1px solid #30373f;
+  border-radius: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Compact status tag from the reference */
+#featured-grid .status,
+#inventory-grid .status {
+  top: .42rem;
+  right: .42rem;
+  padding: .27rem .48rem;
+  border-radius: 5px !important;
+  background: rgba(5,7,9,.95);
+  border: 1px solid rgba(255,255,255,.17);
+  color: #f5f6f7;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .025em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 3px 8px rgba(0,0,0,.38);
+}
+
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status {
+  background: #a32924;
+  border-color: #d6554d;
+  color: #fff;
+}
+
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status {
+  background: #66501b;
+  border-color: var(--gold);
+  color: #fff0b4;
+}
+
+/* Card body spacing */
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: .72rem .76rem .76rem;
+}
+
+/* Vehicle name + price row */
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: baseline;
+  column-gap: .55rem;
+  margin: 0 0 .16rem;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  min-width: 0;
+  margin: 0;
+  color: #f0f2f4;
+  font-size: clamp(.82rem, 1vw, .96rem);
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  margin: 0;
+  color: var(--gold);
+  font-size: clamp(.82rem, 1vw, .96rem);
+  font-weight: 900;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* Mileage line + divider */
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: block;
+  margin: 0;
+  padding: .10rem 0 .60rem;
+  border-bottom: 1px solid #2e343b;
+  color: #aeb5be;
+  font-size: .80rem;
+  line-height: 1.2;
+}
+
+/* Worded descriptions remain detail-page only */
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
+
+/* Stacked specification rows */
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  display: flex;
+  flex-direction: column;
+  gap: .38rem;
+  margin: .62rem 0 .70rem;
+}
+
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item {
+  display: flex !important;
+  align-items: center;
+  gap: .52rem;
+  min-height: 25px;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* Mileage already appears above divider; suppress duplicate spec mileage. */
+#featured-grid .inventory-spec-item:first-child,
+#inventory-grid .inventory-spec-item:first-child {
+  display: none !important;
+}
+
+/* Reference-sized icons */
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  min-width: 21px;
+  height: 21px;
+  color: #f2f4f5;
+}
+
+#featured-grid .inventory-spec-item .spec-icon > svg,
+#inventory-grid .inventory-spec-item .spec-icon > svg {
+  width: 17px;
+  height: 17px;
+  overflow: visible;
+}
+
+#featured-grid .spec-engine .spec-icon > svg,
+#inventory-grid .spec-engine .spec-icon > svg {
+  width: 20px;
+}
+
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  min-width: 0;
+  color: #cfd4da;
+  font-size: .80rem;
+  line-height: 1.18;
+}
+
+/* Compact drivetrain diagram. Gold indicates driven wheels. */
+#featured-grid .drivetrain-pictogram,
+#inventory-grid .drivetrain-pictogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+#featured-grid .drivetrain-pictogram svg,
+#inventory-grid .drivetrain-pictogram svg {
+  width: 20px;
+  height: 19px;
+  overflow: visible;
+}
+
+#featured-grid .drivetrain-pictogram b,
+#inventory-grid .drivetrain-pictogram b {
+  display: none;
+}
+
+#featured-grid .drivetrain-pictogram .wheel-driven,
+#inventory-grid .drivetrain-pictogram .wheel-driven {
+  fill: var(--gold);
+  stroke: var(--gold-2);
+  stroke-width: 1;
+}
+
+#featured-grid .drivetrain-pictogram .wheel-idle,
+#inventory-grid .drivetrain-pictogram .wheel-idle {
+  fill: #f2f4f5;
+  stroke: #f2f4f5;
+  opacity: .96;
+}
+
+#featured-grid .drivetrain-pictogram .drive-line,
+#inventory-grid .drivetrain-pictogram .drive-line {
+  stroke: #f2f4f5;
+  stroke-width: 2;
+}
+
+#featured-grid .drivetrain-pictogram .drive-node,
+#inventory-grid .drivetrain-pictogram .drive-node {
+  fill: #f2f4f5;
+}
+
+/* Full-width outlined gold button, matching reference geometry. */
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 37px;
+  margin-top: auto;
+  padding: .48rem .55rem;
+  border: 1px solid var(--gold) !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  color: var(--gold) !important;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: rgba(215,180,93,.08) !important;
+  color: var(--gold-2) !important;
+}
+
+/* Keep existing Inventory card browsing controls functional but discreet. */
+#inventory-grid .card-photo-arrow {
+  width: 30px;
+  height: 38px;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+
+#inventory-grid .vehicle-photo:hover .card-photo-arrow,
+#inventory-grid .card-photo-arrow:focus-visible {
+  opacity: 1;
+}
+
+#inventory-grid .photo-count {
+  padding: .25rem .40rem;
+  font-size: .66rem;
+}
+
+/* Responsive fallbacks: listing-card changes only. */
+@media (max-width: 1179px) and (min-width: 760px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 759px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #featured-grid .vehicle-name,
+  #inventory-grid .vehicle-name {
+    font-size: .95rem;
+  }
+}
