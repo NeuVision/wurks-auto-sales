@@ -2034,3 +2034,23 @@ body{
     font-size: .95rem;
   }
 }
+
+
+/* v6.9 — enforce true 16:9 listing-card photos */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 0 !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+/* Keep the card itself from forcing the photo taller. */
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  grid-template-rows: auto 1fr;
+}
