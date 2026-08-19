@@ -2858,3 +2858,26 @@ body{
     grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   }
 }
+
+
+/* v6.16 — updated engine icon to check-engine style */
+#featured-grid .ref-engine,
+#inventory-grid .ref-engine {
+  color: #e0ae2d !important;
+  width: 24px !important;
+  height: 18px !important;
+}
+
+#featured-grid .spec-engine .spec-icon,
+#inventory-grid .spec-engine .spec-icon {
+  color: #e0ae2d !important;
+}
+
+
+/* v6.17 — engine icon white */
+#featured-grid .ref-engine,
+#inventory-grid .ref-engine,
+#featured-grid .spec-engine .spec-icon,
+#inventory-grid .spec-engine .spec-icon {
+  color: #f1f2f3 !important;
+}

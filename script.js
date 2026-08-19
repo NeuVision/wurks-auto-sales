@@ -136,7 +136,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
       } else {
         const icons = {
           title: '<svg class="ref-icon ref-doc" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 2.5h7.8l3.7 3.8v15.2H6.5z"></path><path d="M14.3 2.5v4h3.7"></path><path d="M9 11h6M9 14h6M9 17h4.5"></path></svg>',
-          engine: '<svg class="ref-icon ref-engine" viewBox="0 0 28 24" aria-hidden="true"><path d="M6.2 7.5h11.2l2.4 2.2h2.8v6.8h-2.8l-2.2 2H7l-2.2-2H2.2V9.7h2.7z"></path><path d="M8.4 7.5V4.8h3M14.2 7.5V4.8h3"></path><path d="M22.6 10.5h3v4.7h-3"></path></svg>',
+          engine: '<svg class="ref-icon ref-engine" viewBox="0 0 48 32" aria-hidden="true"><path d="M8 10h4V7.5c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4V10h3.2c2.7 0 4.8 2.2 4.8 4.8v2.4c0 2.7-2.2 4.8-4.8 4.8H36v2.5c0 2.2-1.8 4-4 4H16c-2.2 0-4-1.8-4-4V22H8c-2.8 0-5-2.2-5-5v-2c0-2.8 2.2-5 5-5z"></path><path d="M12 14V6M36 14V6"></path><path d="M40 12h3v8h-3"></path></svg>',
           transmission: '<svg class="ref-icon ref-gear" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.4"></circle><path d="M9.7 2.8h4.6l.6 2.1c.6.2 1.2.4 1.7.7l1.9-1 3.2 3.2-1 1.9c.3.5.5 1.1.7 1.7l2.1.6v4.6l-2.1.6c-.2.6-.4 1.2-.7 1.7l1 1.9-3.2 3.2-1.9-1c-.5.3-1.1.5-1.7.7l-.6 2.1H9.7l-.6-2.1c-.6-.2-1.2-.4-1.7-.7l-1.9 1-3.2-3.2 1-1.9c-.3-.5-.5-1.1-.7-1.7l-2.1-.6V12l2.1-.6c.2-.6.4-1.2.7-1.7l-1-1.9 3.2-3.2 1.9 1c.5-.3 1.1-.5 1.7-.7z"></path></svg>',
           fuel: '<svg class="ref-icon ref-fuel" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 2.8h9.2v18.4H5.5z"></path><path d="M7.6 5.2h5v4.6h-5z"></path><path d="M14.7 7.4h2.1l2.1 2.2v7c0 1 .5 1.7 1.4 1.7.8 0 1.3-.6 1.3-1.7v-5.2l-1.8-1.9"></path><path d="M4.5 21.2h11.2"></path></svg>'
         };
