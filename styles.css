@@ -2834,3 +2834,27 @@ body{
 #inventory-grid .inventory-spec-item .spec-text {
   padding: 0 !important;
 }
+
+
+/* v6.15 — 3:2 listing photos + wider card layout to match */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  aspect-ratio: 3 / 2 !important;
+}
+
+/* Widen cards on larger screens so the new 3:2 photo ratio feels balanced. */
+@media (min-width: 1180px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+  }
+}
+
+/* Allow 4 across only on very wide screens. */
+@media (min-width: 1700px) {
+  #featured-grid.dealer-featured-grid,
+  #inventory-grid.dealer-inventory-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
