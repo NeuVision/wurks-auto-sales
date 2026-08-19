@@ -96,19 +96,55 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   ];
 
   if (cardContext === 'inventory') {
-    cardSpecs.push(
-      vehicle.engine ? `Engine: ${vehicle.engine}` : 'Engine: —',
-      vehicle.transmission ? `Transmission: ${vehicle.transmission}` : 'Transmission: —',
-      vehicle.fuelEconomy ? `Fuel Economy: ${vehicle.fuelEconomy}` : 'Fuel Economy: —'
-    );
     specs.classList.add('inventory-specs');
-  }
 
-  cardSpecs.forEach(text => {
-    const span = document.createElement('span');
-    span.textContent = text || '—';
-    specs.appendChild(span);
-  });
+    const drivetrainValue = String(vehicle.drivetrain || '').trim().toUpperCase();
+    const drivetrainLabel = ['FWD','AWD','RWD'].includes(drivetrainValue) ? drivetrainValue : (vehicle.drivetrain || '—');
+
+    const mileage = document.createElement('span');
+    mileage.className = 'inventory-spec-item';
+    mileage.textContent = formatMiles(vehicle.miles);
+    specs.appendChild(mileage);
+
+    const items = [
+      ['title', vehicle.title || '—'],
+      ['drive', drivetrainLabel],
+      ['engine', vehicle.engine || '—'],
+      ['transmission', vehicle.transmission || '—'],
+      ['fuel', vehicle.fuelEconomy || '—']
+    ];
+
+    items.forEach(([type, text]) => {
+      const span = document.createElement('span');
+      span.className = `inventory-spec-item spec-${type}`;
+      const icon = document.createElement('span');
+      icon.className = 'spec-icon';
+
+      if (type === 'drive') {
+        icon.innerHTML = `<span class="drive-icon">${text}</span>`;
+      } else {
+        const icons = {
+          title: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"></path><path d="M15 3v4h4"></path></svg>',
+          engine: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h8l2 2h2v6h-2l-2 2H7l-2-2H3V10h2z"></path><path d="M9 5v3M13 5v3"></path></svg>',
+          transmission: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"></path></svg>',
+          fuel: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8v18H6z"></path><path d="M8 6h4v4H8zM14 8h2l2 2v7a2 2 0 0 0 4 0v-6l-2-2"></path></svg>'
+        };
+        icon.innerHTML = icons[type] || '';
+      }
+
+      const txt = document.createElement('span');
+      txt.className = 'spec-text';
+      txt.textContent = text;
+      span.append(icon, txt);
+      specs.appendChild(span);
+    });
+  } else {
+    cardSpecs.forEach(text => {
+      const span = document.createElement('span');
+      span.textContent = text || '—';
+      specs.appendChild(span);
+    });
+  }
 
   const details = card.querySelector('.details-button');
   details.href = `vehicle.html?id=${encodeURIComponent(vehicle.id)}`;
