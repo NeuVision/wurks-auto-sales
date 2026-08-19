@@ -843,3 +843,37 @@ body{
 #inventory-grid .vehicle-desc {
   display: none !important;
 }
+
+/* v6.2 — smaller vehicle specification icons */
+.inventory-spec-item .spec-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+}
+
+.inventory-spec-item .spec-icon > svg {
+  width: 17px;
+  height: 17px;
+}
+
+.spec-engine .spec-icon > svg {
+  width: 20px;
+}
+
+.drivetrain-pictogram svg {
+  width: 23px;
+  height: 21px;
+}
+
+.drivetrain-pictogram {
+  gap: 4px;
+}
+
+.drivetrain-pictogram b {
+  font-size: 8px;
+}
+
+.inventory-spec-item {
+  gap: .5rem;
+  min-height: 27px;
+}
