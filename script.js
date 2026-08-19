@@ -29,30 +29,11 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   const normalizedStatus = normalizedDisplayStatus.trim().toLowerCase();
   status.classList.toggle('sold-status', normalizedStatus === 'sold');
   status.setAttribute('data-status', normalizedStatus);
-  card.querySelector('.vehicle-kicker').textContent = `${vehicle.year} ${vehicle.make}`;
   card.querySelector('.vehicle-name').textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
+  card.querySelector('.vehicle-mileage').textContent = formatMiles(vehicle.miles).replace(' miles', ' mi');
   card.querySelector('.vehicle-price').textContent = vehicle.price;
 
-  const cardContent = card.querySelector('.vehicle-card-content') || card.querySelector('.vehicle-card-body') || article;
-  const nameEl = card.querySelector('.vehicle-name');
-  const priceEl = card.querySelector('.vehicle-price');
-
-  if (cardContent && nameEl && priceEl && !card.querySelector('.vehicle-title-row')) {
-    const titleRow = document.createElement('div');
-    titleRow.className = 'vehicle-title-row';
-    nameEl.parentNode?.insertBefore(titleRow, nameEl);
-    titleRow.append(nameEl, priceEl);
-
-    const metaRow = document.createElement('div');
-    metaRow.className = 'vehicle-meta-row';
-
-    const mileageMeta = document.createElement('span');
-    mileageMeta.textContent = formatMiles(vehicle.miles).replace(' miles', ' mi');
-
-    metaRow.append(mileageMeta);
-    titleRow.insertAdjacentElement('afterend', metaRow);
-  }
-  card.querySelector('.vehicle-desc').textContent = vehicle.description;
+    card.querySelector('.vehicle-desc').textContent = vehicle.description;
 
   if (cardContext === 'featured') {
     const badge = document.createElement('span');

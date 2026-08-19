@@ -1227,3 +1227,199 @@ body{
   background: linear-gradient(180deg, #f0cd69 0%, #d9ad3e 100%) !important;
   color: #111 !important;
 }
+
+
+/* v6.5 — direct listing-card template, exact hierarchy */
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg,#191d22 0%,#12161a 100%);
+  border: 1px solid #3b424b;
+  border-radius: 10px;
+}
+
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  border-bottom: 1px solid #353c45;
+  border-radius: 0;
+}
+
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: .9rem .95rem .95rem;
+}
+
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: start;
+  column-gap: .75rem;
+  margin: 0 0 .25rem;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  margin: 0;
+  color: #f5f6f7;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.28;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  margin: 0;
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.28;
+  white-space: nowrap;
+}
+
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: block;
+  margin: 0 0 .8rem;
+  padding: 0 0 .75rem;
+  border-bottom: 1px solid #343b44;
+  color: #adb5bf;
+  font-size: .87rem;
+  line-height: 1.3;
+}
+
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
+
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin: 0 0 .95rem;
+}
+
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item {
+  display: flex !important;
+  align-items: center;
+  gap: .58rem;
+  min-height: 27px;
+  padding: 0 !important;
+  margin: 0;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+#featured-grid .inventory-spec-item:first-child,
+#inventory-grid .inventory-spec-item:first-child {
+  display: none !important;
+}
+
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  color: #f4f4f4;
+}
+
+#featured-grid .inventory-spec-item .spec-icon > svg,
+#inventory-grid .inventory-spec-item .spec-icon > svg {
+  width: 18px;
+  height: 18px;
+}
+
+#featured-grid .spec-engine .spec-icon > svg,
+#inventory-grid .spec-engine .spec-icon > svg {
+  width: 20px;
+}
+
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  color: #d9dee4;
+  font-size: .88rem;
+  line-height: 1.3;
+}
+
+#featured-grid .drivetrain-pictogram,
+#inventory-grid .drivetrain-pictogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+#featured-grid .drivetrain-pictogram svg,
+#inventory-grid .drivetrain-pictogram svg {
+  width: 22px;
+  height: 20px;
+}
+
+#featured-grid .drivetrain-pictogram b,
+#inventory-grid .drivetrain-pictogram b {
+  display: none;
+}
+
+#featured-grid .status,
+#inventory-grid .status {
+  top: .5rem;
+  right: .5rem;
+  padding: .38rem .72rem;
+  border-radius: 999px !important;
+  background: rgba(9,11,14,.94);
+  border: 1px solid rgba(215,180,93,.72);
+  color: var(--gold-2);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status {
+  background: #aa2923;
+  border-color: #e06159;
+  color: #fff;
+}
+
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status {
+  background: #69531d;
+  border-color: var(--gold);
+  color: #fff1bd;
+}
+
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: auto;
+  border: 1px solid #e1b84d !important;
+  border-radius: 6px !important;
+  background: linear-gradient(180deg,#e8bf54,#c99c31) !important;
+  color: #111 !important;
+  font-size: .87rem;
+  font-weight: 900;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: linear-gradient(180deg,#f1cf6d,#d8ab3d) !important;
+}

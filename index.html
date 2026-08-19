@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
   <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
-  <link rel="stylesheet" href="styles.css?v=6.4" />
+  <link rel="stylesheet" href="styles.css?v=6.5" />
 </head>
 <body>
   <header class="site-header">
@@ -139,9 +139,18 @@
 
   <template id="vehicle-template">
     <article class="vehicle-card">
-      <div class="vehicle-photo"><span class="status"></span><div class="photo-placeholder">Add Vehicle Photo</div></div>
+      <div class="vehicle-photo">
+        <span class="status"></span>
+        <div class="photo-placeholder">Add Vehicle Photo</div>
+      </div>
       <div class="vehicle-body">
-        <div class="vehicle-top"><div><p class="vehicle-kicker"></p><h3 class="vehicle-name"></h3></div><strong class="vehicle-price"></strong></div>
+        <div class="vehicle-title-row">
+          <h3 class="vehicle-name"></h3>
+          <strong class="vehicle-price"></strong>
+        </div>
+        <div class="vehicle-meta-row">
+          <span class="vehicle-mileage"></span>
+        </div>
         <div class="specs"></div>
         <p class="vehicle-desc"></p>
         <a class="button secondary details-button" href="#">View Details</a>
@@ -152,6 +161,6 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=6.4"></script>
+<script src="script.js?v=6.5"></script>
 </body>
 </html>
