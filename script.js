@@ -32,7 +32,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   card.querySelector('.vehicle-name').textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
   const mileageLine = card.querySelector('.vehicle-mileage');
   if (mileageLine) {
-    mileageLine.textContent = formatMiles(vehicle.miles).replace(' miles', ' mi');
+    mileageLine.textContent = formatMiles(vehicle.miles);
   }
   card.querySelector('.vehicle-price').textContent = vehicle.price;
 

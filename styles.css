@@ -2776,3 +2776,61 @@ body{
   border-color: #b8922b !important;
   color: #f5d779 !important;
 }
+
+
+/* v6.14 — status colors, full 'miles', clean spec rows */
+
+/* AVAILABLE = gold pill */
+#featured-grid .vehicle-photo .status:not(.sold-status):not(.coming-soon-status),
+#inventory-grid .vehicle-photo .status:not(.sold-status):not(.coming-soon-status),
+#featured-grid .vehicle-photo .status[data-status="available"],
+#inventory-grid .vehicle-photo .status[data-status="available"] {
+  background: #d7b45d !important;
+  border-color: #d7b45d !important;
+  color: #111 !important;
+}
+
+/* COMING SOON = black + white */
+#featured-grid .vehicle-photo .status.coming-soon-status,
+#inventory-grid .vehicle-photo .status.coming-soon-status,
+#featured-grid .vehicle-photo .status[data-status="coming soon"],
+#inventory-grid .vehicle-photo .status[data-status="coming soon"] {
+  background: #07090b !important;
+  border-color: rgba(255,255,255,.24) !important;
+  color: #fff !important;
+}
+
+/* SOLD remains red */
+#featured-grid .vehicle-photo .status.sold-status,
+#inventory-grid .vehicle-photo .status.sold-status,
+#featured-grid .vehicle-photo .status[data-status="sold"],
+#inventory-grid .vehicle-photo .status[data-status="sold"] {
+  background: #a82c26 !important;
+  border-color: #ce554e !important;
+  color: #fff !important;
+}
+
+/* Remove any pill/card treatment from every spec row and icon/text pair. */
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item,
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon,
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+/* Keep the icon footprint compact and text visually clean. */
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  padding: 0 !important;
+}
+
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  padding: 0 !important;
+}
