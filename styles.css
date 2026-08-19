@@ -2054,3 +2054,10 @@ body{
 #inventory-grid .vehicle-card {
   grid-template-rows: auto 1fr;
 }
+
+
+/* v6.10 — 5:3 listing-card photos */
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  aspect-ratio: 5 / 3 !important;
+}
