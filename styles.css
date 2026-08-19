@@ -1688,3 +1688,39 @@ body{
     gap: .85rem;
   }
 }
+
+
+/* v6.7 — wider listing cards + mileage-only meta row */
+@media (min-width: 1180px) {
+  .dealer-featured-grid,
+  .dealer-inventory-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .dealer-featured-grid,
+  .dealer-inventory-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: .98rem;
+}
+
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .8rem;
+}
+
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: block;
+}
