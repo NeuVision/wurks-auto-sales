@@ -2716,3 +2716,63 @@ body{
     gap: 14px !important;
   }
 }
+
+
+/* v6.13 — compact listing status pill */
+#featured-grid .vehicle-photo .status,
+#inventory-grid .vehicle-photo .status {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  left: auto !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: max-content !important;
+  height: auto !important;
+  min-height: 24px !important;
+
+  margin: 0 !important;
+  padding: 4px 9px !important;
+
+  border-radius: 999px !important;
+  box-sizing: border-box !important;
+
+  white-space: nowrap !important;
+  line-height: 1 !important;
+
+  background: rgba(5,7,9,.95) !important;
+  border: 1px solid rgba(255,255,255,.20) !important;
+  color: #f3f4f5 !important;
+
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .02em !important;
+  text-transform: uppercase !important;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,.40) !important;
+  z-index: 5 !important;
+}
+
+#featured-grid .vehicle-photo .status.sold-status,
+#inventory-grid .vehicle-photo .status.sold-status,
+#featured-grid .vehicle-photo .status[data-status="sold"],
+#inventory-grid .vehicle-photo .status[data-status="sold"] {
+  background: #a82c26 !important;
+  border-color: #ce554e !important;
+  color: #fff !important;
+}
+
+#featured-grid .vehicle-photo .status.coming-soon-status,
+#inventory-grid .vehicle-photo .status.coming-soon-status,
+#featured-grid .vehicle-photo .status[data-status="coming soon"],
+#inventory-grid .vehicle-photo .status[data-status="coming soon"] {
+  background: #5f4b17 !important;
+  border-color: #b8922b !important;
+  color: #f5d779 !important;
+}
