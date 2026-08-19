@@ -30,7 +30,10 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   status.classList.toggle('sold-status', normalizedStatus === 'sold');
   status.setAttribute('data-status', normalizedStatus);
   card.querySelector('.vehicle-name').textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
-  card.querySelector('.vehicle-mileage').textContent = formatMiles(vehicle.miles).replace(' miles', ' mi');
+  const mileageLine = card.querySelector('.vehicle-mileage');
+  if (mileageLine) {
+    mileageLine.innerHTML = `<span>${formatMiles(vehicle.miles).replace(' miles', ' mi')}</span><span class="meta-dot">•</span><span>${vehicle.title || '—'}</span>`;
+  }
   card.querySelector('.vehicle-price').textContent = vehicle.price;
 
     card.querySelector('.vehicle-desc').textContent = vehicle.description;

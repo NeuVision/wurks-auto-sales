@@ -1423,3 +1423,268 @@ body{
 #inventory-grid .details-button:hover {
   background: linear-gradient(180deg,#f1cf6d,#d8ab3d) !important;
 }
+
+
+/* v6.6 — listing cards matched closely to supplied reference */
+#featured-grid,
+#inventory-grid {
+  align-items: stretch;
+}
+
+#featured-grid .vehicle-card,
+#inventory-grid .vehicle-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #343a42;
+  border-radius: 8px;
+  background: linear-gradient(180deg,#1a1e23 0%,#14181c 100%);
+  box-shadow: 0 4px 14px rgba(0,0,0,.20);
+}
+
+#featured-grid .vehicle-card:hover,
+#inventory-grid .vehicle-card:hover {
+  transform: translateY(-2px);
+  border-color: #48515b;
+  box-shadow: 0 12px 28px rgba(0,0,0,.24);
+}
+
+#featured-grid .vehicle-photo,
+#inventory-grid .vehicle-photo {
+  width: 100%;
+  aspect-ratio: 1.72 / 1;
+  min-height: 0;
+  border: 0;
+  border-bottom: 1px solid #31373f;
+  border-radius: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: .78rem .82rem .82rem;
+}
+
+#featured-grid .vehicle-title-row,
+#inventory-grid .vehicle-title-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: .65rem;
+  margin: 0 0 .18rem;
+}
+
+#featured-grid .vehicle-name,
+#inventory-grid .vehicle-name {
+  margin: 0;
+  color: #f0f2f4;
+  font-size: .96rem;
+  font-weight: 800;
+  line-height: 1.24;
+}
+
+#featured-grid .vehicle-price,
+#inventory-grid .vehicle-price {
+  margin: 0;
+  color: var(--gold);
+  font-size: .97rem;
+  font-weight: 900;
+  line-height: 1.24;
+  white-space: nowrap;
+}
+
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .38rem;
+  margin: 0;
+  padding: .08rem 0 .65rem;
+  border-bottom: 1px solid #2e343b;
+  color: #b2b8c0;
+  font-size: .83rem;
+  line-height: 1.2;
+}
+
+#featured-grid .vehicle-meta-row .meta-dot,
+#inventory-grid .vehicle-meta-row .meta-dot {
+  color: #6f7781;
+  font-size: .76rem;
+}
+
+#featured-grid .specs.inventory-specs,
+#inventory-grid .specs.inventory-specs {
+  display: flex;
+  flex-direction: column;
+  gap: .47rem;
+  margin: .72rem 0 .82rem;
+}
+
+#featured-grid .inventory-spec-item,
+#inventory-grid .inventory-spec-item {
+  display: flex !important;
+  align-items: center;
+  gap: .58rem;
+  min-height: 25px;
+  margin: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+#featured-grid .inventory-spec-item:first-child,
+#inventory-grid .inventory-spec-item:first-child {
+  display: none !important;
+}
+
+#featured-grid .inventory-spec-item .spec-icon,
+#inventory-grid .inventory-spec-item .spec-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  color: #f1f3f5;
+}
+
+#featured-grid .inventory-spec-item .spec-icon > svg,
+#inventory-grid .inventory-spec-item .spec-icon > svg {
+  width: 18px;
+  height: 18px;
+}
+
+#featured-grid .spec-engine .spec-icon > svg,
+#inventory-grid .spec-engine .spec-icon > svg {
+  width: 20px;
+}
+
+#featured-grid .inventory-spec-item .spec-text,
+#inventory-grid .inventory-spec-item .spec-text {
+  color: #cfd4da;
+  font-size: .84rem;
+  line-height: 1.22;
+}
+
+#featured-grid .drivetrain-pictogram,
+#inventory-grid .drivetrain-pictogram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+#featured-grid .drivetrain-pictogram svg,
+#inventory-grid .drivetrain-pictogram svg {
+  width: 21px;
+  height: 20px;
+}
+
+#featured-grid .drivetrain-pictogram b,
+#inventory-grid .drivetrain-pictogram b {
+  display: none;
+}
+
+#featured-grid .drivetrain-pictogram .wheel-driven,
+#inventory-grid .drivetrain-pictogram .wheel-driven {
+  fill: var(--gold);
+  stroke: var(--gold-2);
+  stroke-width: 1;
+}
+
+#featured-grid .drivetrain-pictogram .wheel-idle,
+#inventory-grid .drivetrain-pictogram .wheel-idle {
+  fill: #f2f4f6;
+  stroke: #f2f4f6;
+  opacity: .95;
+}
+
+#featured-grid .drivetrain-pictogram .drive-line,
+#inventory-grid .drivetrain-pictogram .drive-line {
+  stroke: #f2f4f6;
+  stroke-width: 2;
+}
+
+#featured-grid .drivetrain-pictogram .drive-node,
+#inventory-grid .drivetrain-pictogram .drive-node {
+  fill: #f2f4f6;
+}
+
+#featured-grid .details-button,
+#inventory-grid .details-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 39px;
+  margin-top: auto;
+  border: 1px solid var(--gold) !important;
+  border-radius: 5px !important;
+  background: transparent !important;
+  color: var(--gold) !important;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+#featured-grid .details-button:hover,
+#inventory-grid .details-button:hover {
+  background: rgba(215,180,93,.09) !important;
+  color: var(--gold-2) !important;
+}
+
+#featured-grid .status,
+#inventory-grid .status {
+  top: .42rem;
+  right: .42rem;
+  padding: .30rem .52rem;
+  border-radius: 5px !important;
+  background: rgba(5,7,9,.94);
+  color: #f4f5f6;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 3px 8px rgba(0,0,0,.32);
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+
+#featured-grid .status.sold-status,
+#inventory-grid .status.sold-status {
+  background: #9f2823;
+  border-color: #d04c44;
+  color: #fff;
+}
+
+#featured-grid .status.coming-soon-status,
+#inventory-grid .status.coming-soon-status {
+  background: #67511c;
+  border-color: var(--gold);
+  color: #fff0b4;
+}
+
+#featured-grid .photo-count,
+#inventory-grid .photo-count {
+  font-size: .70rem;
+  padding: .28rem .45rem;
+}
+
+#featured-grid .vehicle-desc,
+#inventory-grid .vehicle-desc {
+  display: none !important;
+}
+
+/* Reference screenshot proportions: four cards across on larger desktops. */
+@media (min-width: 1180px) {
+  .dealer-featured-grid,
+  .dealer-inventory-grid {
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: .85rem;
+  }
+}
