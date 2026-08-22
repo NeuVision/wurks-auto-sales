@@ -1,0 +1,21 @@
+Wurks Auto Sales v6.19 — Detail Gallery 3:2
+
+CHANGE
+- The large main image on the View Details page now uses the same 3:2 aspect ratio as the Inventory and homepage listing photos.
+- The gallery remains large on the detail page; only the image proportion was changed.
+- Images continue to use cover/crop behavior so the frame stays consistent.
+
+SCOPE
+No other website layout or functionality was intentionally changed.
+
+UPLOAD TO GITHUB
+Replace:
+- index.html
+- inventory.html
+- vehicle.html
+- script.js
+- styles.css
+
+KEEP:
+- current inventory.js
+- current images folder

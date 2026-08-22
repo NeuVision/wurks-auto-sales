@@ -2901,3 +2901,34 @@ body{
   height: 17px !important;
   object-fit: contain !important;
 }
+
+
+/* v6.19 — View Details gallery uses same 3:2 photo ratio as listing cards */
+.dealer-detail-gallery .detail-main-photo,
+.detail-gallery .detail-main-photo,
+#detail-main-photo,
+.detail-main-photo {
+  width: 100% !important;
+  aspect-ratio: 3 / 2 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+/* Preserve the large desktop gallery width; only the ratio changes. */
+.dealer-detail-gallery,
+.detail-gallery {
+  width: 100%;
+}
+
+/* Any actual img element inside the main frame should fill the same 3:2 area. */
+.dealer-detail-gallery .detail-main-photo img,
+.detail-gallery .detail-main-photo img,
+.detail-main-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
