@@ -3102,3 +3102,35 @@ body{
   stroke: #d7b45d !important;
   stroke-width: 2.15 !important;
 }
+
+
+/* v6.20 drivetrain icon update v2 — filled style based on uploaded reference */
+#featured-grid .ref-drivetrain,
+#inventory-grid .ref-drivetrain {
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:23px !important;
+  height:23px !important;
+}
+#featured-grid .ref-drivetrain svg,
+#inventory-grid .ref-drivetrain svg {
+  width:22px !important;
+  height:22px !important;
+  overflow:visible !important;
+}
+#featured-grid .ref-drive-body,
+#inventory-grid .ref-drive-body {
+  fill:#ffffff !important;
+  stroke:none !important;
+}
+#featured-grid .ref-wheel-fill,
+#inventory-grid .ref-wheel-fill {
+  fill:#ffffff !important;
+  stroke:none !important;
+}
+#featured-grid .ref-wheel-driven-fill,
+#inventory-grid .ref-wheel-driven-fill {
+  fill:#d7b45d !important;
+  stroke:none !important;
+}
