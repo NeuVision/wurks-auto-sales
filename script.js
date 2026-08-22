@@ -36,6 +36,18 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   }
   card.querySelector('.vehicle-price').textContent = vehicle.price;
 
+  const vinRow = card.querySelector('.vehicle-vin-row');
+  const vinValue = card.querySelector('.vehicle-vin');
+  if (vinRow && vinValue) {
+    const vin = String(vehicle.vin || '').trim().toUpperCase();
+    if (vin) {
+      vinValue.textContent = vin;
+      vinRow.hidden = false;
+    } else {
+      vinRow.hidden = true;
+    }
+  }
+
     card.querySelector('.vehicle-desc').textContent = vehicle.description;
 
   if (images.length) {
@@ -194,7 +206,7 @@ if (inventoryGrid && makeFilter) {
     const query = inventorySearch.value.trim().toLowerCase();
     const filtered = vehicles.filter(v => {
       const makeMatches = selectedMake === 'all' || v.make === selectedMake;
-      const searchable = `${v.year} ${v.make} ${v.model} ${v.trim} ${v.drivetrain} ${v.engine || ''} ${v.transmission || ''} ${v.fuelEconomy || ''} ${formatMiles(v.miles)} ${v.title}`.toLowerCase();
+      const searchable = `${v.year} ${v.make} ${v.model} ${v.trim} ${v.vin || ''} ${v.drivetrain} ${v.engine || ''} ${v.transmission || ''} ${v.fuelEconomy || ''} ${formatMiles(v.miles)} ${v.title}`.toLowerCase();
       return makeMatches && (!query || searchable.includes(query));
     });
 
@@ -240,6 +252,17 @@ if (detailRoot) {
     document.querySelector('#detail-miles').textContent = formatMiles(vehicle.miles);
     document.querySelector('#detail-title').textContent = vehicle.title;
     document.querySelector('#detail-drive').textContent = vehicle.drivetrain || '—';
+    const detailVinWrap = document.querySelector('#detail-vin-wrap');
+    const detailVin = document.querySelector('#detail-vin');
+    const vinText = String(vehicle.vin || '').trim().toUpperCase();
+    if (detailVinWrap && detailVin) {
+      if (vinText) {
+        detailVin.textContent = vinText;
+        detailVinWrap.hidden = false;
+      } else {
+        detailVinWrap.hidden = true;
+      }
+    }
     document.querySelector('#detail-engine').textContent = vehicle.engine || '—';
     document.querySelector('#detail-transmission').textContent = vehicle.transmission || '—';
     document.querySelector('#detail-fuel-economy').textContent = vehicle.fuelEconomy || '—';

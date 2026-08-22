@@ -2932,3 +2932,85 @@ body{
   object-fit: cover !important;
   object-position: center center !important;
 }
+
+
+/* v6.20 — VIN integration */
+
+/* Listing-card VIN: subtle secondary identity line below mileage */
+#featured-grid .vehicle-meta-row,
+#inventory-grid .vehicle-meta-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 5px !important;
+}
+
+#featured-grid .vehicle-vin-row,
+#inventory-grid .vehicle-vin-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  color: #8f969e;
+  font-size: 11px;
+  line-height: 1.1;
+}
+
+#featured-grid .vehicle-vin-row[hidden],
+#inventory-grid .vehicle-vin-row[hidden] {
+  display: none !important;
+}
+
+#featured-grid .vin-label,
+#inventory-grid .vin-label {
+  color: #d7b45d;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+#featured-grid .vehicle-vin,
+#inventory-grid .vehicle-vin {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  letter-spacing: .025em;
+}
+
+/* Detail-page VIN: dedicated identity bar, not another spec box */
+.detail-vin-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0 16px;
+  padding: 11px 13px;
+  border: 1px solid #343b44;
+  border-left: 3px solid #d7b45d;
+  border-radius: 7px;
+  background: #0d1014;
+}
+
+.detail-vin-bar[hidden] {
+  display: none !important;
+}
+
+.detail-vin-label {
+  flex: 0 0 auto;
+  color: #d7b45d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+
+.detail-vin-bar strong {
+  min-width: 0;
+  color: #eef1f4;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .055em;
+  overflow-wrap: anywhere;
+}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Vehicle details from Wurks Auto Sales in Northern Nevada." />
   <title>Vehicle | Wurks Auto Sales</title>
-  <link rel="stylesheet" href="styles.css?v=6.19" />
+  <link rel="stylesheet" href="styles.css?v=6.20" />
 </head>
 <body>
   <header class="site-header">
@@ -36,6 +36,11 @@
         <div id="detail-status-banner" class="detail-status-banner" hidden></div>
         <h1 id="detail-name"></h1>
         <strong id="detail-price" class="detail-price"></strong>
+        <div id="detail-vin-wrap" class="detail-vin-bar" hidden>
+          <span class="detail-vin-label">VIN</span>
+          <strong id="detail-vin"></strong>
+        </div>
+
         <div class="detail-spec-grid">
           <div><span>Mileage</span><strong id="detail-miles"></strong></div>
           <div><span>Title</span><strong id="detail-title"></strong></div>
@@ -122,5 +127,5 @@
   </div>
 
 
-<script src="script.js?v=6.19"></script></body>
+<script src="script.js?v=6.20"></script></body>
 </html>
