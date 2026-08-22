@@ -3155,3 +3155,14 @@ body{
   border: 2px solid #000000 !important;
   box-sizing: border-box !important;
 }
+
+
+/* v6.20 — remove black borders from Available and Sold pills */
+#featured-grid .vehicle-photo .status[data-status="available"],
+#inventory-grid .vehicle-photo .status[data-status="available"],
+#featured-grid .vehicle-photo .status.sold-status,
+#inventory-grid .vehicle-photo .status.sold-status,
+#featured-grid .vehicle-photo .status[data-status="sold"],
+#inventory-grid .vehicle-photo .status[data-status="sold"] {
+  border: none !important;
+}
