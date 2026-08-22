@@ -134,15 +134,16 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
         const frontDriven = drive === 'FWD' || drive === 'AWD';
         const rearDriven = drive === 'RWD' || drive === 'AWD';
         icon.innerHTML = `<span class="ref-drivetrain">
-          <svg viewBox="0 0 32 30" aria-hidden="true">
-            <rect x="2" y="2" width="6" height="8" rx="1.4" class="${frontDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
-            <rect x="24" y="2" width="6" height="8" rx="1.4" class="${frontDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
-            <rect x="2" y="20" width="6" height="8" rx="1.4" class="${rearDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
-            <rect x="24" y="20" width="6" height="8" rx="1.4" class="${rearDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
-            <path d="M8 6h16M8 24h16M16 6v18"></path>
-            <circle cx="16" cy="6" r="1.7"></circle>
-            <circle cx="16" cy="15" r="1.5"></circle>
-            <circle cx="16" cy="24" r="1.7"></circle>
+          <svg viewBox="0 0 52 52" aria-hidden="true">
+            <rect x="5" y="3" width="10" height="12" rx="1.4" class="${frontDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
+            <rect x="37" y="3" width="10" height="12" rx="1.4" class="${frontDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
+            <rect x="5" y="37" width="10" height="12" rx="1.4" class="${rearDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
+            <rect x="37" y="37" width="10" height="12" rx="1.4" class="${rearDriven ? 'ref-wheel-driven' : 'ref-wheel'}"></rect>
+            <path d="M15 9h22" class="ref-drive-line"></path>
+            <circle cx="26" cy="9" r="2.8" class="ref-drive-node"></circle>
+            <path d="M26 11.8v26.2" class="ref-drive-line"></path>
+            <rect x="22" y="37.2" width="8" height="4.2" rx="0.7" class="ref-drive-node"></rect>
+            <path d="M15 43h22" class="ref-drive-line"></path>
           </svg>
         </span>`;
       } else {
