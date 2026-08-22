@@ -3134,3 +3134,12 @@ body{
   fill:#d7b45d !important;
   stroke:none !important;
 }
+
+
+/* v6.20 status-pill border update */
+#featured-grid .status[data-status="available"],
+#inventory-grid .status[data-status="available"],
+#featured-grid .status[data-status="sold"],
+#inventory-grid .status[data-status="sold"] {
+  border: 1px solid #000000 !important;
+}
