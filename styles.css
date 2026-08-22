@@ -3297,3 +3297,34 @@ body{
     height: 20px !important;
   }
 }
+
+
+/* v6.20 — remove circular element/background from drivetrain icon on Inventory page */
+#inventory-grid .inventory-spec-item.spec-drive .spec-icon,
+#inventory-grid .inventory-spec-item.spec-drive .ref-drivetrain {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+/* Remove the circular center element from the drivetrain pictogram on Inventory only. */
+#inventory-grid .inventory-spec-item.spec-drive .ref-drivetrain svg circle {
+  display: none !important;
+}
+
+
+/* v6.20 — keep Homepage Highlight cards matched to Inventory cards */
+#featured-grid .inventory-spec-item.spec-drive .spec-icon,
+#featured-grid .inventory-spec-item.spec-drive .ref-drivetrain {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+#featured-grid .inventory-spec-item.spec-drive .ref-drivetrain svg circle {
+  display: none !important;
+}

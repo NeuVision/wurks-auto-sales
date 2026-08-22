@@ -130,7 +130,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
       AWD: 'AWD (All-Wheel Drive)',
       RWD: 'RWD (Rear-Wheel Drive)'
     };
-    const drivetrainLabel = cardContext === 'inventory'
+    const drivetrainLabel = (cardContext === 'inventory' || cardContext === 'featured')
       ? (drivetrainNames[drivetrainValue] || vehicle.drivetrain || '—')
       : (['FWD','AWD','RWD'].includes(drivetrainValue) ? drivetrainValue : (vehicle.drivetrain || '—'));
 
