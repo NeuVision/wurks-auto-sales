@@ -29,7 +29,20 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
   const normalizedStatus = normalizedDisplayStatus.trim().toLowerCase();
   status.classList.toggle('sold-status', normalizedStatus === 'sold');
   status.setAttribute('data-status', normalizedStatus);
-  card.querySelector('.vehicle-name').textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
+  const vehicleNameEl = card.querySelector('.vehicle-name');
+  if (vehicleNameEl) {
+    const mainVehicleName = `${vehicle.year} ${vehicle.make} ${vehicle.model}`.trim();
+
+    if (cardContext === 'inventory' && vehicle.trim) {
+      vehicleNameEl.textContent = mainVehicleName;
+      const trimSpan = document.createElement('span');
+      trimSpan.className = 'vehicle-trim';
+      trimSpan.textContent = ` ${vehicle.trim}`;
+      vehicleNameEl.appendChild(trimSpan);
+    } else {
+      vehicleNameEl.textContent = `${mainVehicleName}${vehicle.trim ? ' ' + vehicle.trim : ''}`;
+    }
+  }
   const mileageLine = card.querySelector('.vehicle-mileage');
   if (mileageLine) {
     mileageLine.textContent = formatMiles(vehicle.miles);
@@ -248,7 +261,16 @@ if (detailRoot) {
       detailStatusBanner.textContent = isSold ? 'SOLD' : '';
       detailStatusBanner.hidden = !isSold;
     }
-    document.querySelector('#detail-name').textContent = `${vehicle.model} ${vehicle.trim}`;
+    const detailName = document.querySelector('#detail-name');
+    if (detailName) {
+      detailName.textContent = vehicle.model || '';
+      if (vehicle.trim) {
+        const detailTrim = document.createElement('span');
+        detailTrim.className = 'detail-trim';
+        detailTrim.textContent = ` ${vehicle.trim}`;
+        detailName.appendChild(detailTrim);
+      }
+    }
     const breadcrumbName = document.querySelector('#detail-breadcrumb-name');
     if (breadcrumbName) breadcrumbName.textContent = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
     document.querySelector('#detail-price').textContent = vehicle.price;

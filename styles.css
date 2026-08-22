@@ -3229,3 +3229,25 @@ body{
     bottom: 10px !important;
   }
 }
+
+
+/* v6.20 — visually separate vehicle trim from main model name */
+#inventory-grid .vehicle-name .vehicle-trim {
+  color: #b2b8c0 !important;
+  font-size: .84em !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+
+.detail-summary #detail-name .detail-trim {
+  color: #b2b8c0 !important;
+  font-size: .72em !important;
+  font-weight: 600 !important;
+  letter-spacing: -.02em !important;
+}
+
+/* Keep the trim aligned naturally with the main vehicle name. */
+#inventory-grid .vehicle-name .vehicle-trim,
+.detail-summary #detail-name .detail-trim {
+  vertical-align: baseline !important;
+}
