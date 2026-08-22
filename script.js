@@ -89,8 +89,8 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
         next.className = 'card-photo-arrow card-photo-next';
         previous.setAttribute('aria-label', `Previous photo of ${vehicleName(vehicle)}`);
         next.setAttribute('aria-label', `Next photo of ${vehicleName(vehicle)}`);
-        previous.textContent = '‹';
-        next.textContent = '›';
+        previous.innerHTML = '<svg class="photo-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>';
+        next.innerHTML = '<svg class="photo-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>';
 
         const showImage = index => {
           currentImage = (index + images.length) % images.length;
