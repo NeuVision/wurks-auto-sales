@@ -3166,3 +3166,66 @@ body{
 #inventory-grid .vehicle-photo .status[data-status="sold"] {
   border: none !important;
 }
+
+
+/* v6.20 — photo counters on Inventory and View Details */
+#inventory-grid .vehicle-photo .photo-count,
+.detail-main-photo .detail-photo-count {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  z-index: 6 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  min-width: 0 !important;
+  padding: 6px 9px !important;
+  border: 1px solid rgba(255,255,255,.22) !important;
+  border-radius: 999px !important;
+  background: rgba(5,7,9,.78) !important;
+  color: #ffffff !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1 !important;
+  letter-spacing: .02em !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.36) !important;
+  backdrop-filter: blur(7px);
+  pointer-events: none !important;
+}
+
+.detail-main-photo .detail-photo-count {
+  right: 14px !important;
+  bottom: 14px !important;
+  padding: 7px 10px !important;
+  font-size: 12px !important;
+}
+
+#inventory-grid .photo-count-icon,
+.detail-main-photo .photo-count-icon {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+  fill: none !important;
+  stroke: currentColor !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+.detail-main-photo .photo-count-icon {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+@media (max-width: 760px) {
+  #inventory-grid .vehicle-photo .photo-count {
+    right: 9px !important;
+    bottom: 9px !important;
+  }
+
+  .detail-main-photo .detail-photo-count {
+    right: 10px !important;
+    bottom: 10px !important;
+  }
+}

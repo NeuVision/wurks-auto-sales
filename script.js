@@ -59,8 +59,11 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
     if (cardContext === 'inventory') {
       const count = document.createElement('span');
       count.className = 'photo-count';
-      count.innerHTML = `<span aria-hidden="true">▣</span> ${images.length}`;
-      count.setAttribute('aria-label', `${images.length} photos`);
+      const updateCardPhotoCount = currentIndex => {
+        count.innerHTML = `<svg class="photo-count-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5h3l1.4-2h6.2l1.4 2h3A2.5 2.5 0 0 1 22 10v7.5A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5V10a2.5 2.5 0 0 1 2.5-2.5Z"></path><circle cx="12" cy="13.5" r="3.5"></circle></svg><span>${currentIndex + 1} / ${images.length}</span>`;
+        count.setAttribute('aria-label', `Photo ${currentIndex + 1} of ${images.length}`);
+      };
+      updateCardPhotoCount(0);
       photo.appendChild(count);
 
       if (images.length > 1) {
@@ -79,6 +82,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
         const showImage = index => {
           currentImage = (index + images.length) % images.length;
           photo.style.backgroundImage = `url("${images[currentImage]}")`;
+          updateCardPhotoCount(currentImage);
         };
         previous.addEventListener('click', event => {
           event.preventDefault();
@@ -303,10 +307,20 @@ if (detailRoot) {
       const prevDetail = document.querySelector('#detail-photo-prev');
       const nextDetail = document.querySelector('#detail-photo-next');
 
+      const detailPhotoCount = document.createElement('span');
+      detailPhotoCount.className = 'detail-photo-count';
+      mainPhoto.appendChild(detailPhotoCount);
+
+      const updateDetailPhotoCount = currentIndex => {
+        detailPhotoCount.innerHTML = `<svg class="photo-count-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 7.5h3l1.4-2h6.2l1.4 2h3A2.5 2.5 0 0 1 22 10v7.5A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5V10a2.5 2.5 0 0 1 2.5-2.5Z"></path><circle cx="12" cy="13.5" r="3.5"></circle></svg><span>${currentIndex + 1} / ${images.length}</span>`;
+        detailPhotoCount.setAttribute('aria-label', `Photo ${currentIndex + 1} of ${images.length}`);
+      };
+
       const showDetailImage = index => {
         currentDetailImage = (index + images.length) % images.length;
         mainPhoto.style.backgroundImage = `url("${images[currentDetailImage]}")`;
         thumbnails.querySelectorAll('.thumb').forEach((thumb, i) => thumb.classList.toggle('active', i === currentDetailImage));
+        updateDetailPhotoCount(currentDetailImage);
       };
 
       images.forEach((src, i) => {
