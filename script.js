@@ -125,7 +125,14 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
     specs.classList.add('inventory-specs');
 
     const drivetrainValue = String(vehicle.drivetrain || '').trim().toUpperCase();
-    const drivetrainLabel = ['FWD','AWD','RWD'].includes(drivetrainValue) ? drivetrainValue : (vehicle.drivetrain || '—');
+    const drivetrainNames = {
+      FWD: 'FWD (Front-Wheel Drive)',
+      AWD: 'AWD (All-Wheel Drive)',
+      RWD: 'RWD (Rear-Wheel Drive)'
+    };
+    const drivetrainLabel = cardContext === 'inventory'
+      ? (drivetrainNames[drivetrainValue] || vehicle.drivetrain || '—')
+      : (['FWD','AWD','RWD'].includes(drivetrainValue) ? drivetrainValue : (vehicle.drivetrain || '—'));
 
     const mileage = document.createElement('span');
     mileage.className = 'inventory-spec-item';
@@ -147,9 +154,9 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
       icon.className = 'spec-icon';
 
       if (type === 'drive') {
-        const drive = String(text || '').toUpperCase();
-        const frontDriven = drive === 'FWD' || drive === 'AWD';
-        const rearDriven = drive === 'RWD' || drive === 'AWD';
+        const drive = drivetrainValue || String(text || '').trim().toUpperCase();
+        const frontDriven = drive.startsWith('FWD') || drive.startsWith('AWD');
+        const rearDriven = drive.startsWith('RWD') || drive.startsWith('AWD');
         icon.innerHTML = `<span class="ref-drivetrain">
           <svg viewBox="0 0 52 52" aria-hidden="true">
             <rect x="4" y="2" width="11" height="15" rx="1.8" class="${frontDriven ? 'ref-wheel-driven-fill' : 'ref-wheel-fill'}"></rect>
