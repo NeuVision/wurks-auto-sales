@@ -3034,3 +3034,23 @@ body{
   height: 21px !important;
   object-fit: contain !important;
 }
+
+
+/* v6.20 Title Status Icon Update — user-supplied title icon, converted to white */
+#featured-grid .spec-title .spec-icon,
+#inventory-grid .spec-title .spec-icon {
+  width: 24px !important;
+  min-width: 24px !important;
+  height: 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#featured-grid .ref-title-img,
+#inventory-grid .ref-title-img {
+  display: block !important;
+  width: 20px !important;
+  height: 20px !important;
+  object-fit: contain !important;
+}
