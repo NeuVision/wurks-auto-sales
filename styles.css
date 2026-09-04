@@ -3328,3 +3328,8 @@ body{
 #featured-grid .inventory-spec-item.spec-drive .ref-drivetrain svg circle {
   display: none !important;
 }
+
+/* v6.20 — About Wurks Cars Came First */
+#about-wurks .about-copy { max-width: 900px; }
+#about-wurks .about-copy p { margin: 0 0 1rem; }
+#about-wurks .about-copy .about-closing { margin-top: 1.5rem; }
