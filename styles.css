@@ -4436,3 +4436,80 @@ footer strong{color:#fff}
 .dealer-hero-visual {
   display: none !important;
 }
+
+
+/* v7.3.1 — homepage footer social media block */
+.homepage-footer .footer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 48px;
+}
+
+.homepage-footer .footer-copy {
+  min-width: 0;
+}
+
+.homepage-footer .footer-social {
+  justify-self: end;
+  text-align: left;
+  color: #bfc3c7;
+  min-width: 170px;
+  padding-bottom: 2px;
+}
+
+.homepage-footer .footer-social-title {
+  margin-bottom: 10px;
+  color: #bfc3c7;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.homepage-footer .footer-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.homepage-footer .footer-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: #bfc3c7;
+}
+
+.homepage-footer .footer-social-icon svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  stroke: none;
+}
+
+.homepage-footer .footer-social-icon:nth-child(2) svg,
+.homepage-footer .footer-social-icon:nth-child(3) svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.homepage-footer .footer-social-icon .social-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (max-width: 720px) {
+  .homepage-footer .footer-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .homepage-footer .footer-social {
+    justify-self: start;
+  }
+}
