@@ -3349,7 +3349,7 @@ body{
    ========================================================= */
 :root{
   --bg:#f4f2ee;
-  --panel:#ffffff;
+  --panel:#f8f6f1;
   --panel-2:#f7f5f1;
   --panel-3:#ece9e3;
   --soft:#f0ede7;
@@ -3378,7 +3378,7 @@ body{
   min-height:88px;
   padding:12px max(24px,calc((100vw - var(--max))/2));
   gap:28px;
-  background:rgba(255,255,255,.97) !important;
+  background:rgba(248,246,241,.97) !important;
   border-bottom:1px solid #dedbd5 !important;
   box-shadow:0 3px 18px rgba(23,25,28,.055);
   backdrop-filter:blur(14px);
@@ -3409,7 +3409,7 @@ body{
   text-transform:uppercase;
 }
 .header-cta:hover{filter:brightness(1.04);transform:translateY(-1px)}
-.menu-toggle{color:#292c30;border-color:#cfcac2;background:#fff}
+.menu-toggle{color:#292c30;border-color:#cfcac2;background:#f8f6f1}
 
 .eyebrow{color:var(--gold);font-size:.82rem;letter-spacing:.16em}
 .button{border-radius:3px;text-transform:uppercase;letter-spacing:.045em;font-weight:800}
@@ -3419,7 +3419,7 @@ body{
   color:#fff;
   box-shadow:0 5px 12px rgba(178,117,0,.14);
 }
-.button.secondary{background:#fff;color:#34373b;border-color:#bbb7b0}
+.button.secondary{background:#f8f6f1;color:#34373b;border-color:#bbb7b0}
 
 /* Homepage hero */
 .dealer-hero{
@@ -3511,7 +3511,7 @@ body{
 .text-link{color:#4a4d51;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem}
 .text-link:hover{color:var(--gold);text-decoration:none}
 
-.featured-section{background:#fff}
+.featured-section{background:#f8f6f1}
 .featured-section .section-heading-row{position:relative}
 .featured-section .section-heading-row::after{
   content:"";
@@ -3531,7 +3531,7 @@ body{
 }
 #featured-grid .vehicle-card,
 #inventory-grid .vehicle-card{
-  background:#fff !important;
+  background:#f8f6f1 !important;
   border:1px solid #d7d3cc !important;
   border-radius:7px !important;
   box-shadow:0 8px 20px rgba(35,37,40,.07) !important;
@@ -3558,7 +3558,7 @@ body{
   background-color:#e7e4de !important;
 }
 #featured-grid .vehicle-body,
-#inventory-grid .vehicle-body{padding:.88rem .9rem .9rem !important;background:#fff}
+#inventory-grid .vehicle-body{padding:.88rem .9rem .9rem !important;background:#f8f6f1}
 #featured-grid .vehicle-name,
 #inventory-grid .vehicle-name{color:#292c30 !important;font-size:1rem !important;font-weight:800 !important}
 #featured-grid .vehicle-name .vehicle-trim,
@@ -3701,7 +3701,7 @@ body{
 .contact-form-intro p,.contact-section p{color:#666a6f}
 .contact-submission-form{
   border:1px solid #d4d0c9;
-  background:#fff;
+  background:#f8f6f1;
   box-shadow:0 14px 32px rgba(40,42,45,.06);
 }
 .form-field label{color:#34373b}
@@ -3712,7 +3712,7 @@ body{
   color:#2f3236;
 }
 .contact-submission-form input::placeholder,.contact-submission-form textarea::placeholder{color:#989b9f}
-.contact-submission-form input:focus,.contact-submission-form textarea:focus{border-color:#c99116;background:#fff}
+.contact-submission-form input:focus,.contact-submission-form textarea:focus{border-color:#c99116;background:#f8f6f1}
 .comment-count,.contact-privacy-note{color:#72767b}
 .contact-privacy-note strong{color:#383b3f}
 .privacy-shield{border-color:#c99116;color:#c99116}
@@ -3733,7 +3733,7 @@ body{
   max-width:var(--max);
   margin:28px auto 0;
   border-color:#d5d1ca;
-  background:#fff;
+  background:#f8f6f1;
   box-shadow:0 10px 26px rgba(37,39,42,.055);
 }
 .dealer-controls label{color:#74787d}
@@ -3742,14 +3742,14 @@ body{
 .inventory-results-head{max-width:var(--max);margin:0 auto;color:#777b80}
 .inventory-results-head strong{color:#bd8209}
 .inventory-list-section{max-width:var(--max);padding-top:16px}
-.no-results{border-color:#c9c5bd;background:#fff}
+.no-results{border-color:#c9c5bd;background:#f8f6f1}
 .no-results h2{color:#303337}.no-results p{color:#74787d}
-.clear-filter-button{background:#fff;color:#33363a;border-color:#c9c5bd}
+.clear-filter-button{background:#f8f6f1;color:#33363a;border-color:#c9c5bd}
 
 /* Vehicle details */
 .vehicle-detail-page{max-width:var(--max);color:#303337}
 .detail-breadcrumb,.detail-breadcrumb a{color:#777b80}
-.dealer-detail-gallery,.dealer-detail-summary{border-color:#d5d1ca;background:#fff;box-shadow:0 12px 30px rgba(35,37,40,.06)}
+.dealer-detail-gallery,.dealer-detail-summary{border-color:#d5d1ca;background:#f8f6f1;box-shadow:0 12px 30px rgba(35,37,40,.06)}
 .detail-main-photo{border-color:#d8d4cd;background:#e9e6e0;aspect-ratio:3 / 2 !important;height:auto !important}
 .detail-summary h1{color:#2d3034}
 .detail-summary #detail-name .detail-trim{color:#74787d !important}
@@ -3762,14 +3762,14 @@ body{
 .detail-description{color:#55595e}
 .disclosure-box{background:#f7f5f1;border-color:#d7d3cc}.disclosure-box p{color:#62666b}
 .detail-actions .button.primary{background:linear-gradient(180deg,#ddb136,#be8206);border-color:#b57b05;color:#fff}
-.detail-actions .button.secondary{background:#fff;color:#33363a;border-color:#bdb8b0}
+.detail-actions .button.secondary{background:#f8f6f1;color:#33363a;border-color:#bdb8b0}
 .thumb{border-radius:5px}.thumb:hover,.thumb.active{border-color:#c99116}
 .buyer-banner{background:#2b2f33;border-color:#202327;color:#fff}
 .buyer-banner h2{color:#fff}.buyer-banner>p{color:#c7cbd0}
 
 /* Inquiry modal */
 .vehicle-inquiry-backdrop{background:rgba(30,32,35,.70)}
-.vehicle-inquiry-dialog{border-color:#d4d0c9;background:#fff;color:#303337;box-shadow:0 26px 70px rgba(0,0,0,.28)}
+.vehicle-inquiry-dialog{border-color:#d4d0c9;background:#f8f6f1;color:#303337;box-shadow:0 26px 70px rgba(0,0,0,.28)}
 .vehicle-inquiry-dialog h2{color:#303337}.vehicle-inquiry-vehicle{color:#a87208}
 .vehicle-inquiry-close{border-color:#d2cec7;background:#f4f2ee;color:#303337}
 .vehicle-inquiry-form input,.vehicle-inquiry-form textarea{border-color:#d2cec7;background:#f8f7f4;color:#303337}
@@ -3801,7 +3801,7 @@ footer strong{color:#fff}
   .header-cta{display:none}
   .site-header{min-height:76px}
   .site-logo{width:215px;max-width:58vw}
-  .nav{top:76px;background:#fff;border-bottom-color:#ddd9d2;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+  .nav{top:76px;background:#f8f6f1;border-bottom-color:#ddd9d2;box-shadow:0 10px 20px rgba(0,0,0,.08)}
   .nav a{color:#2e3135}
   .dealer-hero{grid-template-columns:1fr;padding-top:42px;padding-bottom:42px}
   .dealer-hero-visual{display:block}
@@ -3873,7 +3873,7 @@ footer strong{color:#fff}
   border-radius: 5px !important;
   overflow: hidden;
   box-shadow: 0 8px 22px rgba(35,37,40,.06) !important;
-  background:#fff !important;
+  background:#f8f6f1 !important;
   cursor:pointer;
 }
 #featured-grid .vehicle-card:hover {
@@ -4236,4 +4236,25 @@ footer strong{color:#fff}
 
 #featured-grid .spec-transmission {
   margin-left: 0 !important;
+}
+
+
+/* v7.2.5 — warm off-white background update */
+.site-header,
+.featured-section,
+#featured-grid .vehicle-card,
+#featured-grid .vehicle-body,
+#inventory-grid .vehicle-card,
+#inventory-grid .vehicle-body,
+.dealer-controls,
+.no-results,
+.clear-filter-button,
+.contact-submission-form,
+.button.secondary,
+.menu-toggle {
+  background: #f8f6f1 !important;
+}
+
+@media(max-width:760px) {
+  .nav { background: #f8f6f1 !important; }
 }
