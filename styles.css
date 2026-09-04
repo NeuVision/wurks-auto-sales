@@ -4037,3 +4037,67 @@ footer strong{color:#fff}
   stroke: #f4f4f4;
   stroke-width: 1.1;
 }
+
+/* v7.2.1 — FIX: force homepage Highlight mileage visible below transmission */
+#featured-grid .inventory-spec-item.spec-mileage {
+  display: inline-flex !important;
+  flex-basis: 100% !important;
+  width: 100% !important;
+  order: 5 !important;
+  margin-top: .08rem !important;
+  align-items: center !important;
+  gap: .3rem !important;
+  color: #55595e !important;
+}
+
+/* Keep hidden featured fields hidden; mileage is intentionally visible. */
+#featured-grid .inventory-spec-item.spec-fuel {
+  display: none !important;
+}
+
+#featured-grid .inventory-spec-item.spec-mileage .spec-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 17px !important;
+  min-width: 17px !important;
+  height: 17px !important;
+  color: #55595e !important;
+}
+
+#featured-grid .inventory-spec-item.spec-mileage .spec-text {
+  display: inline !important;
+  color: #55595e !important;
+  font-size: .75rem !important;
+  line-height: 1.2 !important;
+}
+
+#featured-grid .ref-rpm {
+  display: block !important;
+  width: 16px !important;
+  height: 16px !important;
+  overflow: visible !important;
+}
+
+#featured-grid .ref-rpm .rpm-arc,
+#featured-grid .ref-rpm .rpm-tick {
+  fill: none !important;
+  stroke: #4b4f54 !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+#featured-grid .ref-rpm .rpm-needle {
+  fill: none !important;
+  stroke: #c58d13 !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+#featured-grid .ref-rpm .rpm-center {
+  fill: #c58d13 !important;
+  stroke: #4b4f54 !important;
+  stroke-width: 1 !important;
+}
