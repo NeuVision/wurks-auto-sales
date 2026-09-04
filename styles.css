@@ -4413,3 +4413,26 @@ footer strong{color:#fff}
     background-position: right center !important;
   }
 }
+
+
+/* v7.3.0 — remove homepage hero photo for now */
+.dealer-hero {
+  background: #f8f6f1 !important;
+}
+
+.dealer-hero::before,
+.dealer-hero::after {
+  content: none !important;
+  display: none !important;
+  background-image: none !important;
+}
+
+.dealer-hero-copy {
+  position: relative !important;
+  z-index: 1 !important;
+  width: min(100%, 900px) !important;
+}
+
+.dealer-hero-visual {
+  display: none !important;
+}
