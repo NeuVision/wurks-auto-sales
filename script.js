@@ -196,6 +196,25 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
 
   const details = card.querySelector('.details-button');
   details.href = `vehicle.html?id=${encodeURIComponent(vehicle.id)}`;
+
+  // Homepage highlight cards use the clean image-first layout and remain fully clickable.
+  if (cardContext === 'featured' && article) {
+    const detailHref = details.href;
+    article.setAttribute('role', 'link');
+    article.setAttribute('tabindex', '0');
+    article.setAttribute('aria-label', `View details for ${vehicleName(vehicle)}`);
+    const openDetails = (event) => {
+      if (event && event.target && event.target.closest && event.target.closest('.card-photo-arrow')) return;
+      window.location.href = detailHref;
+    };
+    article.addEventListener('click', openDetails);
+    article.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openDetails(event);
+      }
+    });
+  }
   article.setAttribute('data-make', vehicle.make);
   return card;
 }

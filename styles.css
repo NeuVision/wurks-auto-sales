@@ -3819,3 +3819,183 @@ footer strong{color:#fff}
   .dealer-controls{margin-left:18px;margin-right:18px}
   .inventory-hero.compact,#about{padding-left:18px;padding-right:18px}
 }
+
+/* v7.1 — Homepage Wurks Highlights: clean image-first reference style */
+.featured-section {
+  padding-top: 34px !important;
+  padding-bottom: 38px !important;
+}
+.featured-section .section-heading-row {
+  align-items: end;
+  margin-bottom: 22px !important;
+}
+.featured-section .section-heading-row > div {
+  flex: 1;
+  text-align: center;
+}
+.featured-section .section-heading-row .eyebrow {
+  display: none;
+}
+.featured-section .section-heading-row h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+  font-size: clamp(1.45rem,2.2vw,2rem) !important;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #34373b;
+}
+.featured-section .section-heading-row h2::before,
+.featured-section .section-heading-row h2::after {
+  content: "";
+  width: clamp(52px,6vw,96px);
+  height: 2px;
+  background: linear-gradient(90deg,#bd8410,#dfb544);
+}
+.featured-section .section-heading-row::after { display:none !important; }
+.featured-section .section-heading-row .text-link {
+  position: absolute;
+  right: 0;
+  bottom: .25rem;
+  color:#474b50;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#featured-grid.dealer-featured-grid {
+  grid-template-columns: repeat(4,minmax(0,1fr)) !important;
+  gap: 20px !important;
+}
+#featured-grid .vehicle-card {
+  border: 1px solid #d8d4cd !important;
+  border-radius: 5px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(35,37,40,.06) !important;
+  background:#fff !important;
+  cursor:pointer;
+}
+#featured-grid .vehicle-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow:0 12px 28px rgba(35,37,40,.10) !important;
+}
+#featured-grid .vehicle-card::after {
+  height:2px !important;
+  background:linear-gradient(90deg,#c58d13,#e0b84a) !important;
+}
+#featured-grid .vehicle-photo {
+  aspect-ratio: 16 / 9 !important;
+  border-bottom:1px solid #dedad3 !important;
+}
+#featured-grid .vehicle-photo .photo-count { display:none !important; }
+#featured-grid .card-photo-arrow {
+  opacity:0;
+  transition:opacity .18s ease;
+}
+#featured-grid .vehicle-card:hover .card-photo-arrow { opacity:1; }
+
+#featured-grid .status {
+  right:.55rem !important;
+  top:.55rem !important;
+  padding:.34rem .58rem !important;
+  border-radius:3px !important;
+  font-size:.68rem !important;
+  letter-spacing:.055em !important;
+  text-transform:uppercase;
+  font-weight:800 !important;
+}
+
+#featured-grid .vehicle-body {
+  padding:.72rem .78rem .8rem !important;
+}
+#featured-grid .vehicle-title-row {
+  align-items:flex-start !important;
+  gap:.55rem !important;
+  margin:0 0 .18rem !important;
+}
+#featured-grid .vehicle-name {
+  margin:0 !important;
+  line-height:1.18 !important;
+  font-size:.91rem !important;
+  font-weight:850 !important;
+  text-transform:uppercase;
+  color:#25282c !important;
+}
+#featured-grid .vehicle-name .vehicle-trim {
+  display:block;
+  margin-top:.24rem;
+  font-size:.82rem !important;
+  line-height:1.25;
+  text-transform:none;
+  color:#70747a !important;
+  font-weight:500 !important;
+}
+#featured-grid .vehicle-price {
+  flex:0 0 auto;
+  white-space:nowrap;
+  font-size:1rem !important;
+  line-height:1.15;
+  color:#222529 !important;
+}
+
+/* Mileage is already included in compact specs, so remove duplicate meta line. */
+#featured-grid .vehicle-meta-row { display:none !important; }
+#featured-grid .specs.inventory-specs {
+  display:flex !important;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:.48rem .78rem !important;
+  margin:.62rem 0 0 !important;
+  padding-top:.6rem;
+  border-top:1px solid #ece8e1;
+}
+#featured-grid .inventory-spec-item {
+  display:inline-flex !important;
+  align-items:center;
+  gap:.28rem !important;
+  min-width:0;
+  color:#55595e !important;
+  font-size:.75rem !important;
+  white-space:nowrap;
+}
+#featured-grid .inventory-spec-item:first-child::before {
+  content:"◉";
+  font-size:.63rem;
+  color:#55595e;
+}
+#featured-grid .spec-title,
+#featured-grid .spec-drive,
+#featured-grid .spec-fuel {
+  display:none !important;
+}
+#featured-grid .spec-engine,
+#featured-grid .spec-transmission { display:inline-flex !important; }
+#featured-grid .inventory-spec-item .spec-text {
+  font-size:.75rem !important;
+  color:#55595e !important;
+}
+#featured-grid .inventory-spec-item .spec-icon {
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+}
+#featured-grid .ref-engine-img,
+#featured-grid .ref-gear-img {
+  width:15px !important;
+  height:15px !important;
+}
+#featured-grid .details-button { display:none !important; }
+
+@media (max-width: 1050px) {
+  #featured-grid.dealer-featured-grid { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  .featured-section .section-heading-row .text-link { position:static; margin-left:1rem; }
+}
+@media (max-width: 620px) {
+  #featured-grid.dealer-featured-grid { grid-template-columns:1fr !important; }
+  .featured-section .section-heading-row { display:block; text-align:center; }
+  .featured-section .section-heading-row .text-link { display:inline-block; margin:14px 0 0; }
+  .featured-section .section-heading-row h2 { gap:12px; letter-spacing:.1em; }
+  .featured-section .section-heading-row h2::before,
+  .featured-section .section-heading-row h2::after { width:28px; }
+}
