@@ -135,12 +135,8 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
       : (['FWD','AWD','RWD'].includes(drivetrainValue) ? drivetrainValue : (vehicle.drivetrain || '—'));
     const items = (cardContext === 'featured')
       ? [
-          ['title', vehicle.title || '—'],
-          ['drive', drivetrainLabel],
           ['engine', vehicle.engine || '—'],
-          ['transmission', vehicle.transmission || '—'],
-          ['mileage', formatMiles(vehicle.miles)],
-          ['fuel', vehicle.fuelEconomy || '—']
+          ['transmission', vehicle.transmission || '—']
         ]
       : [
           ['title', vehicle.title || '—'],
@@ -196,6 +192,29 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
       span.textContent = text || '—';
       specs.appendChild(span);
     });
+  }
+
+  if (cardContext === 'featured') {
+    article.classList.add('homepage-highlight-card');
+    const titleRow = card.querySelector('.vehicle-title-row');
+    const priceEl = card.querySelector('.vehicle-price');
+    const metaRow = card.querySelector('.vehicle-meta-row');
+    if (titleRow && priceEl) {
+      const priceStack = document.createElement('div');
+      priceStack.className = 'vehicle-price-stack';
+      titleRow.appendChild(priceStack);
+      priceStack.appendChild(priceEl);
+
+      if (vehicle.miles !== undefined && vehicle.miles !== null && String(vehicle.miles).trim() !== '') {
+        const mileageInline = document.createElement('div');
+        mileageInline.className = 'highlight-mileage-inline';
+        mileageInline.innerHTML = `<span class="highlight-mileage-icon" aria-hidden="true">
+          <svg class="ref-icon ref-rpm" viewBox="0 0 24 24" aria-hidden="true"><path class="rpm-arc" d="M4 15a8 8 0 0 1 16 0"></path><path class="rpm-tick" d="M6.7 14.1l-1.7 1.3"></path><path class="rpm-tick" d="M17.3 14.1l1.7 1.3"></path><path class="rpm-tick" d="M12 7.2V5.2"></path><path class="rpm-needle" d="M12 15l4.1-4.2"></path><circle class="rpm-center" cx="12" cy="15" r="1.25"></circle></svg>
+        </span><span class="highlight-mileage-text">${formatMiles(vehicle.miles)}</span>`;
+        priceStack.appendChild(mileageInline);
+      }
+    }
+    if (metaRow) metaRow.remove();
   }
 
   const details = card.querySelector('.details-button');

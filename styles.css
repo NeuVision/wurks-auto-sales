@@ -4101,3 +4101,105 @@ footer strong{color:#fff}
   stroke: #4b4f54 !important;
   stroke-width: 1 !important;
 }
+
+
+/* v7.2.3 — Homepage highlight layout refinement
+   - mileage moved beneath price
+   - transmission shares row with engine
+   - reduced empty space in highlight cards
+   Applies only to homepage #featured-grid cards. */
+#featured-grid .vehicle-body {
+  padding: .72rem .78rem .62rem !important;
+}
+
+#featured-grid .vehicle-title-row {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  align-items: start !important;
+  gap: .55rem .9rem !important;
+  margin: 0 0 .16rem !important;
+}
+
+#featured-grid .vehicle-price-stack {
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  gap: .28rem !important;
+  min-width: max-content !important;
+}
+
+#featured-grid .vehicle-price-stack .vehicle-price {
+  display: block !important;
+  margin: 0 !important;
+  line-height: 1.05 !important;
+}
+
+#featured-grid .highlight-mileage-inline {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: .28rem !important;
+  color: #55595e !important;
+  font-size: .75rem !important;
+  line-height: 1.1 !important;
+  white-space: nowrap !important;
+}
+
+#featured-grid .highlight-mileage-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  min-width: 16px !important;
+  height: 16px !important;
+  color: #55595e !important;
+}
+
+#featured-grid .highlight-mileage-inline .ref-rpm {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+#featured-grid .vehicle-meta-row,
+#featured-grid .spec-title,
+#featured-grid .spec-drive,
+#featured-grid .spec-fuel,
+#featured-grid .spec-mileage {
+  display: none !important;
+}
+
+#featured-grid .specs.inventory-specs {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  align-items: center !important;
+  gap: .5rem 1rem !important;
+  margin: .54rem 0 0 !important;
+  padding-top: .56rem !important;
+  border-top: 1px solid #ece8e1 !important;
+}
+
+#featured-grid .inventory-spec-item {
+  min-height: 0 !important;
+}
+
+#featured-grid .inventory-spec-item::before,
+#featured-grid .inventory-spec-item:first-child::before {
+  content: none !important;
+}
+
+#featured-grid .spec-engine {
+  display: inline-flex !important;
+  grid-column: 1 !important;
+  justify-self: start !important;
+}
+
+#featured-grid .spec-transmission {
+  display: inline-flex !important;
+  grid-column: 2 !important;
+  justify-self: start !important;
+}
+
+#featured-grid .details-button {
+  display: none !important;
+}
