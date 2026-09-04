@@ -4372,3 +4372,24 @@ footer strong{color:#fff}
     width: 100% !important;
   }
 }
+
+
+/* v7.2.8 — hero image zoom/position correction for wide desktop screens */
+@media (min-width: 981px) {
+  .dealer-hero::before {
+    width: min(68vw, 1320px) !important;
+    right: -2.5vw !important;
+    background-size: auto 88% !important;
+    background-position: right center !important;
+  }
+}
+
+/* Preserve the same idea at medium widths without over-cropping the car. */
+@media (min-width: 701px) and (max-width: 980px) {
+  .dealer-hero::before {
+    width: 76% !important;
+    right: -2vw !important;
+    background-size: auto 90% !important;
+    background-position: right center !important;
+  }
+}
