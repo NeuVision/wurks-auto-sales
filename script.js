@@ -252,17 +252,7 @@ if (featuredGrid) {
   renderVehicles(featuredGrid, vehicles.filter(v => v.featured).slice(0, 4), 'featured');
 }
 
-// Use the first highlighted vehicle as the homepage hero image when possible.
-const heroVehicleImage = document.querySelector('#hero-vehicle-image');
-if (heroVehicleImage) {
-  const heroVehicle = vehicles.find(v => v.featured && vehicleImages(v).length) || vehicles.find(v => vehicleImages(v).length);
-  const heroImages = heroVehicle ? vehicleImages(heroVehicle) : [];
-  if (heroImages.length) {
-    heroVehicleImage.style.backgroundImage = `url("${heroImages[0]}")`;
-    heroVehicleImage.classList.add('has-hero-image');
-    heroVehicleImage.querySelector('.hero-vehicle-fallback')?.setAttribute('hidden', '');
-  }
-}
+// Homepage hero now uses the fixed showroom image supplied by the user.
 
 const inventoryGrid = document.querySelector('#inventory-grid');
 const makeFilter = document.querySelector('#make-filter');

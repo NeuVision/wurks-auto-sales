@@ -4272,3 +4272,103 @@ footer strong{color:#fff}
 .contact-submission-form textarea {
   background: #f8f6f1 !important;
 }
+
+
+/* v7.2.7 — showroom hero image from supplied reference */
+.dealer-hero {
+  position: relative !important;
+  display: block !important;
+  min-height: 500px !important;
+  overflow: hidden !important;
+  padding: 66px max(24px,calc((100vw - var(--max))/2)) !important;
+  background: #f8f6f1 !important;
+  isolation: isolate;
+}
+
+.dealer-hero::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(74vw, 1420px);
+  height: 100%;
+  background-image: url("images/homepage-hero-showroom.jpg?v=7.2.7");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+/* Off-white fade carries the photo into the headline area without reducing
+   visibility of the car on the right side. */
+.dealer-hero::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      #f8f6f1 0%,
+      #f8f6f1 31%,
+      rgba(248,246,241,.97) 38%,
+      rgba(248,246,241,.82) 45%,
+      rgba(248,246,241,.38) 54%,
+      rgba(248,246,241,.08) 64%,
+      rgba(248,246,241,0) 72%
+    );
+}
+
+.dealer-hero-copy {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(52%, 760px) !important;
+}
+
+.dealer-hero-visual {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  .dealer-hero {
+    min-height: 470px !important;
+  }
+  .dealer-hero::before {
+    width: 78%;
+    opacity: .82;
+  }
+  .dealer-hero::after {
+    background:
+      linear-gradient(
+        90deg,
+        #f8f6f1 0%,
+        #f8f6f1 42%,
+        rgba(248,246,241,.94) 54%,
+        rgba(248,246,241,.5) 70%,
+        rgba(248,246,241,.12) 84%
+      );
+  }
+  .dealer-hero-copy {
+    width: min(64%, 700px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .dealer-hero {
+    min-height: 520px !important;
+    padding-top: 42px !important;
+    padding-bottom: 42px !important;
+  }
+  .dealer-hero::before {
+    width: 100%;
+    background-position: 63% center;
+    opacity: .34;
+  }
+  .dealer-hero::after {
+    background: rgba(248,246,241,.76);
+  }
+  .dealer-hero-copy {
+    width: 100% !important;
+  }
+}
