@@ -3999,3 +3999,41 @@ footer strong{color:#fff}
   .featured-section .section-heading-row h2::before,
   .featured-section .section-heading-row h2::after { width:28px; }
 }
+
+
+/* v7.2 — homepage highlight mileage row with RPM gauge icon */
+#featured-grid .spec-mileage {
+  display: inline-flex !important;
+  flex-basis: 100%;
+  margin-top: .08rem;
+}
+#featured-grid .spec-mileage .spec-icon {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+}
+#featured-grid .ref-rpm {
+  width: 15px;
+  height: 15px;
+  overflow: visible;
+}
+#featured-grid .ref-rpm .rpm-arc,
+#featured-grid .ref-rpm .rpm-tick {
+  fill: none;
+  stroke: #f4f4f4;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#featured-grid .ref-rpm .rpm-needle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#featured-grid .ref-rpm .rpm-center {
+  fill: var(--gold);
+  stroke: #f4f4f4;
+  stroke-width: 1.1;
+}
