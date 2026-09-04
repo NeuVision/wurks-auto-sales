@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Wurks Auto Sales — straightforward used cars in Northern Nevada with transparent out-the-door pricing." />
   <title>Wurks Auto Sales | Northern Nevada Used Cars</title>
-  <link rel="stylesheet" href="styles.css?v=6.20-hero1-homeinv1-drivencircle1-driveexpanded1-arrowcenter1-trim1-photocount1-vindetail1-statusborder1-drive2-drive1-title1" />
+  <link rel="stylesheet" href="styles.css?v=7.0-light-showroom" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <a class="header-cta" href="inventory.html">View Inventory</a>
   </header>
 
   <main>
@@ -33,9 +34,11 @@
         <a class="button primary hero-cta" href="inventory.html">Browse Inventory</a>
       </div>
       <div class="dealer-hero-visual">
-        <div class="hero-car-silhouette">
-          <span>WURKS</span>
-          <small>Current inventory</small>
+        <div id="hero-vehicle-image" class="hero-vehicle-image" aria-label="Featured vehicle">
+          <div class="hero-vehicle-fallback">
+            <img src="images/wurks-auto-sales-logo.png" alt="">
+            <span>Current inventory</span>
+          </div>
         </div>
       </div>
     </section>
@@ -58,10 +61,10 @@
           <h2>MORE KNOWLEDGE. LESS PRESSURE.</h2>
         </div>
         <div class="why-grid">
-          <div><strong>Real automotive experience</strong><span>We look at vehicles with an automotive background, not just from a sales perspective.</span></div>
-          <div><strong>No-pressure approach</strong><span>Take your time, look the vehicle over, and decide whether it’s the right fit for you.</span></div>
-          <div><strong>Straightforward communication</strong><span>We make the vehicle details and buying process easy to understand, so you can make decisions with confidence.</span></div>
-          <div><strong>Personal service</strong><span>You’re dealing with a small independent dealership where the person helping you actually knows the vehicle.</span></div>
+          <div><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.6 17.4a2 2 0 0 0 3 3l5.7-5.7a4 4 0 0 0 5.4-5.4l-2.5 2.5-3-3 2.5-2.5Z"/></svg></span><strong>Real automotive experience</strong><span>We look at vehicles with an automotive background, not just from a sales perspective.</span></div>
+          <div><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-3.5 7-10V5l-7-2-7 2v6c0 6.5 7 10 7 10Z"/><path d="m9 12 2 2 4-4"/></svg></span><strong>No-pressure approach</strong><span>Take your time, look the vehicle over, and decide whether it’s the right fit for you.</span></div>
+          <div><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5Z"/><path d="M8 9h8M8 12h6"/></svg></span><strong>Straightforward communication</strong><span>We make the vehicle details and buying process easy to understand, so you can make decisions with confidence.</span></div>
+          <div><span class="why-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c.8-4 3-6 7-6s6.2 2 7 6"/></svg></span><strong>Personal service</strong><span>You’re dealing with a small independent dealership where the person helping you actually knows the vehicle.</span></div>
         </div>
       </div>
     </section>
@@ -159,6 +162,6 @@
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
   </script>
 
-<script src="script.js?v=6.20-hero1-homeinv1-drivencircle1-driveexpanded1-arrowcenter1-trim1-photocount1-vindetail1-statusborder1-drive2-drive1-title1"></script>
+<script src="script.js?v=7.0-light-showroom"></script>
 </body>
 </html>
