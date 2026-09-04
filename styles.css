@@ -3677,7 +3677,7 @@ body{
   bottom:28px;
   width:400px;
   height:110px;
-  background:url("images/wurks-auto-sales-logo.png") center/contain no-repeat;
+  background:url("images/wurks-auto-sales-logo.png?v=7.2.2") center/contain no-repeat;
   opacity:.045;
   pointer-events:none;
 }
