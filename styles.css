@@ -4258,3 +4258,17 @@ footer strong{color:#fff}
 @media(max-width:760px) {
   .nav { background: #f8f6f1 !important; }
 }
+
+
+/* v7.2.6 — subtle gray contrast for Contact Us form box */
+.contact-submission-form {
+  background: #efede8 !important;
+  border-color: #d0ccc5 !important;
+  box-shadow: 0 14px 32px rgba(40,42,45,.075) !important;
+}
+
+/* Keep form fields slightly lighter than the surrounding contact box. */
+.contact-submission-form input,
+.contact-submission-form textarea {
+  background: #f8f6f1 !important;
+}
