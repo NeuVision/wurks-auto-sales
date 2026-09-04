@@ -4393,3 +4393,23 @@ footer strong{color:#fff}
     background-position: right center !important;
   }
 }
+
+
+/* v7.2.9 — further hero zoom-out + right-edge alignment */
+@media (min-width: 981px) {
+  .dealer-hero::before {
+    width: min(64vw, 1240px) !important;
+    right: -5.5vw !important;
+    background-size: auto 82% !important;
+    background-position: right center !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 980px) {
+  .dealer-hero::before {
+    width: 72% !important;
+    right: -4vw !important;
+    background-size: auto 85% !important;
+    background-position: right center !important;
+  }
+}
