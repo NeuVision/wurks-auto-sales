@@ -4203,3 +4203,37 @@ footer strong{color:#fff}
 #featured-grid .details-button {
   display: none !important;
 }
+
+
+/* v7.2.4 — Homepage highlight engine visibility + tighter transmission placement */
+#featured-grid .specs.inventory-specs {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  column-gap: .78rem !important;
+  row-gap: .35rem !important;
+  margin: .54rem 0 0 !important;
+  padding-top: .56rem !important;
+  border-top: 1px solid #ece8e1 !important;
+}
+
+/* Older listing CSS hid the first spec item. Engine is now first on homepage highlights. */
+#featured-grid .specs.inventory-specs > .inventory-spec-item:first-child,
+#featured-grid .specs.inventory-specs > .spec-engine {
+  display: inline-flex !important;
+}
+
+#featured-grid .spec-engine,
+#featured-grid .spec-transmission {
+  grid-column: auto !important;
+  justify-self: auto !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: 100% !important;
+}
+
+#featured-grid .spec-transmission {
+  margin-left: 0 !important;
+}
