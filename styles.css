@@ -3677,7 +3677,7 @@ body{
   bottom:28px;
   width:400px;
   height:110px;
-  background:url("images/wurks-auto-sales-logo.png?v=7.2.2") center/contain no-repeat;
+  background:url("images/wurks-auto-sales-logo.png?v=7.3.2-solid") center/contain no-repeat;
   opacity:.045;
   pointer-events:none;
 }
@@ -4511,5 +4511,62 @@ footer strong{color:#fff}
 
   .homepage-footer .footer-social {
     justify-self: start;
+  }
+}
+
+
+/* v7.3.3 — separate AUTO SALES submark beneath existing WURKS logo */
+.brand-logo-link {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+.site-logo-stack {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 285px;
+  max-width: 36vw;
+}
+
+.site-logo-stack .site-logo {
+  display: block;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+.site-logo-submark {
+  display: block;
+  width: 72%;
+  max-width: 205px;
+  height: auto;
+  margin-top: -17px;
+  object-fit: contain;
+}
+
+@media (max-width: 980px) {
+  .site-logo-stack {
+    width: 245px;
+  }
+
+  .site-logo-submark {
+    max-width: 176px;
+    margin-top: -15px;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-logo-stack {
+    width: 215px;
+    max-width: 58vw;
+  }
+
+  .site-logo-submark {
+    max-width: 155px;
+    margin-top: -13px;
   }
 }
