@@ -121,34 +121,5 @@ window.WURKS_INVENTORY = [
     ],
     "description": "",
     "note": ""
-  },
-  {
-    "id": "565003",
-    "status": "Sold",
-    "year": 2018,
-    "make": "Volkswagen",
-    "model": "Atlas",
-    "trim": "4Motion SE",
-    "price": "$14,495",
-    "miles": 110136,
-    "title": "Clean Title",
-    "vin": "1V2KR2CA5JC565003",
-    "drivetrain": "AWD",
-    "engine": "3.6L VR6 (6-cylinder)",
-    "transmission": "8-speed automatic",
-    "fuelEconomy": "18 City / 25 Highway",
-    "featured": false,
-    "images": [
-      "images/565003-1.jpg",
-      "images/565003-2.jpg",
-      "images/565003-3.jpg",
-      "images/565003-4.jpg",
-      "images/565003-5.jpg",
-      "images/565003-6.jpg",
-      "images/565003-7.jpg",
-      "images/565003-8.jpg"
-    ],
-    "description": "",
-    "note": ""
   }
 ];
