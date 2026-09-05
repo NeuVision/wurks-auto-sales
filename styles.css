@@ -4603,3 +4603,17 @@ footer strong{color:#fff}
     margin-top: -11px !important;
   }
 }
+
+
+/* v7.3.5 — MPG / fuel economy icon visibility fix */
+#featured-grid .spec-fuel .spec-icon,
+#inventory-grid .spec-fuel .spec-icon,
+.inventory-spec-item.spec-fuel .spec-icon {
+  color: #55595e !important;
+}
+
+#featured-grid .spec-fuel .spec-icon > svg,
+#inventory-grid .spec-fuel .spec-icon > svg,
+.inventory-spec-item.spec-fuel .spec-icon > svg {
+  color: #55595e !important;
+}
