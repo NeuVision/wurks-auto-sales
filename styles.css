@@ -4688,3 +4688,18 @@ footer strong{color:#fff}
     bottom: 1px !important;
   }
 }
+
+
+/* v7.4.0 — smaller watermark on Homepage Wurks Highlights only */
+#featured-grid .vehicle-photo.has-image .photo-watermark {
+  width: 48px !important;
+  min-width: 38px !important;
+  max-width: 15% !important;
+}
+
+@media (max-width: 760px) {
+  #featured-grid .vehicle-photo.has-image .photo-watermark {
+    width: 44px !important;
+    min-width: 34px !important;
+  }
+}
