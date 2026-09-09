@@ -4666,3 +4666,25 @@ footer strong{color:#fff}
     bottom: 10px !important;
   }
 }
+
+/* v7.3.8 — card watermark position + VIN color fix */
+/* Move ONLY homepage Highlight and Inventory watermarks closer to lower-left edge. */
+#featured-grid .vehicle-photo.has-image .photo-watermark,
+#inventory-grid .vehicle-photo.has-image .photo-watermark {
+  left: 4px !important;
+  bottom: 4px !important;
+}
+
+/* Restore vehicle-detail VIN to dark/black text on the light VIN panel. */
+.detail-vin-bar strong,
+#detail-vin {
+  color: #111111 !important;
+}
+
+@media (max-width: 760px) {
+  #featured-grid .vehicle-photo.has-image .photo-watermark,
+  #inventory-grid .vehicle-photo.has-image .photo-watermark {
+    left: 3px !important;
+    bottom: 3px !important;
+  }
+}
