@@ -13,6 +13,16 @@ function vehicleImages(vehicle) {
   return [vehicle.image, ...(vehicle.gallery || [])].filter(Boolean);
 }
 
+function attachWatermark(container, variant = 'card') {
+  if (!container || container.querySelector('.photo-watermark')) return;
+  const watermark = document.createElement('img');
+  watermark.className = `photo-watermark photo-watermark-${variant}`;
+  watermark.src = 'images/wurks-watermark.png?v=7.3.7';
+  watermark.alt = '';
+  watermark.setAttribute('aria-hidden', 'true');
+  container.appendChild(watermark);
+}
+
 const template = document.querySelector('#vehicle-template');
 
 function buildVehicleCard(vehicle, cardContext = 'inventory') {
@@ -67,6 +77,7 @@ function buildVehicleCard(vehicle, cardContext = 'inventory') {
     photo.classList.add('has-image');
     photo.style.backgroundImage = `url("${images[0]}")`;
     photo.querySelector('.photo-placeholder')?.remove();
+    attachWatermark(photo, 'card');
 
     // Homepage highlights and Inventory cards intentionally share the same photo controls.
     if (cardContext === 'inventory' || cardContext === 'featured') {
@@ -376,6 +387,7 @@ if (detailRoot) {
 
     if (images.length) {
       mainPhoto.classList.add('has-image');
+      attachWatermark(mainPhoto, 'detail');
       let currentDetailImage = 0;
       const prevDetail = document.querySelector('#detail-photo-prev');
       const nextDetail = document.querySelector('#detail-photo-next');

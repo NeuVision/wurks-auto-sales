@@ -3755,7 +3755,6 @@ body{
 .detail-summary #detail-name .detail-trim{color:#74787d !important}
 .detail-price{color:#bd8209 !important}
 .detail-vin-bar{border-color:#d8d4cd !important;background:#f6f4ef !important;color:#35383c !important}
-.detail-vin-bar strong{color:#35383c !important}
 .detail-vin-label{color:#a06f0c !important}
 .detail-spec-grid{border-color:#d8d4cd}
 .detail-spec-grid>div{background:#f7f5f1 !important;color:#34373b}
@@ -4617,4 +4616,53 @@ footer strong{color:#fff}
 #inventory-grid .spec-fuel .spec-icon > svg,
 .inventory-spec-item.spec-fuel .spec-icon > svg {
   color: #55595e !important;
+}
+
+/* v7.3.7 — vehicle photo watermark */
+#featured-grid .vehicle-photo.has-image .photo-watermark,
+#inventory-grid .vehicle-photo.has-image .photo-watermark,
+.detail-main-photo.has-image .photo-watermark {
+  position: absolute !important;
+  left: 10px !important;
+  bottom: 10px !important;
+  z-index: 3 !important;
+  display: block !important;
+  width: 58px !important;
+  height: auto !important;
+  opacity: .82 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.50)) drop-shadow(0 0 6px rgba(255,255,255,.18)) !important;
+}
+
+#featured-grid .vehicle-photo.has-image .photo-watermark,
+#inventory-grid .vehicle-photo.has-image .photo-watermark {
+  max-width: 18% !important;
+  min-width: 44px !important;
+}
+
+.detail-main-photo.has-image .photo-watermark {
+  left: 14px !important;
+  bottom: 14px !important;
+  width: 112px !important;
+  max-width: 18% !important;
+  min-width: 78px !important;
+  opacity: .86 !important;
+}
+
+@media (max-width: 760px) {
+  #featured-grid .vehicle-photo.has-image .photo-watermark,
+  #inventory-grid .vehicle-photo.has-image .photo-watermark {
+    width: 52px !important;
+    min-width: 40px !important;
+    left: 8px !important;
+    bottom: 8px !important;
+  }
+
+  .detail-main-photo.has-image .photo-watermark {
+    width: 88px !important;
+    min-width: 68px !important;
+    left: 10px !important;
+    bottom: 10px !important;
+  }
 }
