@@ -3755,6 +3755,7 @@ body{
 .detail-summary #detail-name .detail-trim{color:#74787d !important}
 .detail-price{color:#bd8209 !important}
 .detail-vin-bar{border-color:#d8d4cd !important;background:#f6f4ef !important;color:#35383c !important}
+.detail-vin-bar strong{color:#35383c !important}
 .detail-vin-label{color:#a06f0c !important}
 .detail-spec-grid{border-color:#d8d4cd}
 .detail-spec-grid>div{background:#f7f5f1 !important;color:#34373b}
