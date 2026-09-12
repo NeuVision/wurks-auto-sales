@@ -421,8 +421,14 @@ if (detailRoot) {
         const link = document.createElement('a');
         link.className = `detail-video-link detail-video-${platform.key}`;
         link.href = String(platform.url).trim();
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+        // TikTok mobile can fail on the first load when opened in a new tab/app handoff.
+        // Open TikTok in the current tab; keep Instagram/Facebook opening in a new tab.
+        if (platform.key === 'tiktok') {
+          link.target = '_self';
+        } else {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
         link.setAttribute('aria-label', `Watch this vehicle on ${platform.label}`);
         link.innerHTML = `<span class="detail-video-icon">${platform.icon}</span><span>Watch on ${platform.label}</span>`;
         detailVideoLinks.appendChild(link);
