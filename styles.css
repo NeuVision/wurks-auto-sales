@@ -4703,3 +4703,120 @@ footer strong{color:#fff}
     min-width: 34px !important;
   }
 }
+
+
+/* v7.4.2 — linked footer social icon + vehicle social-video section */
+.homepage-footer a.footer-social-icon {
+  text-decoration: none !important;
+  transition: color .15s ease, transform .15s ease;
+}
+
+.homepage-footer a.footer-social-icon:hover,
+.homepage-footer a.footer-social-icon:focus-visible {
+  color: #d5a52c !important;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.detail-video-section {
+  margin-top: 18px;
+  padding: 18px 20px 20px;
+  border: 1px solid #d8d4cd;
+  border-radius: 7px;
+  background: #f7f5f1;
+  box-shadow: 0 8px 20px rgba(35,37,40,.045);
+}
+
+.detail-video-section[hidden] {
+  display: none !important;
+}
+
+.detail-video-heading .eyebrow {
+  margin-bottom: 5px;
+}
+
+.detail-video-heading h2 {
+  margin: 0;
+  color: #303337;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+
+.detail-video-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.detail-video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 8px 13px;
+  border: 1px solid #c9c5bd;
+  border-radius: 5px;
+  background: #fff;
+  color: #34373b;
+  font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.detail-video-link:hover,
+.detail-video-link:focus-visible {
+  border-color: #c99116;
+  box-shadow: 0 5px 14px rgba(35,37,40,.09);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.detail-video-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: #34373b;
+}
+
+.detail-video-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.detail-video-facebook .detail-video-icon svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.detail-video-link:hover .detail-video-icon,
+.detail-video-link:focus-visible .detail-video-icon {
+  color: #b77c08;
+}
+
+@media (max-width: 560px) {
+  .detail-video-section {
+    padding: 16px;
+  }
+
+  .detail-video-links {
+    flex-direction: column;
+  }
+
+  .detail-video-link {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}

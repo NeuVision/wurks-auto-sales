@@ -385,6 +385,53 @@ if (detailRoot) {
     const thumbnails = document.querySelector('#detail-thumbnails');
     const images = vehicleImages(vehicle);
 
+    // Vehicle social-video links. The section stays hidden unless at least one link exists.
+    // Canonical future inventory fields: videoTikTok, videoInstagram, videoFacebook.
+    const detailVideoSection = document.querySelector('#detail-video-section');
+    const detailVideoLinks = document.querySelector('#detail-video-links');
+    const videoPlatforms = [
+      {
+        key: 'tiktok',
+        label: 'TikTok',
+        url: vehicle.videoTikTok || vehicle.tiktokVideo || vehicle.videos?.tiktok || '',
+        icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.1a4.2 4.2 0 1 1-3.1-4.1"></path><path d="M14 4c.8 2.7 2.4 4.2 5 4.8"></path></svg>'
+      },
+      {
+        key: 'instagram',
+        label: 'Instagram',
+        url: vehicle.videoInstagram || vehicle.instagramVideo || vehicle.videos?.instagram || '',
+        icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.6"></circle><circle class="social-dot" cx="17.3" cy="6.8" r="1"></circle></svg>'
+      },
+      {
+        key: 'facebook',
+        label: 'Facebook',
+        url: vehicle.videoFacebook || vehicle.facebookVideo || vehicle.videos?.facebook || '',
+        icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 8.3h3.1V4.2c-.5-.1-2.2-.2-4.1-.2-4 0-6.7 2.4-6.7 6.9v3.8H2v4.6h4.5V31h5.5V19.3h4.2l.7-4.6H12v-3.3c0-1.3.4-3.1 2.2-3.1Z" transform="scale(.75) translate(4 -3)"></path></svg>'
+      }
+    ];
+
+    const validVideoPlatforms = videoPlatforms.filter(platform => {
+      const url = String(platform.url || '').trim();
+      return /^https?:\/\//i.test(url);
+    });
+
+    if (detailVideoSection && detailVideoLinks && validVideoPlatforms.length) {
+      detailVideoLinks.innerHTML = '';
+      validVideoPlatforms.forEach(platform => {
+        const link = document.createElement('a');
+        link.className = `detail-video-link detail-video-${platform.key}`;
+        link.href = String(platform.url).trim();
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('aria-label', `Watch this vehicle on ${platform.label}`);
+        link.innerHTML = `<span class="detail-video-icon">${platform.icon}</span><span>Watch on ${platform.label}</span>`;
+        detailVideoLinks.appendChild(link);
+      });
+      detailVideoSection.hidden = false;
+    } else if (detailVideoSection) {
+      detailVideoSection.hidden = true;
+    }
+
     if (images.length) {
       mainPhoto.classList.add('has-image');
       attachWatermark(mainPhoto, 'detail');

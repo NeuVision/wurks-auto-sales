@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7.3.7-watermark" />
+  <link rel="stylesheet" href="styles.css?v=7.4.2-social-video" />
 </head>
 <body>
   <header class="site-header">
@@ -38,7 +38,14 @@
           <button id="detail-photo-prev" class="detail-photo-arrow detail-photo-prev" type="button" aria-label="Previous vehicle photo"><svg class="photo-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
           <button id="detail-photo-next" class="detail-photo-arrow detail-photo-next" type="button" aria-label="Next vehicle photo"><svg class="photo-arrow-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
         </div>
-        <div id="detail-thumbnails" class="detail-thumbnails"></div>
+                <div id="detail-thumbnails" class="detail-thumbnails"></div>
+        <section id="detail-video-section" class="detail-video-section" hidden aria-labelledby="detail-video-title">
+          <div class="detail-video-heading">
+            <p class="eyebrow">Vehicle video</p>
+            <h2 id="detail-video-title">See the video for this vehicle</h2>
+          </div>
+          <div id="detail-video-links" class="detail-video-links"></div>
+        </section>
       </div>
       <div class="detail-summary dealer-detail-summary">
         <p id="detail-kicker" class="eyebrow"></p>
@@ -73,10 +80,40 @@
     <p>Availability, mileage, pricing, and vehicle condition can change. Contact Wurks Auto Sales to confirm current details.</p>
   </section>
 
-  <footer>
-    <div><strong>Wurks Auto Sales</strong><span> Northern Nevada</span></div>
-    <p>Vehicle availability, mileage, and pricing subject to change. Vehicles sold as-is unless otherwise stated.</p>
-    <p>&copy; <span id="year"></span> Wurks Auto Sales.</p>
+  <footer class="homepage-footer">
+    <div class="footer-layout">
+      <div class="footer-copy">
+        <div><strong>Wurks Auto Sales</strong><span> Northern Nevada, Reno</span></div>
+        <p>Vehicle availability, mileage, and pricing subject to change. Vehicles sold as-is unless otherwise stated.</p>
+        <p>&copy; <span id="year"></span> Wurks Auto Sales.</p>
+      </div>
+
+      <div class="footer-social" aria-label="Social media">
+        <div class="footer-social-title">Connect with us</div>
+        <div class="footer-social-icons">
+          <span class="footer-social-icon" aria-label="Facebook" title="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.2 8.3h3.1V4.2c-.5-.1-2.2-.2-4.1-.2-4 0-6.7 2.4-6.7 6.9v3.8H2v4.6h4.5V31h5.5V19.3h4.2l.7-4.6H12v-3.3c0-1.3.4-3.1 2.2-3.1Z" transform="scale(.75) translate(4 -3)"></path>
+            </svg>
+          </span>
+
+          <span class="footer-social-icon" aria-label="Instagram" title="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+              <circle cx="12" cy="12" r="3.6"></circle>
+              <circle class="social-dot" cx="17.3" cy="6.8" r="1"></circle>
+            </svg>
+          </span>
+
+          <a class="footer-social-icon footer-social-link" href="https://vm.tiktok.com/ZP9SQeMcSucTW-l1Wd0/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 4v10.1a4.2 4.2 0 1 1-3.1-4.1"></path>
+              <path d="M14 4c.8 2.7 2.4 4.2 5 4.8"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
   </footer>
   <script>
     document.write('<script src="inventory.js?v=' + Date.now() + '"><\/script>');
@@ -136,5 +173,5 @@
   </div>
 
 
-<script src="script.js?v=7.3.7-watermark"></script></body>
+<script src="script.js?v=7.4.2-social-video"></script></body>
 </html>
