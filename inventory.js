@@ -55,7 +55,7 @@ window.WURKS_INVENTORY = [
       "images/283365-9.jpg"
     ],
     "description": "Few vehicles combine everyday practicality and outdoor capability as well as the Subaru Outback. It\u2019s comfortable and easy to drive around town, yet offers the cargo room, ground clearance, and all-wheel-drive capability to confidently head into the mountains when the weekend arrives.\n\n\r\n\r\nThe Outback provides a comfortable, well-equipped cabin, while Subaru EyeSight driver-assist technology helps make highway driving and daily commuting a little easier.\n\n\r\n\r\nWhether it\u2019s carrying the family, loading up camping gear, heading to Tahoe, or simply handling a snowy commute, the Outback is designed to do a little bit of everything.",
-    "note": "The windshield wipers have left some visible permanent marks on the windshield. They are noticeable, but do not obstruct the driver\u2019s view.\r\nA few minor scratches on the body."
+    "note": "The front wipers have left some visible permanent marks on the windshield. They are noticeable, but do not obstruct the driver\u2019s view. Theres a few minor scratches on the body. Only 1 key."
   },
   {
     "id": "420030",
