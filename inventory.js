@@ -40,7 +40,7 @@ window.WURKS_INVENTORY = [
     "transmission": "Auto (CVT)",
     "fuelEconomy": "25 City / 32 Highway",
     "featured": true,
-    "videoTikTok": "https://www.tiktok.com/@wurks.auto/video/7684027385569709342?is_from_webapp=1\u0026sender_device=pc",
+    "videoTikTok": "https://www.tiktok.com/@wurks.auto/video/7684027385569709342",
     "videoInstagram": "",
     "videoFacebook": "",
     "images": [
