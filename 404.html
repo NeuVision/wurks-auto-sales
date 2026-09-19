@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Finding Vehicle | Wurks Auto Sales</title>
+  <style>
+    :root {
+      --bg: #f8f6f1;
+      --panel: #efede8;
+      --ink: #292b2e;
+      --muted: #696b6e;
+      --gold: #c58d13;
+      --border: #d0ccc5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+    }
+    .panel {
+      width: min(680px, 100%);
+      padding: 34px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: 0 14px 32px rgba(40,42,45,.075);
+      text-align: center;
+    }
+    .brand {
+      margin: 0 0 8px;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .accent {
+      width: 62px;
+      height: 3px;
+      margin: 0 auto 22px;
+      background: var(--gold);
+    }
+    h1 { margin: 0 0 12px; font-size: clamp(25px, 5vw, 38px); }
+    p { margin: 0 auto 18px; max-width: 540px; color: var(--muted); line-height: 1.55; }
+    .actions { display: grid; gap: 10px; margin-top: 22px; }
+    .vehicle-link, .inventory-link {
+      display: block;
+      width: 100%;
+      padding: 13px 16px;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      font-weight: 700;
+    }
+    .vehicle-link { background: var(--gold); color: #161616; }
+    .inventory-link { background: transparent; color: var(--ink); }
+    .small { font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main class="panel" aria-live="polite">
+    <div class="brand">Wurks Auto Sales</div>
+    <div class="accent"></div>
+    <h1 id="route-title">Finding this vehicle…</h1>
+    <p id="route-message">One moment while we open the listing.</p>
+    <div id="route-actions" class="actions"></div>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const REPO_NAME = 'wurks-auto-sales';
+      const onGithubProjectUrl = location.hostname.endsWith('.github.io') &&
+        location.pathname.toLowerCase().startsWith('/' + REPO_NAME.toLowerCase());
+      const basePath = onGithubProjectUrl ? '/' + REPO_NAME + '/' : '/';
+
+      const titleEl = document.getElementById('route-title');
+      const messageEl = document.getElementById('route-message');
+      const actionsEl = document.getElementById('route-actions');
+
+      function slugify(value) {
+        return String(value ?? '')
+          .normalize('NFKD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/&/g, ' and ')
+          .replace(/[^a-zA-Z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+          .toLowerCase();
+      }
+
+      function vehicleBaseSlug(vehicle) {
+        return slugify([vehicle.year, vehicle.make, vehicle.model].filter(Boolean).join(' '));
+      }
+
+      function vehicleTrimSlug(vehicle) {
+        const trim = slugify(vehicle.trim);
+        return trim ? `${vehicleBaseSlug(vehicle)}-${trim}` : vehicleBaseSlug(vehicle);
+      }
+
+      function vehicleIdToken(vehicle) {
+        const rawId = String(vehicle.id ?? '').trim();
+        const compact = rawId.replace(/[^a-zA-Z0-9]/g, '');
+        if (compact.length >= 4 && compact.length <= 17) {
+          return compact.slice(-6).toLowerCase();
+        }
+        return slugify(rawId);
+      }
+
+      function detailUrl(vehicle) {
+        return `${basePath}vehicle.html?id=${encodeURIComponent(vehicle.id)}`;
+      }
+
+      function requestedSlug() {
+        let path = decodeURIComponent(location.pathname || '/');
+        if (onGithubProjectUrl) {
+          path = path.slice(('/' + REPO_NAME).length);
+        }
+        return slugify(path.replace(/^\/+|\/+$/g, ''));
+      }
+
+      function addAction(label, href, className = 'vehicle-link') {
+        const link = document.createElement('a');
+        link.className = className;
+        link.href = href;
+        link.textContent = label;
+        actionsEl.appendChild(link);
+      }
+
+      function showInventoryFallback(message) {
+        titleEl.textContent = 'Vehicle not found';
+        messageEl.textContent = message || 'This shortcut does not match a vehicle in the current inventory.';
+        actionsEl.replaceChildren();
+        addAction('View Available Inventory', `${basePath}inventory.html`, 'inventory-link');
+      }
+
+      function displayName(vehicle) {
+        return [vehicle.year, vehicle.make, vehicle.model, vehicle.trim]
+          .filter(Boolean)
+          .join(' ');
+      }
+
+      function routeFromInventory() {
+        const vehicles = Array.isArray(window.WURKS_INVENTORY) ? window.WURKS_INVENTORY : [];
+        const slug = requestedSlug();
+
+        if (!slug) {
+          location.replace(basePath);
+          return;
+        }
+
+        if (!vehicles.length) {
+          showInventoryFallback('The inventory could not be loaded. Please open the inventory page instead.');
+          return;
+        }
+
+        const groups = new Map();
+        vehicles.forEach(vehicle => {
+          const base = vehicleBaseSlug(vehicle);
+          if (!base) return;
+          if (!groups.has(base)) groups.set(base, []);
+          groups.get(base).push(vehicle);
+        });
+
+        const exactMatches = new Map();
+        const ambiguousMatches = new Map();
+
+        function register(candidateSlug, vehicle) {
+          if (!candidateSlug) return;
+          if (ambiguousMatches.has(candidateSlug)) {
+            const matches = ambiguousMatches.get(candidateSlug);
+            if (!matches.includes(vehicle)) matches.push(vehicle);
+            return;
+          }
+          if (exactMatches.has(candidateSlug)) {
+            const first = exactMatches.get(candidateSlug);
+            if (first === vehicle) return;
+            exactMatches.delete(candidateSlug);
+            ambiguousMatches.set(candidateSlug, [first, vehicle]);
+            return;
+          }
+          exactMatches.set(candidateSlug, vehicle);
+        }
+
+        groups.forEach(group => {
+          // The short year-make-model URL works whenever only one current listing matches it.
+          if (group.length === 1) {
+            register(vehicleBaseSlug(group[0]), group[0]);
+          } else {
+            ambiguousMatches.set(vehicleBaseSlug(group[0]), group.slice());
+          }
+
+          const trimGroups = new Map();
+          group.forEach(vehicle => {
+            const trimSlug = vehicleTrimSlug(vehicle);
+            if (!trimGroups.has(trimSlug)) trimGroups.set(trimSlug, []);
+            trimGroups.get(trimSlug).push(vehicle);
+          });
+
+          trimGroups.forEach(trimGroup => {
+            const trimSlug = vehicleTrimSlug(trimGroup[0]);
+            if (trimGroup.length === 1) {
+              register(trimSlug, trimGroup[0]);
+            } else {
+              ambiguousMatches.set(trimSlug, trimGroup.slice());
+            }
+          });
+
+          // A stock/listing-ID version is always accepted as a unique fallback.
+          group.forEach(vehicle => {
+            const token = vehicleIdToken(vehicle);
+            if (!token) return;
+            register(`${vehicleBaseSlug(vehicle)}-${token}`, vehicle);
+            if (slugify(vehicle.trim)) {
+              register(`${vehicleTrimSlug(vehicle)}-${token}`, vehicle);
+            }
+          });
+        });
+
+        const match = exactMatches.get(slug);
+        if (match) {
+          location.replace(detailUrl(match));
+          return;
+        }
+
+        const ambiguous = ambiguousMatches.get(slug);
+        if (ambiguous && ambiguous.length) {
+          titleEl.textContent = 'Choose a vehicle';
+          messageEl.textContent = 'More than one current vehicle matches this shortcut. Select the listing you want to view.';
+          actionsEl.replaceChildren();
+          ambiguous.forEach(vehicle => {
+            const token = vehicleIdToken(vehicle);
+            const stockText = token ? ` · Stock ${String(token).toUpperCase()}` : '';
+            addAction(`${displayName(vehicle)}${stockText}`, detailUrl(vehicle));
+          });
+          addAction('View All Inventory', `${basePath}inventory.html`, 'inventory-link');
+          return;
+        }
+
+        showInventoryFallback();
+      }
+
+      const inventoryScript = document.createElement('script');
+      inventoryScript.src = `${basePath}inventory.js?v=${Date.now()}`;
+      inventoryScript.onload = routeFromInventory;
+      inventoryScript.onerror = () => {
+        showInventoryFallback('The inventory could not be loaded. Please open the inventory page instead.');
+      };
+      document.head.appendChild(inventoryScript);
+    })();
+  </script>
+</body>
+</html>
