@@ -534,7 +534,7 @@ if (wurksContactForm) {
     });
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/adolfowurksauto@outlook.com', {
+      const response = await fetch('https://formsubmit.co/ajax/sales@wurksauto.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -657,7 +657,7 @@ if (vehicleInquiryForm) {
     });
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/adolfowurksauto@outlook.com', {
+      const response = await fetch('https://formsubmit.co/ajax/sales@wurksauto.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
